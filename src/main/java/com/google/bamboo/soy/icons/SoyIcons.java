@@ -15,9 +15,9 @@
 package com.google.bamboo.soy.icons;
 
 import com.intellij.openapi.util.IconLoader;
-import javax.swing.Icon;
+import consulo.ui.image.Image;
 
 public class SoyIcons {
 
-  public static final Icon FILE = IconLoader.getIcon("/closure-template.png");
+  public static final Image FILE = IconLoader.getIcon("/closure-template.png");
 }

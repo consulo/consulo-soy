@@ -14,6 +14,7 @@
 
 package com.google.bamboo.soy.parser;
 
+import org.jetbrains.annotations.NotNull;
 import com.google.bamboo.soy.file.SoyFile;
 import com.google.bamboo.soy.lexer.SoyLexer;
 import com.google.bamboo.soy.lexer.SoyTokenTypes;
@@ -22,39 +23,38 @@ import com.intellij.lang.ASTNode;
 import com.intellij.lang.ParserDefinition;
 import com.intellij.lang.PsiParser;
 import com.intellij.lexer.Lexer;
-import com.intellij.openapi.project.Project;
 import com.intellij.psi.FileViewProvider;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
 import com.intellij.psi.tree.IStubFileElementType;
 import com.intellij.psi.tree.TokenSet;
-import org.jetbrains.annotations.NotNull;
+import consulo.lang.LanguageVersion;
 
 public class SoyParserDefinition implements ParserDefinition {
 
   @NotNull
   @Override
-  public Lexer createLexer(Project project) {
+  public Lexer createLexer(LanguageVersion languageVersion) {
     return new SoyLexer();
   }
 
   @NotNull
-  public TokenSet getWhitespaceTokens() {
+  public TokenSet getWhitespaceTokens(LanguageVersion languageVersion) {
     return SoyTokenTypes.WHITE_SPACES;
   }
 
   @NotNull
-  public TokenSet getCommentTokens() {
+  public TokenSet getCommentTokens(LanguageVersion languageVersion) {
     return SoyTokenTypes.COMMENTS;
   }
 
   @NotNull
-  public TokenSet getStringLiteralElements() {
+  public TokenSet getStringLiteralElements(LanguageVersion languageVersion) {
     return SoyTokenTypes.STRINGS;
   }
 
   @NotNull
-  public PsiParser createParser(final Project project) {
+  public PsiParser createParser(LanguageVersion languageVersion) {
     return new SoyParser();
   }
 

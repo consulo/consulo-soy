@@ -14,9 +14,11 @@
 
 package com.google.bamboo.soy.file;
 
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import com.google.bamboo.soy.SoyLanguage;
-import com.google.bamboo.soy.insight.highlight.SoyLayeredHighlighter;
 import com.google.bamboo.soy.icons.SoyIcons;
+import com.google.bamboo.soy.insight.highlight.SoyLayeredHighlighter;
 import com.intellij.openapi.editor.colors.EditorColorsScheme;
 import com.intellij.openapi.fileTypes.FileType;
 import com.intellij.openapi.fileTypes.FileTypeEditorHighlighterProviders;
@@ -24,9 +26,7 @@ import com.intellij.openapi.fileTypes.LanguageFileType;
 import com.intellij.openapi.fileTypes.TemplateLanguageFileType;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VirtualFile;
-import javax.swing.Icon;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import consulo.ui.image.Image;
 
 public class SoyFileType extends LanguageFileType implements TemplateLanguageFileType {
   public static final SoyFileType INSTANCE = new SoyFileType();
@@ -62,7 +62,7 @@ public class SoyFileType extends LanguageFileType implements TemplateLanguageFil
 
   @Nullable
   @Override
-  public Icon getIcon() {
+  public Image getIcon() {
     return SoyIcons.FILE;
   }
 }

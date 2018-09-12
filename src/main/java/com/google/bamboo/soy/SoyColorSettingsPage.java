@@ -14,17 +14,16 @@
 
 package com.google.bamboo.soy;
 
+import java.util.Map;
+
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import com.google.bamboo.soy.insight.highlight.SoySyntaxHighlighter;
-import com.google.bamboo.soy.icons.SoyIcons;
 import com.intellij.openapi.editor.colors.TextAttributesKey;
 import com.intellij.openapi.fileTypes.SyntaxHighlighter;
 import com.intellij.openapi.options.colors.AttributesDescriptor;
 import com.intellij.openapi.options.colors.ColorDescriptor;
 import com.intellij.openapi.options.colors.ColorSettingsPage;
-import java.util.Map;
-import javax.swing.Icon;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 public class SoyColorSettingsPage implements ColorSettingsPage {
   private static final AttributesDescriptor[] DESCRIPTORS =
@@ -37,12 +36,6 @@ public class SoyColorSettingsPage implements ColorSettingsPage {
         new AttributesDescriptor("String literals", SoySyntaxHighlighter.STRING),
         new AttributesDescriptor("Variable references", SoySyntaxHighlighter.VARIABLE_REFERENCE),
       };
-
-  @Nullable
-  @Override
-  public Icon getIcon() {
-    return SoyIcons.FILE;
-  }
 
   @NotNull
   @Override

@@ -14,10 +14,5 @@
 
 package com.google.bamboo.soy.lexer;
 
-import com.intellij.lexer.FlexAdapter;
-
-public class SoyRawLexer extends FlexAdapter {
-  public SoyRawLexer() {
-    super(new SoyFlexLexer(null));
-  }
+public class SoyRawLexer extends SoyFlexLexer {
 }

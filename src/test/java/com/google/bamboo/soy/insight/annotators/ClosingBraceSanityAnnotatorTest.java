@@ -18,6 +18,6 @@ public class ClosingBraceSanityAnnotatorTest extends SoyCodeInsightFixtureTestCa
 
   public void testAnnotator() {
     myFixture.configureByFile("ClosingBraceSanity.soy");
-    myFixture.checkHighlighting(false, false, true, true);
+    myFixture.checkHighlighting(false, false, true);
   }
 }

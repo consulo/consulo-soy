@@ -15,13 +15,14 @@
 package com.google.bamboo.soy.parser;
 
 import com.google.bamboo.soy.SoyTestUtils;
-import com.intellij.testFramework.ParsingTestCase;
+import consulo.testFramework.ParsingTestCase;
 
 /** Unit tests for the closure template parser. */
-public class SoyParserTest extends ParsingTestCase {
+public class SoyParserTest extends ParsingTestCase
+{
   @SuppressWarnings("JUnitTestCaseWithNonTrivialConstructors")
   public SoyParserTest() {
-    super("parser", "soy", new SoyParserDefinition());
+    super("parser", "soy");
   }
 
   @Override

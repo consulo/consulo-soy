@@ -14,6 +14,9 @@
 
 package com.google.bamboo.soy.insight.typedhandlers;
 
+import javax.inject.Inject;
+
+import org.jetbrains.annotations.NotNull;
 import com.google.bamboo.soy.elements.TagBlockElement;
 import com.google.bamboo.soy.parser.SoyChoiceClause;
 import com.intellij.openapi.actionSystem.DataContext;
@@ -26,7 +29,6 @@ import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
 import com.intellij.psi.codeStyle.CodeStyleManager;
 import com.intellij.psi.util.PsiTreeUtil;
-import org.jetbrains.annotations.NotNull;
 
 /**
  * Automatically inserts a matching closing tag when "{/" is typed.
@@ -35,6 +37,7 @@ public class ClosingTagHandler implements TypedActionHandler {
 
   private final TypedActionHandler myOriginalHandler;
 
+  @Inject
   public ClosingTagHandler(TypedActionHandler originalHandler) {
     myOriginalHandler = originalHandler;
   }
