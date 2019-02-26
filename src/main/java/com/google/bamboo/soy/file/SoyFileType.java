@@ -16,16 +16,11 @@ package com.google.bamboo.soy.file;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+
 import com.google.bamboo.soy.SoyLanguage;
 import com.google.bamboo.soy.icons.SoyIcons;
-import com.google.bamboo.soy.insight.highlight.SoyLayeredHighlighter;
-import com.intellij.openapi.editor.colors.EditorColorsScheme;
-import com.intellij.openapi.fileTypes.FileType;
-import com.intellij.openapi.fileTypes.FileTypeEditorHighlighterProviders;
 import com.intellij.openapi.fileTypes.LanguageFileType;
 import com.intellij.openapi.fileTypes.TemplateLanguageFileType;
-import com.intellij.openapi.project.Project;
-import com.intellij.openapi.vfs.VirtualFile;
 import consulo.ui.image.Image;
 
 public class SoyFileType extends LanguageFileType implements TemplateLanguageFileType {
@@ -33,19 +28,12 @@ public class SoyFileType extends LanguageFileType implements TemplateLanguageFil
 
   private SoyFileType() {
     super(SoyLanguage.INSTANCE);
-    FileTypeEditorHighlighterProviders.INSTANCE.addExplicitExtension(
-        this,
-        (@Nullable Project project,
-            @Nonnull FileType fileType,
-            @Nullable VirtualFile virtualFile,
-            @Nonnull EditorColorsScheme editorColorsScheme) ->
-            new SoyLayeredHighlighter(project, virtualFile, editorColorsScheme));
   }
 
   @Nonnull
   @Override
   public String getId() {
-    return "Closure template file";
+    return "CLOSURE_TEMPLATE_TYPE";
   }
 
   @Nonnull

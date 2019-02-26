@@ -57,6 +57,7 @@
 
 		<codeStyleSettingsProvider implementation="com.google.bamboo.soy.format.SoyCodeStyleSettingsProvider"/>
 		<langCodeStyleSettingsProvider implementation="com.google.bamboo.soy.format.SoyLanguageCodeStyleSettingsProvider"/>
+		<editorHighlighterProvider filetype="CLOSURE_TEMPLATE_TYPE" implementationClass="com.google.bamboo.soy.file.SoyEditorHighlighterProvider" />
 
 		<stubIndex implementation="com.google.bamboo.soy.stubs.index.NamespaceDeclarationIndex"/>
 		<stubIndex implementation="com.google.bamboo.soy.stubs.index.TemplateBlockIndex"/>
