@@ -19,12 +19,12 @@ import com.google.bamboo.soy.parser.SoyVariableReferenceIdentifier;
 import com.intellij.lang.annotation.AnnotationHolder;
 import com.intellij.lang.annotation.Annotator;
 import com.intellij.psi.PsiElement;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 public class UnfinishedIdentifiersAnnotator implements Annotator {
 
   @Override
-  public void annotate(@NotNull PsiElement psiElement, @NotNull AnnotationHolder annotationHolder) {
+  public void annotate(@Nonnull PsiElement psiElement, @Nonnull AnnotationHolder annotationHolder) {
     if (psiElement instanceof SoyVariableReferenceIdentifier && psiElement.getText().equals("$")) {
       annotationHolder.createErrorAnnotation(psiElement, "Variable name expected.");
     } else if (psiElement instanceof SoyFieldExpr && psiElement.getText().endsWith(".")) {

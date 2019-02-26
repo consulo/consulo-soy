@@ -43,17 +43,17 @@ import com.intellij.psi.formatter.xml.SyntheticBlock;
 import com.intellij.psi.tree.IElementType;
 import com.intellij.psi.xml.XmlTag;
 import java.util.List;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 public class SoyBlock extends TemplateLanguageBlock {
 
   private HtmlPolicy myHtmlPolicy;
 
   public SoyBlock(
-      @NotNull TemplateLanguageBlockFactory blockFactory,
-      @NotNull CodeStyleSettings settings,
-      @NotNull ASTNode node,
+      @Nonnull TemplateLanguageBlockFactory blockFactory,
+      @Nonnull CodeStyleSettings settings,
+      @Nonnull ASTNode node,
       @Nullable List<DataLanguageBlockWrapper> foreignChildren,
       HtmlPolicy htmlPolicy) {
     super(blockFactory, settings, node, foreignChildren);

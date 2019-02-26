@@ -20,8 +20,8 @@ import com.google.bamboo.soy.parser.SoyTypeExpression;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiNamedElement;
 import com.intellij.util.IncorrectOperationException;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 public interface AtInjectElement extends PsiNamedElement, TagElement {
   @Nullable
@@ -30,11 +30,11 @@ public interface AtInjectElement extends PsiNamedElement, TagElement {
   @Nullable
   SoyTypeExpression getTypeExpression();
 
-  default PsiElement setName(@NotNull String s) throws IncorrectOperationException {
+  default PsiElement setName(@Nonnull String s) throws IncorrectOperationException {
     return null;
   }
 
-  @NotNull
+  @Nonnull
   default String getType() {
     if (getTypeExpression() != null) {
       return getTypeExpression().getText();

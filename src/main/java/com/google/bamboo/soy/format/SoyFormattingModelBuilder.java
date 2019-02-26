@@ -37,18 +37,18 @@ import com.intellij.psi.formatter.FormattingDocumentModelImpl;
 import com.intellij.psi.formatter.xml.HtmlPolicy;
 import com.intellij.psi.templateLanguages.SimpleTemplateLanguageFormattingModelBuilder;
 import java.util.List;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 public class SoyFormattingModelBuilder extends TemplateLanguageFormattingModelBuilder {
 
   @Override
   public TemplateLanguageBlock createTemplateLanguageBlock(
-      @NotNull ASTNode node,
+      @Nonnull ASTNode node,
       @Nullable Wrap wrap,
       @Nullable Alignment alignment,
       @Nullable List<DataLanguageBlockWrapper> foreignChildren,
-      @NotNull CodeStyleSettings codeStyleSettings) {
+      @Nonnull CodeStyleSettings codeStyleSettings) {
     final FormattingDocumentModelImpl documentModel =
         FormattingDocumentModelImpl.createOn(node.getPsi().getContainingFile());
     if (node.getPsi() instanceof TagElement) {
@@ -82,7 +82,7 @@ public class SoyFormattingModelBuilder extends TemplateLanguageFormattingModelBu
     }
   }
 
-  @NotNull
+  @Nonnull
   public FormattingModel createModel(PsiElement element, CodeStyleSettings settings) {
     final PsiFile file = element.getContainingFile();
 

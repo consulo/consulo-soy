@@ -16,8 +16,9 @@ package com.google.bamboo.soy.insight.highlight;
 
 import static com.google.bamboo.soy.parser.SoyTypes.OTHER;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import com.google.bamboo.soy.SoyLanguage;
 import com.intellij.lang.Language;
 import com.intellij.openapi.editor.colors.EditorColorsScheme;
@@ -35,7 +36,7 @@ public class SoyLayeredHighlighter extends LayeredLexerEditorHighlighter {
   public SoyLayeredHighlighter(
       @Nullable Project project,
       @Nullable VirtualFile virtualFile,
-      @NotNull EditorColorsScheme colors) {
+      @Nonnull EditorColorsScheme colors) {
     // Creating main highlighter.
     super(new SoySyntaxHighlighter(), colors);
 

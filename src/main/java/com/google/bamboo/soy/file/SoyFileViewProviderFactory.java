@@ -20,15 +20,15 @@ import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.FileViewProvider;
 import com.intellij.psi.FileViewProviderFactory;
 import com.intellij.psi.PsiManager;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 public class SoyFileViewProviderFactory implements FileViewProviderFactory {
-  @NotNull
+  @Nonnull
   @Override
   public FileViewProvider createFileViewProvider(
-      @NotNull VirtualFile virtualFile,
+      @Nonnull VirtualFile virtualFile,
       Language language,
-      @NotNull PsiManager psiManager,
+      @Nonnull PsiManager psiManager,
       boolean eventSystemEnabled) {
     assert language.isKindOf(SoyLanguage.INSTANCE);
     return new SoyFileViewProvider(psiManager, virtualFile, eventSystemEnabled);

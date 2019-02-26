@@ -17,16 +17,16 @@ package com.google.bamboo.soy.elements.impl;
 import com.google.bamboo.soy.elements.VariableDefinitionElement;
 import com.intellij.extapi.psi.ASTWrapperPsiElement;
 import com.intellij.lang.ASTNode;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 public abstract class VariableDefinitionMixin extends ASTWrapperPsiElement
     implements VariableDefinitionElement {
 
-  public VariableDefinitionMixin(@NotNull ASTNode node) {
+  public VariableDefinitionMixin(@Nonnull ASTNode node) {
     super(node);
   }
 
-  @NotNull
+  @Nonnull
   @Override
   public String getName() {
     return getIdentifierWord() == null ? "" : getIdentifierWord().getText();

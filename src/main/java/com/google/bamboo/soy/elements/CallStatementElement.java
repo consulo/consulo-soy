@@ -19,18 +19,18 @@ import com.google.bamboo.soy.parser.SoyEndTag;
 import com.google.bamboo.soy.parser.SoyParamListElement;
 import com.google.bamboo.soy.parser.SoyTypes;
 import java.util.List;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 public interface CallStatementElement extends TagBlockElement, StatementElement {
 
-  @NotNull
+  @Nonnull
   List<SoyParamListElement> getParamListElementList();
 
-  @NotNull
+  @Nonnull
   SoyBeginCall getBeginCall();
 
-  @NotNull
+  @Nonnull
   default boolean isDelegate() {
     return getTagNameTokenType() == SoyTypes.DELCALL;
   }

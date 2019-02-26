@@ -18,23 +18,23 @@ import com.google.bamboo.soy.lang.Variable;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiNamedElement;
 import com.intellij.util.IncorrectOperationException;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 public interface VariableDefinitionElement extends PsiNamedElement {
   @Nullable
   PsiElement getIdentifierWord();
 
-  @NotNull
+  @Nonnull
   @Override
   String getName();
 
   @Override
-  default PsiElement setName(@NotNull String s) throws IncorrectOperationException {
+  default PsiElement setName(@Nonnull String s) throws IncorrectOperationException {
     return null;
   }
 
-  @NotNull
+  @Nonnull
   default Variable toVariable() {
     return new Variable(getName(), "", this);
   }

@@ -25,7 +25,7 @@ import com.intellij.psi.stubs.StubInputStream;
 import com.intellij.psi.stubs.StubOutputStream;
 import com.intellij.util.io.StringRef;
 import java.io.IOException;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 public class AtParamStub extends NamedStubBase<SoyAtParamSingle> {
   static final Type TYPE = new Type();
@@ -44,33 +44,33 @@ public class AtParamStub extends NamedStubBase<SoyAtParamSingle> {
     }
 
     @Override
-    public SoyAtParamSingle createPsi(@NotNull AtParamStub stub) {
+    public SoyAtParamSingle createPsi(@Nonnull AtParamStub stub) {
       return new SoyAtParamSingleImpl(stub, this);
     }
 
-    @NotNull
+    @Nonnull
     @Override
-    public AtParamStub createStub(@NotNull SoyAtParamSingle psi, StubElement parentStub) {
+    public AtParamStub createStub(@Nonnull SoyAtParamSingle psi, StubElement parentStub) {
       return new AtParamStub(parentStub, psi.getName(), psi.getType(), psi.isOptional());
     }
 
-    @NotNull
+    @Nonnull
     @Override
     public String getExternalId() {
       return "AT_PARAM";
     }
 
     @Override
-    public void serialize(@NotNull AtParamStub stub, @NotNull StubOutputStream dataStream)
+    public void serialize(@Nonnull AtParamStub stub, @Nonnull StubOutputStream dataStream)
         throws IOException {
       dataStream.writeName(stub.getName());
       dataStream.writeName(stub.type);
       dataStream.writeBoolean(stub.isOptional);
     }
 
-    @NotNull
+    @Nonnull
     @Override
-    public AtParamStub deserialize(@NotNull StubInputStream dataStream, StubElement parentStub)
+    public AtParamStub deserialize(@Nonnull StubInputStream dataStream, StubElement parentStub)
         throws IOException {
       final StringRef ref = dataStream.readName();
       final StringRef ref2 = dataStream.readName();
@@ -79,6 +79,6 @@ public class AtParamStub extends NamedStubBase<SoyAtParamSingle> {
     }
 
     @Override
-    public void indexStub(@NotNull AtParamStub stub, @NotNull IndexSink sink) {}
+    public void indexStub(@Nonnull AtParamStub stub, @Nonnull IndexSink sink) {}
   }
 }

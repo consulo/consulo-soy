@@ -22,8 +22,8 @@ import com.intellij.lang.findUsages.FindUsagesProvider;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiNamedElement;
 import com.intellij.psi.tree.TokenSet;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 public class SoyFindUsagesProvider implements FindUsagesProvider {
   @Nullable
@@ -37,31 +37,31 @@ public class SoyFindUsagesProvider implements FindUsagesProvider {
   }
 
   @Override
-  public boolean canFindUsagesFor(@NotNull PsiElement psiElement) {
+  public boolean canFindUsagesFor(@Nonnull PsiElement psiElement) {
     return psiElement instanceof PsiNamedElement;
   }
 
   @Nullable
   @Override
-  public String getHelpId(@NotNull PsiElement psiElement) {
+  public String getHelpId(@Nonnull PsiElement psiElement) {
     return null;
   }
 
-  @NotNull
+  @Nonnull
   @Override
-  public String getType(@NotNull PsiElement psiElement) {
+  public String getType(@Nonnull PsiElement psiElement) {
     return "";
   }
 
-  @NotNull
+  @Nonnull
   @Override
-  public String getDescriptiveName(@NotNull PsiElement psiElement) {
+  public String getDescriptiveName(@Nonnull PsiElement psiElement) {
     return "";
   }
 
-  @NotNull
+  @Nonnull
   @Override
-  public String getNodeText(@NotNull PsiElement psiElement, boolean useFullName) {
+  public String getNodeText(@Nonnull PsiElement psiElement, boolean useFullName) {
     return "";
   }
 }

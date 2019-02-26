@@ -24,11 +24,11 @@ import com.intellij.psi.util.PsiTreeUtil;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 public class MissingParametersAnnotator implements Annotator {
   @Override
-  public void annotate(@NotNull PsiElement psiElement, @NotNull AnnotationHolder annotationHolder) {
+  public void annotate(@Nonnull PsiElement psiElement, @Nonnull AnnotationHolder annotationHolder) {
     if (psiElement instanceof CallStatementElement) {
       CallStatementElement statement = (CallStatementElement) psiElement;
 

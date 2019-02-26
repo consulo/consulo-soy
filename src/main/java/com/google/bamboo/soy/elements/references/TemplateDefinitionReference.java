@@ -23,7 +23,7 @@ import com.intellij.psi.PsiPolyVariantReference;
 import com.intellij.psi.PsiReferenceBase;
 import com.intellij.psi.ResolveResult;
 import java.util.stream.Collectors;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 public class TemplateDefinitionReference extends PsiReferenceBase<PsiElement>
     implements PsiPolyVariantReference {
@@ -34,7 +34,7 @@ public class TemplateDefinitionReference extends PsiReferenceBase<PsiElement>
     this.templateName = element.getText();
   }
 
-  @NotNull
+  @Nonnull
   @Override
   public ResolveResult[] multiResolve(boolean incompleteCode) {
     return PsiElementResolveResult.createResults(
@@ -62,7 +62,7 @@ public class TemplateDefinitionReference extends PsiReferenceBase<PsiElement>
   }
 
   @Override
-  @NotNull
+  @Nonnull
   public Object[] getVariants() {
     return new Object[0];
   }

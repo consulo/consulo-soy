@@ -21,7 +21,7 @@ import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiReference;
 import com.intellij.psi.PsiReferenceBase;
 import com.intellij.psi.util.PsiTreeUtil;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 public class ParameterDefinitionReference extends PsiReferenceBase<PsiElement>
     implements PsiReference {
@@ -59,7 +59,7 @@ public class ParameterDefinitionReference extends PsiReferenceBase<PsiElement>
   }
 
   @Override
-  @NotNull
+  @Nonnull
   public Object[] getVariants() {
     return new Object[0];
   }

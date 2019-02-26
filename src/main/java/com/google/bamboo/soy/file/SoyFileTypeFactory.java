@@ -16,11 +16,11 @@ package com.google.bamboo.soy.file;
 
 import com.intellij.openapi.fileTypes.FileTypeConsumer;
 import com.intellij.openapi.fileTypes.FileTypeFactory;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 public class SoyFileTypeFactory extends FileTypeFactory {
   @Override
-  public void createFileTypes(@NotNull FileTypeConsumer fileTypeConsumer) {
+  public void createFileTypes(@Nonnull FileTypeConsumer fileTypeConsumer) {
     fileTypeConsumer.consume(SoyFileType.INSTANCE, "soy");
   }
 }

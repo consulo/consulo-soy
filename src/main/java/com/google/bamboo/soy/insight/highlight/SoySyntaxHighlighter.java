@@ -27,7 +27,7 @@ import com.intellij.openapi.editor.colors.TextAttributesKey;
 import com.intellij.openapi.fileTypes.SyntaxHighlighterBase;
 import com.intellij.psi.tree.IElementType;
 import java.util.Collection;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 public class SoySyntaxHighlighter extends SyntaxHighlighterBase {
 
@@ -63,13 +63,13 @@ public class SoySyntaxHighlighter extends SyntaxHighlighterBase {
   private static final ImmutableMap<IElementType, Collection<TextAttributesKey>>
       tokenToAttributesMap = attributesToTokenMap.inverse().asMap();
 
-  @NotNull
+  @Nonnull
   @Override
   public Lexer getHighlightingLexer() {
     return new SoyLexer();
   }
 
-  @NotNull
+  @Nonnull
   @Override
   public TextAttributesKey[] getTokenHighlights(IElementType tokenType) {
     return tokenToAttributesMap.getOrDefault(tokenType, EMPTY_KEYS)

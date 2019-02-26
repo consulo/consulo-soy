@@ -27,7 +27,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 public class VariableReference extends PsiReferenceBase<PsiElement> implements PsiReference {
   private String identifier;
@@ -40,7 +40,7 @@ public class VariableReference extends PsiReferenceBase<PsiElement> implements P
     this.textRangeInElement = textRangeInElement;
   }
 
-  @NotNull
+  @Nonnull
   private ResolveResult[] multiResolve() {
     final Collection<Variable> definitions =
         Scope.getScopeOrEmpty(this.getElement()).getVariables();
@@ -72,7 +72,7 @@ public class VariableReference extends PsiReferenceBase<PsiElement> implements P
   }
 
   @Override
-  @NotNull
+  @Nonnull
   public Object[] getVariants() {
     return Scope.getScopeOrEmpty(this.getElement())
         .getVariables()

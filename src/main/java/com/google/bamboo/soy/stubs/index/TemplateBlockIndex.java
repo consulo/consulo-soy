@@ -21,20 +21,20 @@ import com.intellij.psi.stubs.StringStubIndexExtension;
 import com.intellij.psi.stubs.StubIndexKey;
 import java.util.ArrayList;
 import java.util.Collection;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 public class TemplateBlockIndex extends StringStubIndexExtension<SoyTemplateBlock> {
   public static final StubIndexKey<String, SoyTemplateBlock> KEY =
       StubIndexKey.createIndexKey("SoyTemplateBlock");
   public static final TemplateBlockIndex INSTANCE = new TemplateBlockIndex();
 
-  @NotNull
+  @Nonnull
   @Override
   public StubIndexKey<String, SoyTemplateBlock> getKey() {
     return KEY;
   }
 
-  @NotNull
+  @Nonnull
   @Override
   public Collection<String> getAllKeys(Project project) {
     try {

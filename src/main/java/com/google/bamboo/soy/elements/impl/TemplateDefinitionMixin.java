@@ -19,7 +19,7 @@ import com.google.bamboo.soy.stubs.TemplateDefinitionStub;
 import com.intellij.lang.ASTNode;
 import com.intellij.psi.stubs.IStubElementType;
 import com.intellij.psi.tree.IElementType;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 public class TemplateDefinitionMixin extends SoyStubBasedPsiElementBase<TemplateDefinitionStub>
     implements TemplateDefinitionElement {
@@ -36,7 +36,7 @@ public class TemplateDefinitionMixin extends SoyStubBasedPsiElementBase<Template
     super(stub, type, node);
   }
 
-  @NotNull
+  @Nonnull
   @Override
   public String getName() {
     return getStub() != null ? getStub().getName() : getText();

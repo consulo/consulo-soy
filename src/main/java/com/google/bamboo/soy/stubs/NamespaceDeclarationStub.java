@@ -26,7 +26,7 @@ import com.intellij.psi.stubs.StubInputStream;
 import com.intellij.psi.stubs.StubOutputStream;
 import com.intellij.util.io.StringRef;
 import java.io.IOException;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 public class NamespaceDeclarationStub extends NamedStubBase<SoyNamespaceDeclarationIdentifier> {
   static final Type TYPE = new Type();
@@ -42,18 +42,18 @@ public class NamespaceDeclarationStub extends NamedStubBase<SoyNamespaceDeclarat
     }
 
     @Override
-    public SoyNamespaceDeclarationIdentifier createPsi(@NotNull NamespaceDeclarationStub stub) {
+    public SoyNamespaceDeclarationIdentifier createPsi(@Nonnull NamespaceDeclarationStub stub) {
       return new SoyNamespaceDeclarationIdentifierImpl(stub, this);
     }
 
-    @NotNull
+    @Nonnull
     @Override
     public NamespaceDeclarationStub createStub(
-        @NotNull SoyNamespaceDeclarationIdentifier psi, StubElement parentStub) {
+      @Nonnull SoyNamespaceDeclarationIdentifier psi, StubElement parentStub) {
       return new NamespaceDeclarationStub(parentStub, psi.getName());
     }
 
-    @NotNull
+    @Nonnull
     @Override
     public String getExternalId() {
       return "NAMESPACE_DECLARATION_IDENTIFIER";
@@ -61,21 +61,21 @@ public class NamespaceDeclarationStub extends NamedStubBase<SoyNamespaceDeclarat
 
     @Override
     public void serialize(
-        @NotNull NamespaceDeclarationStub stub, @NotNull StubOutputStream dataStream)
+      @Nonnull NamespaceDeclarationStub stub, @Nonnull StubOutputStream dataStream)
         throws IOException {
       dataStream.writeName(stub.getName());
     }
 
-    @NotNull
+    @Nonnull
     @Override
     public NamespaceDeclarationStub deserialize(
-        @NotNull StubInputStream dataStream, StubElement parentStub) throws IOException {
+      @Nonnull StubInputStream dataStream, StubElement parentStub) throws IOException {
       final StringRef ref = dataStream.readName();
       return new NamespaceDeclarationStub(parentStub, ref.getString());
     }
 
     @Override
-    public void indexStub(@NotNull NamespaceDeclarationStub stub, @NotNull IndexSink sink) {
+    public void indexStub(@Nonnull NamespaceDeclarationStub stub, @Nonnull IndexSink sink) {
       sink.occurrence(NamespaceDeclarationIndex.KEY, stub.getName());
     }
   }

@@ -14,7 +14,7 @@
 
 package com.google.bamboo.soy.parser;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import com.google.bamboo.soy.file.SoyFile;
 import com.google.bamboo.soy.lexer.SoyLexer;
 import com.google.bamboo.soy.lexer.SoyTokenTypes;
@@ -32,28 +32,28 @@ import consulo.lang.LanguageVersion;
 
 public class SoyParserDefinition implements ParserDefinition {
 
-  @NotNull
+  @Nonnull
   @Override
   public Lexer createLexer(LanguageVersion languageVersion) {
     return new SoyLexer();
   }
 
-  @NotNull
+  @Nonnull
   public TokenSet getWhitespaceTokens(LanguageVersion languageVersion) {
     return SoyTokenTypes.WHITE_SPACES;
   }
 
-  @NotNull
+  @Nonnull
   public TokenSet getCommentTokens(LanguageVersion languageVersion) {
     return SoyTokenTypes.COMMENTS;
   }
 
-  @NotNull
+  @Nonnull
   public TokenSet getStringLiteralElements(LanguageVersion languageVersion) {
     return SoyTokenTypes.STRINGS;
   }
 
-  @NotNull
+  @Nonnull
   public PsiParser createParser(LanguageVersion languageVersion) {
     return new SoyParser();
   }
@@ -71,7 +71,7 @@ public class SoyParserDefinition implements ParserDefinition {
     return SpaceRequirements.MAY;
   }
 
-  @NotNull
+  @Nonnull
   public PsiElement createElement(ASTNode node) {
     return SoyTypes.Factory.createElement(node);
   }

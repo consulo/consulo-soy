@@ -36,8 +36,8 @@ import com.intellij.psi.PsiDocumentManager;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
 import com.intellij.psi.util.PsiTreeUtil;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Inserts appropriate characters and indentation after pressing "Enter" in a closure template file.
@@ -52,7 +52,7 @@ public class EnterHandler extends EnterHandlerDelegateAdapter {
   private static final Logger LOG = Logger.getInstance(EnterHandler.class);
 
   private static void handleEnterInComment(
-      PsiElement element, @NotNull PsiFile file, @NotNull Editor editor) {
+    PsiElement element, @Nonnull PsiFile file, @Nonnull Editor editor) {
     if (element.getText().startsWith("/*")) {
       Document document = editor.getDocument();
 
@@ -114,11 +114,11 @@ public class EnterHandler extends EnterHandlerDelegateAdapter {
 
   @Override
   public Result preprocessEnter(
-      @NotNull PsiFile psiFile,
-      @NotNull Editor editor,
-      @NotNull Ref<Integer> caretOffset,
-      @NotNull Ref<Integer> caretOffsetChange,
-      @NotNull DataContext dataContext,
+      @Nonnull PsiFile psiFile,
+      @Nonnull Editor editor,
+      @Nonnull Ref<Integer> caretOffset,
+      @Nonnull Ref<Integer> caretOffsetChange,
+      @Nonnull DataContext dataContext,
       @Nullable EditorActionHandler originalHandler) {
     if (psiFile instanceof SoyFile && isBetweenSiblingTags(psiFile, caretOffset.get())) {
       if (originalHandler != null) {
@@ -131,7 +131,7 @@ public class EnterHandler extends EnterHandlerDelegateAdapter {
 
   @Override
   public Result postProcessEnter(
-      @NotNull PsiFile file, @NotNull Editor editor, @NotNull DataContext dataContext) {
+    @Nonnull PsiFile file, @Nonnull Editor editor, @Nonnull DataContext dataContext) {
     if (file.getFileType() != SoyFileType.INSTANCE) {
       return Result.Continue;
     }

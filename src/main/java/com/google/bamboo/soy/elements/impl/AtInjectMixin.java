@@ -17,15 +17,15 @@ package com.google.bamboo.soy.elements.impl;
 import com.google.bamboo.soy.elements.AtInjectElement;
 import com.intellij.extapi.psi.ASTWrapperPsiElement;
 import com.intellij.lang.ASTNode;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 public abstract class AtInjectMixin extends ASTWrapperPsiElement implements AtInjectElement {
 
-  public AtInjectMixin(@NotNull ASTNode node) {
+  public AtInjectMixin(@Nonnull ASTNode node) {
     super(node);
   }
 
-  @NotNull
+  @Nonnull
   @Override
   public String getName() {
     if (getParamDefinitionIdentifier() != null) {

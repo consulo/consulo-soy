@@ -5,12 +5,12 @@ import com.google.bamboo.soy.lang.Variable;
 import com.google.bamboo.soy.parser.SoyBeginForeach;
 import com.google.common.collect.ImmutableList;
 import java.util.List;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 public interface ForeachStatementElement extends Scope, TagBlockElement, StatementElement {
 
-  @NotNull
+  @Nonnull
   SoyBeginForeach getBeginForeach();
 
   @Nullable
@@ -19,7 +19,7 @@ public interface ForeachStatementElement extends Scope, TagBlockElement, Stateme
     return Scope.getScope(this);
   }
 
-  @NotNull
+  @Nonnull
   @Override
   default List<Variable> getLocalVariables() {
     return getBeginForeach().getVariableDefinitionIdentifier() != null

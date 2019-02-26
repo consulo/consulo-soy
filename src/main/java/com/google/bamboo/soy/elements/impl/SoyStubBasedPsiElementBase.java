@@ -19,15 +19,15 @@ import com.intellij.lang.ASTNode;
 import com.intellij.psi.stubs.IStubElementType;
 import com.intellij.psi.stubs.StubElement;
 import com.intellij.psi.tree.IElementType;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 public abstract class SoyStubBasedPsiElementBase<T extends StubElement>
     extends StubBasedPsiElementBase<T> {
-  public SoyStubBasedPsiElementBase(@NotNull T stub, @NotNull IStubElementType nodeType) {
+  public SoyStubBasedPsiElementBase(@Nonnull T stub, @Nonnull IStubElementType nodeType) {
     super(stub, nodeType);
   }
 
-  public SoyStubBasedPsiElementBase(@NotNull ASTNode node) {
+  public SoyStubBasedPsiElementBase(@Nonnull ASTNode node) {
     super(node);
   }
 

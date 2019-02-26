@@ -19,12 +19,12 @@ import com.google.bamboo.soy.parser.SoyChoiceClause;
 import com.intellij.lang.annotation.AnnotationHolder;
 import com.intellij.lang.annotation.Annotator;
 import com.intellij.psi.PsiElement;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 public class CaseAndDefaultAnnotator implements Annotator {
 
   @Override
-  public void annotate(@NotNull PsiElement psiElement, @NotNull AnnotationHolder annotationHolder) {
+  public void annotate(@Nonnull PsiElement psiElement, @Nonnull AnnotationHolder annotationHolder) {
     if (psiElement instanceof ChoiceStatementElement) {
       boolean foundDefault = false;
       for (PsiElement child : psiElement.getChildren()) {

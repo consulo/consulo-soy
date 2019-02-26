@@ -27,12 +27,12 @@ import com.intellij.psi.util.PsiTreeUtil;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.stream.Collectors;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 public class UnusedParameterAnnotator implements Annotator {
 
   @Override
-  public void annotate(@NotNull PsiElement element, @NotNull AnnotationHolder annotationHolder) {
+  public void annotate(@Nonnull PsiElement element, @Nonnull AnnotationHolder annotationHolder) {
     if (element instanceof SoyTemplateBlock) {
       // Abort if values are passed with data="...", parameter are sometimes defined for the sake
       // of added documentation even when not technically used directly in the template body.

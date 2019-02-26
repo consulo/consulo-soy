@@ -5,12 +5,12 @@ import com.google.bamboo.soy.lang.Variable;
 import com.google.bamboo.soy.parser.SoyBeginFor;
 import com.google.common.collect.ImmutableList;
 import java.util.List;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 public interface ForStatementElement extends Scope, TagBlockElement, StatementElement {
 
-  @NotNull
+  @Nonnull
   SoyBeginFor getBeginFor();
 
   @Nullable
@@ -19,7 +19,7 @@ public interface ForStatementElement extends Scope, TagBlockElement, StatementEl
     return Scope.getScope(this);
   }
 
-  @NotNull
+  @Nonnull
   @Override
   default List<Variable> getLocalVariables() {
     return getBeginFor().getVariableDefinitionIdentifier() != null

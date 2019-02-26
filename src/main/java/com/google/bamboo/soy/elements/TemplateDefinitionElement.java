@@ -19,7 +19,7 @@ import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiNamedElement;
 import com.intellij.psi.StubBasedPsiElement;
 import com.intellij.util.IncorrectOperationException;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 /**
  * The PSI element that represents the template name in a template block definition.
@@ -27,12 +27,12 @@ import org.jetbrains.annotations.NotNull;
 public interface TemplateDefinitionElement
     extends StubBasedPsiElement<TemplateDefinitionStub>, PsiNamedElement {
 
-  @NotNull
+  @Nonnull
   @Override
   String getName();
 
   @Override
-  default PsiElement setName(@NotNull String s) throws IncorrectOperationException {
+  default PsiElement setName(@Nonnull String s) throws IncorrectOperationException {
     return null;
   }
 }

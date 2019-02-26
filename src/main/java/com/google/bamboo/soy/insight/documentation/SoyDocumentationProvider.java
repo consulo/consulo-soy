@@ -25,21 +25,21 @@ import com.intellij.psi.util.PsiTreeUtil;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 public class SoyDocumentationProvider extends AbstractDocumentationProvider {
 
   private static int MAX_COMMENT_PREVIEW_LENGTH = 96;
 
-  private static String uncommentify(@NotNull String docComment) {
+  private static String uncommentify(@Nonnull String docComment) {
     return docComment
         .replaceFirst("^/\\*[\\*\\n\\r\\t ]*", "")
         .replaceAll("[ \\t\\n\\r\\*]*\\*/$", "")
         .replaceAll("\n[\\t\\n\\r\\* ]*", "\n");
   }
 
-  private static String produceCommentPreview(@NotNull String docComment) {
+  private static String produceCommentPreview(@Nonnull String docComment) {
     String preview = uncommentify(docComment);
     // Drop everything starting from the first @param.
     int firstAtParam = preview.indexOf("@param");

@@ -16,8 +16,8 @@ package com.google.bamboo.soy;
 
 import java.util.Map;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import com.google.bamboo.soy.insight.highlight.SoySyntaxHighlighter;
 import com.intellij.openapi.editor.colors.TextAttributesKey;
 import com.intellij.openapi.fileTypes.SyntaxHighlighter;
@@ -37,13 +37,13 @@ public class SoyColorSettingsPage implements ColorSettingsPage {
         new AttributesDescriptor("Variable references", SoySyntaxHighlighter.VARIABLE_REFERENCE),
       };
 
-  @NotNull
+  @Nonnull
   @Override
   public SyntaxHighlighter getHighlighter() {
     return new SoySyntaxHighlighter();
   }
 
-  @NotNull
+  @Nonnull
   @Override
   public String getDemoText() {
     return "{namespace foo.bar}\n"
@@ -72,19 +72,19 @@ public class SoyColorSettingsPage implements ColorSettingsPage {
     return null;
   }
 
-  @NotNull
+  @Nonnull
   @Override
   public AttributesDescriptor[] getAttributeDescriptors() {
     return DESCRIPTORS;
   }
 
-  @NotNull
+  @Nonnull
   @Override
   public ColorDescriptor[] getColorDescriptors() {
     return ColorDescriptor.EMPTY_ARRAY;
   }
 
-  @NotNull
+  @Nonnull
   @Override
   public String getDisplayName() {
     return "Closure Template";

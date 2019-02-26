@@ -9,14 +9,14 @@ import com.intellij.psi.PsiElement;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 public interface StatementListElement extends Scope, PsiElement {
-  @NotNull
+  @Nonnull
   List<SoyLetCompoundStatement> getLetCompoundStatementList();
 
-  @NotNull
+  @Nonnull
   List<SoyLetSingleStatement> getLetSingleStatementList();
 
   @Nullable
@@ -25,7 +25,7 @@ public interface StatementListElement extends Scope, PsiElement {
     return Scope.getScope(this);
   }
 
-  @NotNull
+  @Nonnull
   @Override
   default List<Variable> getLocalVariables() {
     return Stream.concat(

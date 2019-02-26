@@ -23,8 +23,8 @@ import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiNamedElement;
 import com.intellij.psi.StubBasedPsiElement;
 import com.intellij.util.IncorrectOperationException;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 public interface AtParamElement extends StubBasedPsiElement<AtParamStub>, PsiNamedElement,
     TagElement {
@@ -35,11 +35,11 @@ public interface AtParamElement extends StubBasedPsiElement<AtParamStub>, PsiNam
   @Nullable
   SoyTypeExpression getTypeExpression();
 
-  default PsiElement setName(@NotNull String s) throws IncorrectOperationException {
+  default PsiElement setName(@Nonnull String s) throws IncorrectOperationException {
     return null;
   }
 
-  @NotNull
+  @Nonnull
   default String getType() {
     if (getStub() != null) {
       return getStub().type;

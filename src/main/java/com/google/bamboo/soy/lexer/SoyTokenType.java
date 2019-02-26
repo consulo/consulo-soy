@@ -17,11 +17,11 @@ package com.google.bamboo.soy.lexer;
 import com.google.bamboo.soy.SoyLanguage;
 import com.intellij.psi.tree.IElementType;
 import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 public class SoyTokenType extends IElementType {
 
-  public SoyTokenType(@NotNull @NonNls String debugName) {
+  public SoyTokenType(@Nonnull @NonNls String debugName) {
     super(debugName, SoyLanguage.INSTANCE);
   }
 

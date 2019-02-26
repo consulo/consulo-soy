@@ -17,12 +17,12 @@ package com.google.bamboo.soy.elements;
 import com.google.bamboo.soy.parser.SoyAnyStringLiteral;
 import com.google.bamboo.soy.parser.SoyAttributeKeyValuePair;
 import com.google.bamboo.soy.parser.SoyBeginMsg;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 public interface MsgStatementElement extends TagBlockElement, StatementElement {
 
-  @NotNull
+  @Nonnull
   SoyBeginMsg getBeginMsg();
 
   @Nullable

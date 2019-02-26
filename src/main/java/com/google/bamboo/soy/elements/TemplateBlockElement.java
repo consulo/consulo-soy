@@ -31,8 +31,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * The PSI element that represents the template block definition.
@@ -40,14 +40,14 @@ import org.jetbrains.annotations.Nullable;
 public interface TemplateBlockElement
     extends StubBasedPsiElement<TemplateBlockStub>, PsiNamedElement, TagBlockElement, Scope {
 
-  @NotNull
+  @Nonnull
   List<SoyAtInjectSingle> getAtInjectSingleList();
 
-  @NotNull
+  @Nonnull
   List<SoyAtParamSingle> getAtParamSingleList();
 
   @Override
-  default PsiElement setName(@NotNull String s) throws IncorrectOperationException {
+  default PsiElement setName(@Nonnull String s) throws IncorrectOperationException {
     return null;
   }
 
@@ -60,7 +60,7 @@ public interface TemplateBlockElement
     return getStub() != null ? getStub().isDelegate : getTagNameTokenType() == SoyTypes.DELTEMPLATE;
   }
 
-  @NotNull
+  @Nonnull
   default List<Parameter> getParameters() {
     if (getStub() != null) {
       return getStub().getParameters();
@@ -78,7 +78,7 @@ public interface TemplateBlockElement
     return null;
   }
 
-  @NotNull
+  @Nonnull
   @Override
   default List<Variable> getLocalVariables() {
     List<Variable> variables = new ArrayList<>();

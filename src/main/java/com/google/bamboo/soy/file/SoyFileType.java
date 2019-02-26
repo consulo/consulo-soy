@@ -14,8 +14,8 @@
 
 package com.google.bamboo.soy.file;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import com.google.bamboo.soy.SoyLanguage;
 import com.google.bamboo.soy.icons.SoyIcons;
 import com.google.bamboo.soy.insight.highlight.SoyLayeredHighlighter;
@@ -36,25 +36,25 @@ public class SoyFileType extends LanguageFileType implements TemplateLanguageFil
     FileTypeEditorHighlighterProviders.INSTANCE.addExplicitExtension(
         this,
         (@Nullable Project project,
-            @NotNull FileType fileType,
+            @Nonnull FileType fileType,
             @Nullable VirtualFile virtualFile,
-            @NotNull EditorColorsScheme editorColorsScheme) ->
+            @Nonnull EditorColorsScheme editorColorsScheme) ->
             new SoyLayeredHighlighter(project, virtualFile, editorColorsScheme));
   }
 
-  @NotNull
+  @Nonnull
   @Override
-  public String getName() {
+  public String getId() {
     return "Closure template file";
   }
 
-  @NotNull
+  @Nonnull
   @Override
   public String getDescription() {
     return "Closure template file";
   }
 
-  @NotNull
+  @Nonnull
   @Override
   public String getDefaultExtension() {
     return "soy";

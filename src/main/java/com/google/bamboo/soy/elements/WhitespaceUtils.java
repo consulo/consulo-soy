@@ -18,7 +18,8 @@ import com.intellij.psi.PsiComment;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiWhiteSpace;
 import com.intellij.psi.util.PsiTreeUtil;
-import org.jetbrains.annotations.Nullable;
+
+import javax.annotation.Nullable;
 
 public class WhitespaceUtils {
 

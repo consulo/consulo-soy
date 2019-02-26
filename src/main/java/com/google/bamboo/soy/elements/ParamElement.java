@@ -16,12 +16,12 @@ package com.google.bamboo.soy.elements;
 
 import com.google.bamboo.soy.parser.SoyBeginParamTag;
 import com.google.bamboo.soy.parser.SoyEndTag;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 public interface ParamElement extends TagBlockElement {
 
-  @NotNull
+  @Nonnull
   SoyBeginParamTag getBeginParamTag();
 
   @Nullable

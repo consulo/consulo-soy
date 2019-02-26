@@ -19,10 +19,10 @@ import com.google.bamboo.soy.elements.references.ParameterDefinitionReference;
 import com.intellij.extapi.psi.ASTWrapperPsiElement;
 import com.intellij.lang.ASTNode;
 import com.intellij.psi.PsiReference;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 public class ParamIdentifierMixin extends ASTWrapperPsiElement implements ParamIdentifierElement {
-  public ParamIdentifierMixin(@NotNull ASTNode node) {
+  public ParamIdentifierMixin(@Nonnull ASTNode node) {
     super(node);
   }
 

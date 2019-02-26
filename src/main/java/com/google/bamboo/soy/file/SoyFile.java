@@ -14,7 +14,7 @@
 
 package com.google.bamboo.soy.file;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import com.google.bamboo.soy.SoyLanguage;
 import com.google.bamboo.soy.parser.SoyNamespaceDeclarationIdentifier;
 import com.google.bamboo.soy.stubs.FileStub;
@@ -24,11 +24,11 @@ import com.intellij.psi.FileViewProvider;
 import com.intellij.psi.util.PsiTreeUtil;
 
 public class SoyFile extends PsiFileBase {
-  public SoyFile(@NotNull FileViewProvider viewProvider) {
+  public SoyFile(@Nonnull FileViewProvider viewProvider) {
     super(viewProvider, SoyLanguage.INSTANCE);
   }
 
-  @NotNull
+  @Nonnull
   @Override
   public FileType getFileType() {
     return SoyFileType.INSTANCE;

@@ -20,7 +20,7 @@ import com.google.bamboo.soy.stubs.TemplateBlockStub;
 import com.intellij.lang.ASTNode;
 import com.intellij.psi.stubs.IStubElementType;
 import com.intellij.psi.tree.IElementType;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 public abstract class TemplateBlockMixin extends SoyStubBasedPsiElementBase<TemplateBlockStub>
     implements TemplateBlockElement {
@@ -37,7 +37,7 @@ public abstract class TemplateBlockMixin extends SoyStubBasedPsiElementBase<Temp
     super(stub, type, node);
   }
 
-  @NotNull
+  @Nonnull
   @Override
   public String getName() {
     if (getStub() != null) {

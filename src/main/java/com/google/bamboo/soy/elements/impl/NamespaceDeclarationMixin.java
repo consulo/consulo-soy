@@ -19,7 +19,7 @@ import com.google.bamboo.soy.stubs.NamespaceDeclarationStub;
 import com.intellij.lang.ASTNode;
 import com.intellij.psi.stubs.IStubElementType;
 import com.intellij.psi.tree.IElementType;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 public class NamespaceDeclarationMixin extends SoyStubBasedPsiElementBase<NamespaceDeclarationStub>
     implements NamespaceDeclarationElement {
@@ -36,7 +36,7 @@ public class NamespaceDeclarationMixin extends SoyStubBasedPsiElementBase<Namesp
     super(stub, type, node);
   }
 
-  @NotNull
+  @Nonnull
   @Override
   public String getName() {
     return getStub() != null ? getStub().getName() : getText();

@@ -45,7 +45,7 @@ import com.intellij.psi.PsiElement;
 import com.intellij.psi.tree.TokenSet;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 public class ClosingBraceSanityAnnotator implements Annotator {
 
@@ -78,7 +78,7 @@ public class ClosingBraceSanityAnnotator implements Annotator {
       ImmutableSet.of(SoyLetSingleStatementImpl.class);
 
   @Override
-  public void annotate(@NotNull PsiElement psiElement, @NotNull AnnotationHolder annotationHolder) {
+  public void annotate(@Nonnull PsiElement psiElement, @Nonnull AnnotationHolder annotationHolder) {
     if (psiElement instanceof TagElement) {
       TagElement tagElement = (TagElement) psiElement;
 

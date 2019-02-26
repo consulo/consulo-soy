@@ -26,7 +26,7 @@ import com.intellij.psi.stubs.StubInputStream;
 import com.intellij.psi.stubs.StubOutputStream;
 import com.intellij.psi.tree.IStubFileElementType;
 import java.io.IOException;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 public class FileStub extends PsiFileStubImpl<SoyFile> {
   public static final Type TYPE = new Type("SoyFile", SoyLanguage.INSTANCE);
@@ -58,7 +58,7 @@ public class FileStub extends PsiFileStubImpl<SoyFile> {
     public StubBuilder getBuilder() {
       return new DefaultStubBuilder() {
         @Override
-        protected StubElement createStubForFile(@NotNull PsiFile file) {
+        protected StubElement createStubForFile(@Nonnull PsiFile file) {
           return new FileStub((SoyFile) file);
         }
       };
@@ -70,17 +70,17 @@ public class FileStub extends PsiFileStubImpl<SoyFile> {
     }
 
     @Override
-    public void serialize(@NotNull FileStub stub, @NotNull StubOutputStream dataStream)
+    public void serialize(@Nonnull FileStub stub, @Nonnull StubOutputStream dataStream)
         throws IOException {}
 
-    @NotNull
+    @Nonnull
     @Override
-    public FileStub deserialize(@NotNull StubInputStream dataStream, StubElement parentStub)
+    public FileStub deserialize(@Nonnull StubInputStream dataStream, StubElement parentStub)
         throws IOException {
       return new FileStub(null);
     }
 
-    @NotNull
+    @Nonnull
     @Override
     public String getExternalId() {
       return "SoyFile";

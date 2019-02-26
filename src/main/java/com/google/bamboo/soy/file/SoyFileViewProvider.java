@@ -22,18 +22,17 @@ import com.intellij.lang.LanguageParserDefinitions;
 import com.intellij.lang.ParserDefinition;
 import com.intellij.lang.html.HTMLLanguage;
 import com.intellij.openapi.vfs.VirtualFile;
-import com.intellij.psi.LanguageSubstitutors;
 import com.intellij.psi.MultiplePsiFilesPerDocumentFileViewProvider;
 import com.intellij.psi.PsiFile;
 import com.intellij.psi.PsiManager;
 import com.intellij.psi.impl.source.PsiFileImpl;
 import com.intellij.psi.templateLanguages.ConfigurableTemplateLanguageFileViewProvider;
 import com.intellij.psi.templateLanguages.TemplateDataElementType;
-import com.intellij.psi.templateLanguages.TemplateDataLanguageMappings;
+
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 public class SoyFileViewProvider extends MultiplePsiFilesPerDocumentFileViewProvider
     implements ConfigurableTemplateLanguageFileViewProvider {
@@ -52,23 +51,23 @@ public class SoyFileViewProvider extends MultiplePsiFilesPerDocumentFileViewProv
   }
 
   @Override
-  public boolean supportsIncrementalReparse(@NotNull Language rootLanguage) {
+  public boolean supportsIncrementalReparse(@Nonnull Language rootLanguage) {
     return false;
   }
 
-  @NotNull
+  @Nonnull
   @Override
   public Language getBaseLanguage() {
     return baseLanguage;
   }
 
-  @NotNull
+  @Nonnull
   @Override
   public Language getTemplateDataLanguage() {
     return templateDataLanguage;
   }
 
-  @NotNull
+  @Nonnull
   @Override
   public Set<Language> getLanguages() {
     return new HashSet<>(Arrays.asList(new Language[] {baseLanguage, templateDataLanguage}));
@@ -80,7 +79,7 @@ public class SoyFileViewProvider extends MultiplePsiFilesPerDocumentFileViewProv
   }
 
   @Override
-  protected PsiFile createFile(@NotNull Language lang) {
+  protected PsiFile createFile(@Nonnull Language lang) {
     ParserDefinition parserDefinition = getDefinition(lang);
     if (parserDefinition == null) {
       return null;

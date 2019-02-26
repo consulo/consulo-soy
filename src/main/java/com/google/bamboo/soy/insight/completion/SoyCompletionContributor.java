@@ -22,7 +22,7 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import com.google.bamboo.soy.elements.CallStatementElement;
 import com.google.bamboo.soy.elements.WhitespaceUtils;
 import com.google.bamboo.soy.lang.ParamUtils;
@@ -96,9 +96,9 @@ public class SoyCompletionContributor extends CompletionContributor
 				{
 					@Override
 					public void addCompletions(
-							@NotNull CompletionParameters completionParameters,
+							@Nonnull CompletionParameters completionParameters,
 							ProcessingContext processingContext,
-							@NotNull CompletionResultSet completionResultSet)
+							@Nonnull CompletionResultSet completionResultSet)
 					{
 						if(isPrecededBy(completionParameters.getPosition(),
 								elt -> elt instanceof SoyTemplateDefinitionIdentifier))
@@ -128,9 +128,9 @@ public class SoyCompletionContributor extends CompletionContributor
 				{
 					@Override
 					public void addCompletions(
-							@NotNull CompletionParameters completionParameters,
+							@Nonnull CompletionParameters completionParameters,
 							ProcessingContext processingContext,
-							@NotNull CompletionResultSet completionResultSet)
+							@Nonnull CompletionResultSet completionResultSet)
 					{
 						if(isPrecededBy(completionParameters.getPosition(),
 								elt -> elt instanceof SoyParamSpecificationIdentifier
@@ -155,9 +155,9 @@ public class SoyCompletionContributor extends CompletionContributor
 				{
 					@Override
 					public void addCompletions(
-							@NotNull CompletionParameters completionParameters,
+							@Nonnull CompletionParameters completionParameters,
 							ProcessingContext processingContext,
-							@NotNull CompletionResultSet completionResultSet)
+							@Nonnull CompletionResultSet completionResultSet)
 					{
 						completionResultSet.addAllElements(kindLiterals);
 					}
@@ -186,9 +186,9 @@ public class SoyCompletionContributor extends CompletionContributor
 				{
 					@Override
 					public void addCompletions(
-							@NotNull CompletionParameters completionParameters,
+							@Nonnull CompletionParameters completionParameters,
 							ProcessingContext processingContext,
-							@NotNull CompletionResultSet completionResultSet)
+							@Nonnull CompletionResultSet completionResultSet)
 					{
 						Collection<Variable> params =
 								Scope.getScopeOrEmpty(completionParameters.getPosition()).getVariables();
@@ -216,9 +216,9 @@ public class SoyCompletionContributor extends CompletionContributor
 				{
 					@Override
 					public void addCompletions(
-							@NotNull CompletionParameters completionParameters,
+							@Nonnull CompletionParameters completionParameters,
 							ProcessingContext processingContext,
-							@NotNull CompletionResultSet completionResultSet)
+							@Nonnull CompletionResultSet completionResultSet)
 					{
 						if(
 								PsiTreeUtil.getParentOfType(
@@ -243,9 +243,9 @@ public class SoyCompletionContributor extends CompletionContributor
 				{
 					@Override
 					public void addCompletions(
-							@NotNull CompletionParameters completionParameters,
+							@Nonnull CompletionParameters completionParameters,
 							ProcessingContext processingContext,
-							@NotNull CompletionResultSet completionResultSet)
+							@Nonnull CompletionResultSet completionResultSet)
 					{
 						PsiElement identifierElement =
 								PsiTreeUtil.getParentOfType(
@@ -297,9 +297,9 @@ public class SoyCompletionContributor extends CompletionContributor
 				{
 					@Override
 					public void addCompletions(
-							@NotNull CompletionParameters completionParameters,
+							@Nonnull CompletionParameters completionParameters,
 							ProcessingContext processingContext,
-							@NotNull CompletionResultSet completionResultSet)
+							@Nonnull CompletionResultSet completionResultSet)
 					{
 						PsiElement identifierElement =
 								PsiTreeUtil.getParentOfType(
@@ -341,9 +341,9 @@ public class SoyCompletionContributor extends CompletionContributor
 				{
 					@Override
 					public void addCompletions(
-							@NotNull CompletionParameters completionParameters,
+							@Nonnull CompletionParameters completionParameters,
 							ProcessingContext processingContext,
-							@NotNull CompletionResultSet completionResultSet)
+							@Nonnull CompletionResultSet completionResultSet)
 					{
 						PsiElement position = completionParameters.getPosition();
 						CallStatementElement callStatement =
@@ -405,9 +405,9 @@ public class SoyCompletionContributor extends CompletionContributor
 				{
 					@Override
 					public void addCompletions(
-							@NotNull CompletionParameters completionParameters,
+							@Nonnull CompletionParameters completionParameters,
 							ProcessingContext processingContext,
-							@NotNull CompletionResultSet completionResultSet)
+							@Nonnull CompletionResultSet completionResultSet)
 					{
 						completionResultSet.addAllElements(soyTypeLiterals);
 					}
@@ -415,7 +415,7 @@ public class SoyCompletionContributor extends CompletionContributor
 	}
 
 	@Override
-	public boolean invokeAutoPopup(@NotNull PsiElement position, char typeChar)
+	public boolean invokeAutoPopup(@Nonnull PsiElement position, char typeChar)
 	{
 		return (typeChar == '.' || typeChar == '$');
 	}

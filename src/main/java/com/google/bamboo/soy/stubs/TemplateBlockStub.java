@@ -29,7 +29,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 public class TemplateBlockStub extends StubBase<SoyTemplateBlock> {
   static final Type TYPE = new Type();
@@ -70,37 +70,37 @@ public class TemplateBlockStub extends StubBase<SoyTemplateBlock> {
     }
 
     @Override
-    public SoyTemplateBlock createPsi(@NotNull TemplateBlockStub stub) {
+    public SoyTemplateBlock createPsi(@Nonnull TemplateBlockStub stub) {
       return new SoyTemplateBlockImpl(stub, this);
     }
 
-    @NotNull
+    @Nonnull
     @Override
-    public TemplateBlockStub createStub(@NotNull SoyTemplateBlock psi, StubElement parentStub) {
+    public TemplateBlockStub createStub(@Nonnull SoyTemplateBlock psi, StubElement parentStub) {
       return new TemplateBlockStub(parentStub, psi.isDelegate());
     }
 
-    @NotNull
+    @Nonnull
     @Override
     public String getExternalId() {
       return "TEMPLATE_BLOCK";
     }
 
     @Override
-    public void serialize(@NotNull TemplateBlockStub stub, @NotNull StubOutputStream dataStream)
+    public void serialize(@Nonnull TemplateBlockStub stub, @Nonnull StubOutputStream dataStream)
         throws IOException {
       dataStream.writeBoolean(stub.isDelegate);
     }
 
-    @NotNull
+    @Nonnull
     @Override
     public TemplateBlockStub deserialize(
-        @NotNull StubInputStream dataStream, StubElement parentStub) throws IOException {
+      @Nonnull StubInputStream dataStream, StubElement parentStub) throws IOException {
       return new TemplateBlockStub(parentStub, dataStream.readBoolean());
     }
 
     @Override
-    public void indexStub(@NotNull TemplateBlockStub stub, @NotNull IndexSink sink) {
+    public void indexStub(@Nonnull TemplateBlockStub stub, @Nonnull IndexSink sink) {
       sink.occurrence(TemplateBlockIndex.KEY, stub.getFullyQualifiedName());
     }
   }

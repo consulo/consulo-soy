@@ -20,7 +20,7 @@ import com.google.bamboo.soy.file.SoyFileType;
 import com.intellij.codeInsight.template.TemplateContextType;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 public class TopLevelContext extends TemplateContextType {
   protected TopLevelContext() {
@@ -28,7 +28,7 @@ public class TopLevelContext extends TemplateContextType {
   }
 
   @Override
-  public boolean isInContext(@NotNull PsiFile file, int offset) {
+  public boolean isInContext(@Nonnull PsiFile file, int offset) {
     if (file.getFileType() != SoyFileType.INSTANCE) return false;
 
     PsiElement element = file.findElementAt(offset);

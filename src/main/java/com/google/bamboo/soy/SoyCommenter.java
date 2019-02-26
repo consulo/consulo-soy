@@ -15,7 +15,7 @@
 package com.google.bamboo.soy;
 
 import com.intellij.lang.Commenter;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nullable;
 
 public class SoyCommenter implements Commenter {
   @Nullable

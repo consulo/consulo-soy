@@ -15,37 +15,35 @@
 package com.google.bamboo.soy.elements;
 
 import com.google.bamboo.soy.lexer.SoyTokenTypes;
-import com.intellij.psi.PsiComment;
 import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiWhiteSpace;
 import com.intellij.psi.tree.IElementType;
-import com.intellij.psi.util.PsiTreeUtil;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 public interface TagElement extends PsiElement {
 
-  @NotNull
+  @Nonnull
   default PsiElement getTagNameToken() {
     return WhitespaceUtils.getNextMeaningSibling(getOpeningBrace());
   }
 
-  @NotNull
+  @Nonnull
   default IElementType getTagNameTokenType() {
     return getTagNameToken().getNode().getElementType();
   }
 
-  @NotNull
+  @Nonnull
   default String getTagName() {
     return getTagNameToken().getText().toLowerCase();
   }
 
-  @NotNull
+  @Nonnull
   default PsiElement getOpeningBrace() {
     return WhitespaceUtils.getFirstMeaningChild(this);
   }
 
-  @NotNull
+  @Nonnull
   default IElementType getOpeningBraceType() {
     return getOpeningBrace().getNode().getElementType();
   }

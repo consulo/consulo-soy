@@ -22,7 +22,7 @@ import com.intellij.lang.Language;
 import com.intellij.openapi.options.Configurable;
 import com.intellij.psi.codeStyle.CodeStyleSettings;
 import com.intellij.psi.codeStyle.CodeStyleSettingsProvider;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 public class SoyCodeStyleSettingsProvider extends CodeStyleSettingsProvider {
 
@@ -31,7 +31,7 @@ public class SoyCodeStyleSettingsProvider extends CodeStyleSettingsProvider {
     return SoyLanguage.INSTANCE;
   }
 
-  @NotNull
+  @Nonnull
   @Override
   public Configurable createSettingsPage(CodeStyleSettings settings,
       CodeStyleSettings originalSettings) {

@@ -19,11 +19,11 @@ import com.google.bamboo.soy.parser.SoyExpr;
 import com.intellij.lang.annotation.AnnotationHolder;
 import com.intellij.lang.annotation.Annotator;
 import com.intellij.psi.PsiElement;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 public class DoubleQuotedStringAnnotator implements Annotator {
   @Override
-  public void annotate(@NotNull PsiElement psiElement, @NotNull AnnotationHolder annotationHolder) {
+  public void annotate(@Nonnull PsiElement psiElement, @Nonnull AnnotationHolder annotationHolder) {
     if (psiElement instanceof SoyAnyStringLiteral
         && psiElement.getParent() instanceof SoyExpr
         && psiElement.getText().startsWith("\"")) {

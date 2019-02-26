@@ -17,13 +17,9 @@ package com.google.bamboo.soy.insight.typedhandlers;
 import com.google.bamboo.soy.file.SoyFileType;
 import com.google.common.collect.ImmutableSet;
 import com.intellij.codeInsight.editorActions.TypedHandlerDelegate;
-import com.intellij.codeInsight.editorActions.enter.EnterHandlerDelegate;
-import com.intellij.codeInsight.editorActions.enter.EnterHandlerDelegate.Result;
 import com.intellij.ide.highlighter.HtmlFileType;
-import com.intellij.openapi.actionSystem.DataContext;
 import com.intellij.openapi.editor.Document;
 import com.intellij.openapi.editor.Editor;
-import com.intellij.openapi.editor.actionSystem.TypedActionHandler;
 import com.intellij.openapi.fileTypes.FileType;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.Pair;
@@ -32,7 +28,6 @@ import com.intellij.psi.PsiDocumentManager;
 import com.intellij.psi.PsiFile;
 import java.util.Set;
 import java.util.function.Function;
-import org.jetbrains.annotations.NotNull;
 
 /**
  * Inserts a matching closing character (quote, parenthesis, bracket) when typing one.

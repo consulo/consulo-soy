@@ -21,7 +21,7 @@ import com.intellij.psi.stubs.StringStubIndexExtension;
 import com.intellij.psi.stubs.StubIndexKey;
 import java.util.ArrayList;
 import java.util.Collection;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 public class NamespaceDeclarationIndex
     extends StringStubIndexExtension<SoyNamespaceDeclarationIdentifier> {
@@ -29,13 +29,13 @@ public class NamespaceDeclarationIndex
       StubIndexKey.createIndexKey("SoyNamespaceDeclarationIdentifier");
   public static final NamespaceDeclarationIndex INSTANCE = new NamespaceDeclarationIndex();
 
-  @NotNull
+  @Nonnull
   @Override
   public StubIndexKey<String, SoyNamespaceDeclarationIdentifier> getKey() {
     return KEY;
   }
 
-  @NotNull
+  @Nonnull
   @Override
   public Collection<String> getAllKeys(Project project) {
     try {

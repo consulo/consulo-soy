@@ -17,9 +17,10 @@ package com.google.bamboo.soy.typing;
 import com.google.bamboo.soy.SoyCodeInsightFixtureTestCase;
 import com.google.bamboo.soy.file.SoyFileType;
 import com.intellij.openapi.fileTypes.LanguageFileType;
+
+import javax.annotation.Nonnull;
 import java.util.Arrays;
 import java.util.List;
-import org.jetbrains.annotations.NotNull;
 
 public class SoyTypingTest extends SoyCodeInsightFixtureTestCase {
 
@@ -35,15 +36,15 @@ public class SoyTypingTest extends SoyCodeInsightFixtureTestCase {
   }
 
   private void doTypingTest(
-      final char charToType, @NotNull final String textBefore, @NotNull final String textAfter) {
+    final char charToType, @Nonnull final String textBefore, @Nonnull final String textAfter) {
     doTypingTest(SoyFileType.INSTANCE, charToType, textBefore, textAfter);
   }
 
   private void doTypingTest(
-      @NotNull final LanguageFileType fileType,
+      @Nonnull final LanguageFileType fileType,
       final char charToType,
-      @NotNull final String textBefore,
-      @NotNull final String textAfter) {
+      @Nonnull final String textBefore,
+      @Nonnull final String textAfter) {
     myFixture.configureByText(fileType, textBefore);
     myFixture.type(charToType);
     myFixture.checkResult(textAfter);

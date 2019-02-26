@@ -18,11 +18,11 @@ import com.google.bamboo.soy.parser.SoyTemplateBlock;
 import com.intellij.lang.annotation.AnnotationHolder;
 import com.intellij.lang.annotation.Annotator;
 import com.intellij.psi.PsiElement;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 public class DeltemplateIdentifierAnnotator implements Annotator {
   @Override
-  public void annotate(@NotNull PsiElement psiElement, @NotNull AnnotationHolder annotationHolder) {
+  public void annotate(@Nonnull PsiElement psiElement, @Nonnull AnnotationHolder annotationHolder) {
     if (psiElement instanceof SoyTemplateBlock) {
       SoyTemplateBlock block = (SoyTemplateBlock) psiElement;
       if (block.isDelegate() && block.getName() != null && block.getName().startsWith(".")) {

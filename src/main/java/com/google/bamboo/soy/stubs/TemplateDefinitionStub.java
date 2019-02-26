@@ -25,7 +25,7 @@ import com.intellij.psi.stubs.StubInputStream;
 import com.intellij.psi.stubs.StubOutputStream;
 import com.intellij.util.io.StringRef;
 import java.io.IOException;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 public class TemplateDefinitionStub extends NamedStubBase<SoyTemplateDefinitionIdentifier> {
   static final Type TYPE = new Type();
@@ -47,7 +47,7 @@ public class TemplateDefinitionStub extends NamedStubBase<SoyTemplateDefinitionI
   }
 
   @Override
-  @NotNull
+  @Nonnull
   public String getName() {
     String name = super.getName();
     return name == null ? "" : name;
@@ -60,18 +60,18 @@ public class TemplateDefinitionStub extends NamedStubBase<SoyTemplateDefinitionI
     }
 
     @Override
-    public SoyTemplateDefinitionIdentifier createPsi(@NotNull TemplateDefinitionStub stub) {
+    public SoyTemplateDefinitionIdentifier createPsi(@Nonnull TemplateDefinitionStub stub) {
       return new SoyTemplateDefinitionIdentifierImpl(stub, this);
     }
 
-    @NotNull
+    @Nonnull
     @Override
     public TemplateDefinitionStub createStub(
-        @NotNull SoyTemplateDefinitionIdentifier psi, StubElement parentStub) {
+      @Nonnull SoyTemplateDefinitionIdentifier psi, StubElement parentStub) {
       return new TemplateDefinitionStub(parentStub, psi.getName());
     }
 
-    @NotNull
+    @Nonnull
     @Override
     public String getExternalId() {
       return "TEMPLATE_DEFINITION_IDENTIFIER";
@@ -79,20 +79,20 @@ public class TemplateDefinitionStub extends NamedStubBase<SoyTemplateDefinitionI
 
     @Override
     public void serialize(
-        @NotNull TemplateDefinitionStub stub, @NotNull StubOutputStream dataStream)
+      @Nonnull TemplateDefinitionStub stub, @Nonnull StubOutputStream dataStream)
         throws IOException {
       dataStream.writeName(stub.getName());
     }
 
-    @NotNull
+    @Nonnull
     @Override
     public TemplateDefinitionStub deserialize(
-        @NotNull StubInputStream dataStream, StubElement parentStub) throws IOException {
+      @Nonnull StubInputStream dataStream, StubElement parentStub) throws IOException {
       final StringRef ref = dataStream.readName();
       return new TemplateDefinitionStub(parentStub, ref.getString());
     }
 
     @Override
-    public void indexStub(@NotNull TemplateDefinitionStub stub, @NotNull IndexSink sink) {}
+    public void indexStub(@Nonnull TemplateDefinitionStub stub, @Nonnull IndexSink sink) {}
   }
 }

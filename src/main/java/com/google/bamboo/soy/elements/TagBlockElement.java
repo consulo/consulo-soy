@@ -17,21 +17,21 @@ package com.google.bamboo.soy.elements;
 import com.google.bamboo.soy.parser.SoyEndTag;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.tree.IElementType;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 public interface TagBlockElement extends PsiElement {
 
-  @NotNull
+  @Nonnull
   default TagElement getOpeningTag() {
     return (TagElement) WhitespaceUtils.getFirstMeaningChild(this);
   }
 
-  @NotNull
+  @Nonnull
   default IElementType getTagNameTokenType() {
     return getOpeningTag().getTagNameTokenType();
   }
 
-  @NotNull
+  @Nonnull
   default String getTagName() {
     return getOpeningTag().getTagName();
   }

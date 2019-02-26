@@ -14,9 +14,9 @@
 
 package com.google.bamboo.soy.insight.typedhandlers;
 
+import javax.annotation.Nonnull;
 import javax.inject.Inject;
 
-import org.jetbrains.annotations.NotNull;
 import com.google.bamboo.soy.elements.TagBlockElement;
 import com.google.bamboo.soy.parser.SoyChoiceClause;
 import com.intellij.openapi.actionSystem.DataContext;
@@ -42,14 +42,14 @@ public class ClosingTagHandler implements TypedActionHandler {
     myOriginalHandler = originalHandler;
   }
 
-  private static boolean isMatchForClosingTag(@NotNull Editor editor, char charTyped) {
+  private static boolean isMatchForClosingTag(@Nonnull Editor editor, char charTyped) {
     return charTyped == '/'
         && editor.getCaretModel().getOffset() >= 2
         && editor.getDocument().getCharsSequence().charAt(editor.getCaretModel().getOffset() - 2)
         == '{';
   }
 
-  private static void insertClosingTag(@NotNull Editor editor, int offset, String tag) {
+  private static void insertClosingTag(@Nonnull Editor editor, int offset, String tag) {
     Document document = editor.getDocument();
     CharSequence charSequence = document.getImmutableCharSequence();
     int startPosition = offset - 2;
@@ -69,7 +69,7 @@ public class ClosingTagHandler implements TypedActionHandler {
 
   }
 
-  public void execute(@NotNull Editor editor, char charTyped, @NotNull DataContext dataContext) {
+  public void execute(@Nonnull Editor editor, char charTyped, @Nonnull DataContext dataContext) {
     myOriginalHandler.execute(editor, charTyped, dataContext);
     if (isMatchForClosingTag(editor, charTyped)) {
       int offset = editor.getCaretModel().getOffset();

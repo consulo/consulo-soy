@@ -26,12 +26,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 public class IdentifierMixin extends ASTWrapperPsiElement implements IdentifierElement {
   private static final Pattern identifierPattern = Pattern.compile("\\$[a-zA-Z_][a-zA-Z_0-9]*");
 
-  public IdentifierMixin(@NotNull ASTNode node) {
+  public IdentifierMixin(@Nonnull ASTNode node) {
     super(node);
   }
 

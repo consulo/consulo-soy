@@ -15,7 +15,7 @@
 package com.google.bamboo.soy.templates;
 
 import com.intellij.codeInsight.template.impl.DefaultLiveTemplatesProvider;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nullable;
 
 public class SoyTemplateProvider implements DefaultLiveTemplatesProvider {
   @Override

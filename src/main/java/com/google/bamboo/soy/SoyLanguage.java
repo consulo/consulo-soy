@@ -15,8 +15,8 @@
 package com.google.bamboo.soy;
 
 import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import com.intellij.ide.highlighter.HtmlFileType;
 import com.intellij.lang.Language;
 import com.intellij.openapi.fileTypes.LanguageFileType;
@@ -35,8 +35,8 @@ public class SoyLanguage extends Language {
 
   public SoyLanguage(
       @Nullable Language baseLanguage,
-      @NotNull @NonNls final String ID,
-      @NotNull @NonNls final String... mimeTypes) {
+      @Nonnull @NonNls final String ID,
+      @Nonnull @NonNls final String... mimeTypes) {
     super(baseLanguage, ID, mimeTypes);
   }
 }

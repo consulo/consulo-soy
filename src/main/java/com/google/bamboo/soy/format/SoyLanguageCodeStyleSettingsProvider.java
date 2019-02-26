@@ -21,22 +21,21 @@ import com.intellij.application.options.XmlLanguageCodeStyleSettingsProvider;
 import com.intellij.lang.Language;
 import com.intellij.lang.html.HTMLLanguage;
 import com.intellij.openapi.util.io.StreamUtil;
-import com.intellij.psi.codeStyle.CodeStyleSettingsManager;
 import com.intellij.psi.codeStyle.CommonCodeStyleSettings;
 import com.intellij.psi.codeStyle.LanguageCodeStyleSettingsProvider;
 import java.io.IOException;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 public class SoyLanguageCodeStyleSettingsProvider extends LanguageCodeStyleSettingsProvider {
 
-  @NotNull
+  @Nonnull
   @Override
   public Language getLanguage() {
     return SoyLanguage.INSTANCE;
   }
 
   @Override
-  public String getCodeSample(@NotNull SettingsType settingsType) {
+  public String getCodeSample(@Nonnull SettingsType settingsType) {
     switch (settingsType) {
       case INDENT_SETTINGS:
         return loadSample("IndentSettings");
