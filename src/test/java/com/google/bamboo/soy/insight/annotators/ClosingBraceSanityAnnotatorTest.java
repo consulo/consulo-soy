@@ -3,7 +3,7 @@ package com.google.bamboo.soy.insight.annotators;
 import com.google.bamboo.soy.SoyCodeInsightFixtureTestCase;
 import com.google.bamboo.soy.elements.TagElement;
 
-public class ClosingBraceSanityAnnotatorTest extends SoyCodeInsightFixtureTestCase {
+public abstract class ClosingBraceSanityAnnotatorTest extends SoyCodeInsightFixtureTestCase {
 
   @Override
   protected String getBasePath() {

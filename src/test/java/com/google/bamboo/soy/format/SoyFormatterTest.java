@@ -19,7 +19,7 @@ import com.intellij.openapi.command.WriteCommandAction;
 import com.intellij.psi.codeStyle.CodeStyleManager;
 import com.intellij.util.containers.ContainerUtil;
 
-public class SoyFormatterTest extends SoyCodeInsightFixtureTestCase {
+public abstract class SoyFormatterTest extends SoyCodeInsightFixtureTestCase {
 
   @Override
   protected String getBasePath() {

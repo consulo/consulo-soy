@@ -14,6 +14,9 @@
 
 package com.google.bamboo.soy.insight;
 
+import java.util.Collection;
+
+import org.junit.Assert;
 import com.google.bamboo.soy.SoyCodeInsightFixtureTestCase;
 import com.google.bamboo.soy.elements.CallStatementElement;
 import com.google.bamboo.soy.parser.SoyMsgStatement;
@@ -27,10 +30,8 @@ import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiReference;
 import com.intellij.psi.util.PsiTreeUtil;
 import com.intellij.usageView.UsageInfo;
-import java.util.Collection;
-import org.junit.Assert;
 
-public class SoyReferenceTest extends SoyCodeInsightFixtureTestCase {
+public abstract class SoyReferenceTest extends SoyCodeInsightFixtureTestCase {
 
   private static void assertIsAtParam(PsiElement target, String name) {
     Assert.assertTrue(target instanceof SoyParamDefinitionIdentifier);

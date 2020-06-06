@@ -18,7 +18,7 @@ import com.google.bamboo.soy.SoyTestUtils;
 import consulo.testFramework.ParsingTestCase;
 
 /** Unit tests for the closure template parser. */
-public class SoyParserTest extends ParsingTestCase
+public abstract class SoyParserTest extends ParsingTestCase
 {
   @SuppressWarnings("JUnitTestCaseWithNonTrivialConstructors")
   public SoyParserTest() {

@@ -2,7 +2,7 @@ package com.google.bamboo.soy.insight.annotators;
 
 import com.google.bamboo.soy.SoyCodeInsightFixtureTestCase;
 
-public class IncompleteBlockAnnotatorTest extends SoyCodeInsightFixtureTestCase {
+public abstract class IncompleteBlockAnnotatorTest extends SoyCodeInsightFixtureTestCase {
 
   @Override
   protected String getBasePath() {

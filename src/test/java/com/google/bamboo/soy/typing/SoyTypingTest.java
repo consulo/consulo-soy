@@ -14,15 +14,16 @@
 
 package com.google.bamboo.soy.typing;
 
+import java.util.Arrays;
+import java.util.List;
+
+import javax.annotation.Nonnull;
+
 import com.google.bamboo.soy.SoyCodeInsightFixtureTestCase;
 import com.google.bamboo.soy.file.SoyFileType;
 import com.intellij.openapi.fileTypes.LanguageFileType;
 
-import javax.annotation.Nonnull;
-import java.util.Arrays;
-import java.util.List;
-
-public class SoyTypingTest extends SoyCodeInsightFixtureTestCase {
+public abstract class SoyTypingTest extends SoyCodeInsightFixtureTestCase {
 
   @Override
   protected String getBasePath() {

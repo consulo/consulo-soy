@@ -18,7 +18,7 @@ import com.google.bamboo.soy.SoyCodeInsightFixtureTestCase;
 import com.google.bamboo.soy.insight.documentation.SoyDocumentationProvider;
 import com.intellij.psi.PsiElement;
 
-public class SoyDocumentationProviderTest extends SoyCodeInsightFixtureTestCase {
+public abstract class SoyDocumentationProviderTest extends SoyCodeInsightFixtureTestCase {
 
   @Override
   protected String getBasePath() {
