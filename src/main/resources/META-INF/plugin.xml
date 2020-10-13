@@ -1,4 +1,4 @@
-<idea-plugin>
+<consulo-plugin>
 	<id>consulo.soy</id>
 	<name>Bamboo Soy</name>
 	<version>SNAPSHOT</version>
@@ -94,4 +94,4 @@
 				language="ClosureTemplate"
 				implementationClass="com.google.bamboo.soy.insight.annotators.DoubleQuotedStringAnnotator"/>
 	</extensions>
-</idea-plugin>
+</consulo-plugin>

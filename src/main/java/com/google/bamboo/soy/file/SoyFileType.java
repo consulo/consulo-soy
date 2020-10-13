@@ -14,14 +14,14 @@
 
 package com.google.bamboo.soy.file;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
 import com.google.bamboo.soy.SoyLanguage;
-import com.google.bamboo.soy.icons.SoyIcons;
 import com.intellij.openapi.fileTypes.LanguageFileType;
 import com.intellij.openapi.fileTypes.TemplateLanguageFileType;
+import consulo.soy.icon.SoyIconGroup;
 import consulo.ui.image.Image;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 public class SoyFileType extends LanguageFileType implements TemplateLanguageFileType {
   public static final SoyFileType INSTANCE = new SoyFileType();
@@ -51,6 +51,6 @@ public class SoyFileType extends LanguageFileType implements TemplateLanguageFil
   @Nullable
   @Override
   public Image getIcon() {
-    return SoyIcons.FILE;
+    return SoyIconGroup.closure_template();
   }
 }
