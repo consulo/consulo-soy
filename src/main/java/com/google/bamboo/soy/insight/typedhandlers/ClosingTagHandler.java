@@ -15,7 +15,7 @@
 package com.google.bamboo.soy.insight.typedhandlers;
 
 import javax.annotation.Nonnull;
-import javax.inject.Inject;
+import jakarta.inject.Inject;
 
 import com.google.bamboo.soy.elements.TagBlockElement;
 import com.google.bamboo.soy.parser.SoyChoiceClause;
