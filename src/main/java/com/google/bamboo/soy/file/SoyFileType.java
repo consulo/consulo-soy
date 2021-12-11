@@ -17,6 +17,7 @@ package com.google.bamboo.soy.file;
 import com.google.bamboo.soy.SoyLanguage;
 import com.intellij.openapi.fileTypes.LanguageFileType;
 import com.intellij.openapi.fileTypes.TemplateLanguageFileType;
+import consulo.localize.LocalizeValue;
 import consulo.soy.icon.SoyIconGroup;
 import consulo.ui.image.Image;
 
@@ -38,8 +39,8 @@ public class SoyFileType extends LanguageFileType implements TemplateLanguageFil
 
   @Nonnull
   @Override
-  public String getDescription() {
-    return "Closure template file";
+  public LocalizeValue getDescription() {
+    return LocalizeValue.localizeTODO("Closure template file");
   }
 
   @Nonnull
