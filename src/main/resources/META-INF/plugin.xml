@@ -1,4 +1,4 @@
-<consulo-plugin>
+<consulo-plugin url="https://github.com/consulo/consulo-soy">
 	<id>consulo.soy</id>
 	<name>Bamboo Soy</name>
 	<version>SNAPSHOT</version>
