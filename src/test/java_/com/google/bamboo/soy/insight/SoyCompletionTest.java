@@ -21,7 +21,7 @@ import com.google.bamboo.soy.SoyCodeInsightFixtureTestCase;
 import com.google.bamboo.soy.file.SoyFileType;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
-import com.intellij.codeInsight.completion.CompletionType;
+import consulo.language.editor.completion.CompletionType;
 
 public abstract class SoyCompletionTest extends SoyCodeInsightFixtureTestCase {
 

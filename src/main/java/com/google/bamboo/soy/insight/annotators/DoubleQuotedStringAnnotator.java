@@ -16,9 +16,10 @@ package com.google.bamboo.soy.insight.annotators;
 
 import com.google.bamboo.soy.parser.SoyAnyStringLiteral;
 import com.google.bamboo.soy.parser.SoyExpr;
-import com.intellij.lang.annotation.AnnotationHolder;
-import com.intellij.lang.annotation.Annotator;
-import com.intellij.psi.PsiElement;
+import consulo.language.editor.annotation.AnnotationHolder;
+import consulo.language.editor.annotation.Annotator;
+import consulo.language.psi.PsiElement;
+
 import javax.annotation.Nonnull;
 
 public class DoubleQuotedStringAnnotator implements Annotator {

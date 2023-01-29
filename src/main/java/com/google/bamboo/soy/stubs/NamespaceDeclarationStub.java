@@ -18,25 +18,21 @@ import com.google.bamboo.soy.SoyLanguage;
 import com.google.bamboo.soy.parser.SoyNamespaceDeclarationIdentifier;
 import com.google.bamboo.soy.parser.impl.SoyNamespaceDeclarationIdentifierImpl;
 import com.google.bamboo.soy.stubs.index.NamespaceDeclarationIndex;
-import com.intellij.psi.stubs.IStubElementType;
-import com.intellij.psi.stubs.IndexSink;
-import com.intellij.psi.stubs.NamedStubBase;
-import com.intellij.psi.stubs.StubElement;
-import com.intellij.psi.stubs.StubInputStream;
-import com.intellij.psi.stubs.StubOutputStream;
-import com.intellij.util.io.StringRef;
-import java.io.IOException;
+import consulo.index.io.StringRef;
+import consulo.language.psi.stub.*;
+
 import javax.annotation.Nonnull;
+import java.io.IOException;
 
 public class NamespaceDeclarationStub extends NamedStubBase<SoyNamespaceDeclarationIdentifier> {
-  static final Type TYPE = new Type();
+  public static final Type TYPE = new Type();
 
   NamespaceDeclarationStub(StubElement parent, String name) {
     super(parent, TYPE, name);
   }
 
   static class Type
-      extends IStubElementType<NamespaceDeclarationStub, SoyNamespaceDeclarationIdentifier> {
+    extends IStubElementType<NamespaceDeclarationStub, SoyNamespaceDeclarationIdentifier> {
     Type() {
       super("NAMESPACE_DECLARATION_IDENTIFIER", SoyLanguage.INSTANCE);
     }
@@ -62,7 +58,7 @@ public class NamespaceDeclarationStub extends NamedStubBase<SoyNamespaceDeclarat
     @Override
     public void serialize(
       @Nonnull NamespaceDeclarationStub stub, @Nonnull StubOutputStream dataStream)
-        throws IOException {
+      throws IOException {
       dataStream.writeName(stub.getName());
     }
 

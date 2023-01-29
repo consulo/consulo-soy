@@ -16,9 +16,9 @@ package com.google.bamboo.soy.lexer;
 
 import com.google.bamboo.soy.parser.SoyTypes;
 import com.google.common.collect.ImmutableMap;
-import com.intellij.psi.TokenType;
-import com.intellij.psi.tree.IElementType;
-import com.intellij.psi.tree.TokenSet;
+import consulo.language.ast.IElementType;
+import consulo.language.ast.TokenSet;
+import consulo.language.ast.TokenType;
 
 public class SoyTokenTypes {
 
@@ -142,7 +142,7 @@ public class SoyTokenTypes {
 
   public static TokenSet DOUBLE_BRACES =
       TokenSet.create(SoyTypes.LBRACE_LBRACE, SoyTypes.LBRACE_LBRACE_SLASH,
-          SoyTypes.RBRACE_RBRACE, SoyTypes.SLASH_RBRACE_RBRACE);
+                                           SoyTypes.RBRACE_RBRACE, SoyTypes.SLASH_RBRACE_RBRACE);
 
   public static TokenSet LEFT_SLASH_BRACES = TokenSet.create(
       SoyTypes.LBRACE_SLASH, SoyTypes.LBRACE_LBRACE_SLASH);
@@ -155,5 +155,5 @@ public class SoyTokenTypes {
 
   public static TokenSet RIGHT_BRACES =
       TokenSet.create(SoyTypes.RBRACE, SoyTypes.RBRACE_RBRACE, SoyTypes.SLASH_RBRACE,
-          SoyTypes.SLASH_RBRACE_RBRACE);
+                                           SoyTypes.SLASH_RBRACE_RBRACE);
 }

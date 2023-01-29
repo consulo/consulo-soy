@@ -18,10 +18,10 @@ import javax.annotation.Nonnull;
 import com.google.bamboo.soy.SoyLanguage;
 import com.google.bamboo.soy.parser.SoyNamespaceDeclarationIdentifier;
 import com.google.bamboo.soy.stubs.FileStub;
-import com.intellij.extapi.psi.PsiFileBase;
-import com.intellij.openapi.fileTypes.FileType;
-import com.intellij.psi.FileViewProvider;
-import com.intellij.psi.util.PsiTreeUtil;
+import consulo.language.file.FileViewProvider;
+import consulo.language.impl.psi.PsiFileBase;
+import consulo.language.psi.util.PsiTreeUtil;
+import consulo.virtualFileSystem.fileType.FileType;
 
 public class SoyFile extends PsiFileBase {
   public SoyFile(@Nonnull FileViewProvider viewProvider) {

@@ -16,9 +16,10 @@ package com.google.bamboo.soy.elements.impl;
 
 import com.google.bamboo.soy.elements.AtParamElement;
 import com.google.bamboo.soy.stubs.AtParamStub;
-import com.intellij.lang.ASTNode;
-import com.intellij.psi.stubs.IStubElementType;
-import com.intellij.psi.tree.IElementType;
+import consulo.language.ast.ASTNode;
+import consulo.language.ast.IElementType;
+import consulo.language.psi.stub.IStubElementType;
+
 import javax.annotation.Nonnull;
 
 public abstract class AtParamMixin extends SoyStubBasedPsiElementBase<AtParamStub>

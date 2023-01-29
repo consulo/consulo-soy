@@ -14,14 +14,15 @@
 
 package com.google.bamboo.soy.format.blocks;
 
-import com.intellij.formatting.templateLanguages.DataLanguageBlockWrapper;
-import com.intellij.formatting.templateLanguages.TemplateLanguageBlockFactory;
-import com.intellij.lang.ASTNode;
-import com.intellij.psi.codeStyle.CodeStyleSettings;
-import com.intellij.psi.formatter.xml.HtmlPolicy;
-import java.util.List;
+import consulo.language.ast.ASTNode;
+import consulo.language.codeStyle.CodeStyleSettings;
+import consulo.language.codeStyle.template.DataLanguageBlockWrapper;
+import consulo.language.codeStyle.template.TemplateLanguageBlockFactory;
+import consulo.xml.psi.formatter.xml.HtmlPolicy;
+
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import java.util.List;
 
 public class SoyTagBlockBlock extends SoyBlock {
 

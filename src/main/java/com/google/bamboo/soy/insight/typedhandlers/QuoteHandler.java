@@ -16,16 +16,17 @@ package com.google.bamboo.soy.insight.typedhandlers;
 
 import com.google.bamboo.soy.file.SoyFileType;
 import com.google.common.collect.ImmutableSet;
-import com.intellij.codeInsight.editorActions.TypedHandlerDelegate;
-import com.intellij.ide.highlighter.HtmlFileType;
-import com.intellij.openapi.editor.Document;
-import com.intellij.openapi.editor.Editor;
-import com.intellij.openapi.fileTypes.FileType;
-import com.intellij.openapi.project.Project;
-import com.intellij.openapi.util.Pair;
-import com.intellij.openapi.util.TextRange;
-import com.intellij.psi.PsiDocumentManager;
-import com.intellij.psi.PsiFile;
+import consulo.codeEditor.Editor;
+import consulo.document.Document;
+import consulo.document.util.TextRange;
+import consulo.language.editor.action.TypedHandlerDelegate;
+import consulo.language.psi.PsiDocumentManager;
+import consulo.language.psi.PsiFile;
+import consulo.project.Project;
+import consulo.util.lang.Pair;
+import consulo.virtualFileSystem.fileType.FileType;
+import consulo.xml.ide.highlighter.HtmlFileType;
+
 import java.util.Set;
 import java.util.function.Function;
 
@@ -44,7 +45,7 @@ public class QuoteHandler extends TypedHandlerDelegate {
 
   @Override
   public Result beforeCharTyped(char charTyped, final Project project, final Editor editor,
-      final PsiFile file, final FileType fileType) {
+                                final PsiFile file, final FileType fileType) {
     if (file.getFileType() != SoyFileType.INSTANCE && file.getFileType() != HtmlFileType.INSTANCE) {
       return Result.CONTINUE;
     }

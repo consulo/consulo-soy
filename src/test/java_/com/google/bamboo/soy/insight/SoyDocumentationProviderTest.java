@@ -16,7 +16,7 @@ package com.google.bamboo.soy.insight;
 
 import com.google.bamboo.soy.SoyCodeInsightFixtureTestCase;
 import com.google.bamboo.soy.insight.documentation.SoyDocumentationProvider;
-import com.intellij.psi.PsiElement;
+import consulo.language.psi.PsiElement;
 
 public abstract class SoyDocumentationProviderTest extends SoyCodeInsightFixtureTestCase {
 

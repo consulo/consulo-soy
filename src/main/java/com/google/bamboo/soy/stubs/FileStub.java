@@ -16,17 +16,12 @@ package com.google.bamboo.soy.stubs;
 
 import com.google.bamboo.soy.SoyLanguage;
 import com.google.bamboo.soy.file.SoyFile;
-import com.intellij.lang.Language;
-import com.intellij.psi.PsiFile;
-import com.intellij.psi.StubBuilder;
-import com.intellij.psi.stubs.DefaultStubBuilder;
-import com.intellij.psi.stubs.PsiFileStubImpl;
-import com.intellij.psi.stubs.StubElement;
-import com.intellij.psi.stubs.StubInputStream;
-import com.intellij.psi.stubs.StubOutputStream;
-import com.intellij.psi.tree.IStubFileElementType;
-import java.io.IOException;
+import consulo.language.Language;
+import consulo.language.psi.PsiFile;
+import consulo.language.psi.stub.*;
+
 import javax.annotation.Nonnull;
+import java.io.IOException;
 
 public class FileStub extends PsiFileStubImpl<SoyFile> {
   public static final Type TYPE = new Type("SoyFile", SoyLanguage.INSTANCE);
@@ -47,7 +42,7 @@ public class FileStub extends PsiFileStubImpl<SoyFile> {
     return namespaceDeclaration == null ? "" : namespaceDeclaration.getName();
   }
 
-  static class Type extends IStubFileElementType<FileStub> {
+  public static class Type extends IStubFileElementType<FileStub> {
     public static final int VERSION = 4;
 
     public Type(String debugName, Language language) {

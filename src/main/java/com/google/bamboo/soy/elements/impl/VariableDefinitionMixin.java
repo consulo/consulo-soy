@@ -15,8 +15,9 @@
 package com.google.bamboo.soy.elements.impl;
 
 import com.google.bamboo.soy.elements.VariableDefinitionElement;
-import com.intellij.extapi.psi.ASTWrapperPsiElement;
-import com.intellij.lang.ASTNode;
+import consulo.language.ast.ASTNode;
+import consulo.language.impl.psi.ASTWrapperPsiElement;
+
 import javax.annotation.Nonnull;
 
 public abstract class VariableDefinitionMixin extends ASTWrapperPsiElement

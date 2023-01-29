@@ -17,9 +17,10 @@ package com.google.bamboo.soy.elements;
 import com.google.bamboo.soy.lang.Variable;
 import com.google.bamboo.soy.parser.SoyParamDefinitionIdentifier;
 import com.google.bamboo.soy.parser.SoyTypeExpression;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiNamedElement;
-import com.intellij.util.IncorrectOperationException;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.PsiNamedElement;
+import consulo.language.util.IncorrectOperationException;
+
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 

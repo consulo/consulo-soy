@@ -16,12 +16,9 @@ package com.google.bamboo.soy.elements.references;
 
 import com.google.bamboo.soy.lang.TemplateNameUtils;
 import com.google.bamboo.soy.parser.SoyTemplateBlock;
-import com.intellij.openapi.util.TextRange;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiElementResolveResult;
-import com.intellij.psi.PsiPolyVariantReference;
-import com.intellij.psi.PsiReferenceBase;
-import com.intellij.psi.ResolveResult;
+import consulo.language.psi.*;
+import consulo.document.util.TextRange;
+
 import java.util.stream.Collectors;
 import javax.annotation.Nonnull;
 

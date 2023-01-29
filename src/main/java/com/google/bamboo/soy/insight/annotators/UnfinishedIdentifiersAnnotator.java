@@ -16,9 +16,10 @@ package com.google.bamboo.soy.insight.annotators;
 
 import com.google.bamboo.soy.parser.SoyFieldExpr;
 import com.google.bamboo.soy.parser.SoyVariableReferenceIdentifier;
-import com.intellij.lang.annotation.AnnotationHolder;
-import com.intellij.lang.annotation.Annotator;
-import com.intellij.psi.PsiElement;
+import consulo.language.editor.annotation.AnnotationHolder;
+import consulo.language.editor.annotation.Annotator;
+import consulo.language.psi.PsiElement;
+
 import javax.annotation.Nonnull;
 
 public class UnfinishedIdentifiersAnnotator implements Annotator {

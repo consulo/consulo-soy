@@ -15,11 +15,11 @@
 package com.google.bamboo.soy.lexer;
 
 import com.google.bamboo.soy.parser.SoyTypes;
-import com.intellij.lexer.Lexer;
-import com.intellij.lexer.MergeFunction;
-import com.intellij.lexer.MergingLexerAdapterBase;
-import com.intellij.psi.TokenType;
-import com.intellij.psi.tree.IElementType;
+import consulo.language.lexer.MergeFunction;
+import consulo.language.ast.TokenType;
+import consulo.language.ast.IElementType;
+import consulo.language.lexer.Lexer;
+import consulo.language.lexer.MergingLexerAdapterBase;
 
 public class SoyLexer extends MergingLexerAdapterBase {
   public SoyLexer() {

@@ -16,9 +16,10 @@ package com.google.bamboo.soy.elements.impl;
 
 import com.google.bamboo.soy.elements.NamespaceDeclarationElement;
 import com.google.bamboo.soy.stubs.NamespaceDeclarationStub;
-import com.intellij.lang.ASTNode;
-import com.intellij.psi.stubs.IStubElementType;
-import com.intellij.psi.tree.IElementType;
+import consulo.language.ast.ASTNode;
+import consulo.language.ast.IElementType;
+import consulo.language.psi.stub.IStubElementType;
+
 import javax.annotation.Nonnull;
 
 public class NamespaceDeclarationMixin extends SoyStubBasedPsiElementBase<NamespaceDeclarationStub>

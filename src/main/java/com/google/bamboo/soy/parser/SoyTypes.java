@@ -1,9 +1,9 @@
 // This is a generated file. Not intended for manual editing.
 package com.google.bamboo.soy.parser;
 
-import com.intellij.psi.tree.IElementType;
-import com.intellij.psi.PsiElement;
-import com.intellij.lang.ASTNode;
+import consulo.language.ast.IElementType;
+import consulo.language.psi.PsiElement;
+import consulo.language.ast.ASTNode;
 import com.google.bamboo.soy.stubs.StubFactory;
 import com.google.bamboo.soy.lexer.SoyTokenType;
 import com.google.bamboo.soy.parser.impl.*;

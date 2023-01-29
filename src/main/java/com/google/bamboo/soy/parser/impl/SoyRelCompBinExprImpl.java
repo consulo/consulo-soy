@@ -2,14 +2,12 @@
 package com.google.bamboo.soy.parser.impl;
 
 import java.util.List;
-import javax.annotation.Nullable;
 import javax.annotation.Nonnull;
-import com.intellij.lang.ASTNode;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiElementVisitor;
-import com.intellij.psi.util.PsiTreeUtil;
-import static com.google.bamboo.soy.parser.SoyTypes.*;
+
+import consulo.language.psi.PsiElementVisitor;
+import consulo.language.psi.util.PsiTreeUtil;
 import com.google.bamboo.soy.parser.*;
+import consulo.language.ast.ASTNode;
 
 public class SoyRelCompBinExprImpl extends SoyExprImpl implements SoyRelCompBinExpr {
 

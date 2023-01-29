@@ -15,8 +15,8 @@
 package com.google.bamboo.soy.file;
 
 import com.google.bamboo.soy.SoyLanguage;
-import com.intellij.openapi.fileTypes.LanguageFileType;
-import com.intellij.openapi.fileTypes.TemplateLanguageFileType;
+import consulo.language.file.LanguageFileType;
+import consulo.language.template.TemplateLanguageFileType;
 import consulo.localize.LocalizeValue;
 import consulo.soy.icon.SoyIconGroup;
 import consulo.ui.image.Image;

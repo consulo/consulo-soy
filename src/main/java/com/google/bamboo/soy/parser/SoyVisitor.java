@@ -1,10 +1,8 @@
 // This is a generated file. Not intended for manual editing.
 package com.google.bamboo.soy.parser;
 
-import javax.annotation.Nullable;
 import javax.annotation.Nonnull;
-import com.intellij.psi.PsiElementVisitor;
-import com.intellij.psi.PsiElement;
+
 import com.google.bamboo.soy.elements.TagElement;
 import com.google.bamboo.soy.elements.IdentifierElement;
 import com.google.bamboo.soy.elements.AtInjectElement;
@@ -14,7 +12,6 @@ import com.google.bamboo.soy.elements.StatementElement;
 import com.google.bamboo.soy.elements.CallStatementElement;
 import com.google.bamboo.soy.elements.ForStatementElement;
 import com.google.bamboo.soy.elements.ForeachStatementElement;
-import com.google.bamboo.soy.elements.TagBlockElement;
 import com.google.bamboo.soy.elements.MsgStatementElement;
 import com.google.bamboo.soy.elements.NamespaceDeclarationElement;
 import com.google.bamboo.soy.elements.VariableDefinitionElement;
@@ -24,6 +21,8 @@ import com.google.bamboo.soy.elements.ChoiceStatementElement;
 import com.google.bamboo.soy.elements.StatementListElement;
 import com.google.bamboo.soy.elements.TemplateBlockElement;
 import com.google.bamboo.soy.elements.TemplateDefinitionElement;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.PsiElementVisitor;
 
 public class SoyVisitor extends PsiElementVisitor {
 

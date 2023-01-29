@@ -1,16 +1,17 @@
 // This is a generated file. Not intended for manual editing.
 package com.google.bamboo.soy.parser;
 
-import com.intellij.lang.PsiBuilder;
-import com.intellij.lang.PsiBuilder.Marker;
+import consulo.language.ast.TokenSet;
+import consulo.language.parser.PsiBuilder;
+import consulo.language.parser.PsiBuilder.Marker;
 import static com.google.bamboo.soy.parser.SoyTypes.*;
 import static com.google.bamboo.soy.parser.SoyParserUtil.*;
-import com.intellij.psi.tree.IElementType;
-import com.intellij.lang.ASTNode;
-import com.intellij.psi.tree.TokenSet;
-import com.intellij.lang.PsiParser;
-import consulo.lang.LanguageVersion;
-import static com.intellij.lang.WhitespacesBinders.*;
+import consulo.language.ast.IElementType;
+import consulo.language.parser.PsiParser;
+import consulo.language.version.LanguageVersion;
+import consulo.language.ast.ASTNode;
+
+import static consulo.language.parser.WhitespacesBinders.*;
 
 @SuppressWarnings({"SimplifiableIfStatement", "UnusedAssignment"})
 public class SoyParser implements PsiParser {

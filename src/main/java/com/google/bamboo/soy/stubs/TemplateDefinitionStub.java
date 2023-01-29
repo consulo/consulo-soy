@@ -17,18 +17,14 @@ package com.google.bamboo.soy.stubs;
 import com.google.bamboo.soy.SoyLanguage;
 import com.google.bamboo.soy.parser.SoyTemplateDefinitionIdentifier;
 import com.google.bamboo.soy.parser.impl.SoyTemplateDefinitionIdentifierImpl;
-import com.intellij.psi.stubs.IStubElementType;
-import com.intellij.psi.stubs.IndexSink;
-import com.intellij.psi.stubs.NamedStubBase;
-import com.intellij.psi.stubs.StubElement;
-import com.intellij.psi.stubs.StubInputStream;
-import com.intellij.psi.stubs.StubOutputStream;
-import com.intellij.util.io.StringRef;
-import java.io.IOException;
+import consulo.index.io.StringRef;
+import consulo.language.psi.stub.*;
+
 import javax.annotation.Nonnull;
+import java.io.IOException;
 
 public class TemplateDefinitionStub extends NamedStubBase<SoyTemplateDefinitionIdentifier> {
-  static final Type TYPE = new Type();
+  public static final Type TYPE = new Type();
 
   TemplateDefinitionStub(StubElement parent, String name) {
     super(parent, TYPE, name);
@@ -54,7 +50,7 @@ public class TemplateDefinitionStub extends NamedStubBase<SoyTemplateDefinitionI
   }
 
   static class Type
-      extends IStubElementType<TemplateDefinitionStub, SoyTemplateDefinitionIdentifier> {
+    extends IStubElementType<TemplateDefinitionStub, SoyTemplateDefinitionIdentifier> {
     Type() {
       super("TEMPLATE_DEFINITION_IDENTIFIER", SoyLanguage.INSTANCE);
     }
@@ -80,7 +76,7 @@ public class TemplateDefinitionStub extends NamedStubBase<SoyTemplateDefinitionI
     @Override
     public void serialize(
       @Nonnull TemplateDefinitionStub stub, @Nonnull StubOutputStream dataStream)
-        throws IOException {
+      throws IOException {
       dataStream.writeName(stub.getName());
     }
 
@@ -93,6 +89,7 @@ public class TemplateDefinitionStub extends NamedStubBase<SoyTemplateDefinitionI
     }
 
     @Override
-    public void indexStub(@Nonnull TemplateDefinitionStub stub, @Nonnull IndexSink sink) {}
+    public void indexStub(@Nonnull TemplateDefinitionStub stub, @Nonnull IndexSink sink) {
+    }
   }
 }

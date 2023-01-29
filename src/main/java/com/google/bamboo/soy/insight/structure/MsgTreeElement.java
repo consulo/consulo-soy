@@ -1,7 +1,7 @@
 package com.google.bamboo.soy.insight.structure;
 
 import com.google.bamboo.soy.parser.SoyMsgStatement;
-import com.intellij.openapi.util.text.StringUtil;
+import consulo.util.lang.StringUtil;
 
 /**
  * @author VISTALL

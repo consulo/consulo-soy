@@ -15,22 +15,30 @@
 package com.google.bamboo.soy.file;
 
 import com.google.bamboo.soy.SoyLanguage;
-import com.intellij.lang.Language;
-import com.intellij.openapi.vfs.VirtualFile;
-import com.intellij.psi.FileViewProvider;
-import com.intellij.psi.FileViewProviderFactory;
-import com.intellij.psi.PsiManager;
+import consulo.annotation.component.ExtensionImpl;
+import consulo.language.Language;
+import consulo.language.file.FileViewProvider;
+import consulo.language.file.LanguageFileViewProviderFactory;
+import consulo.language.psi.PsiManager;
+import consulo.virtualFileSystem.VirtualFile;
+
 import javax.annotation.Nonnull;
 
-public class SoyFileViewProviderFactory implements FileViewProviderFactory {
+@ExtensionImpl
+public class SoyFileViewProviderFactory implements LanguageFileViewProviderFactory {
   @Nonnull
   @Override
-  public FileViewProvider createFileViewProvider(
-      @Nonnull VirtualFile virtualFile,
-      Language language,
-      @Nonnull PsiManager psiManager,
-      boolean eventSystemEnabled) {
+  public FileViewProvider createFileViewProvider(@Nonnull VirtualFile virtualFile,
+                                                 Language language,
+                                                 @Nonnull PsiManager psiManager,
+                                                 boolean eventSystemEnabled) {
     assert language.isKindOf(SoyLanguage.INSTANCE);
     return new SoyFileViewProvider(psiManager, virtualFile, eventSystemEnabled);
+  }
+
+  @Nonnull
+  @Override
+  public Language getLanguage() {
+    return SoyLanguage.INSTANCE;
   }
 }

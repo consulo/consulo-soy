@@ -1,7 +1,7 @@
 package com.google.bamboo.soy.lang;
 
 import com.google.bamboo.soy.elements.VariableDefinitionElement;
-import com.intellij.psi.PsiNamedElement;
+import consulo.language.psi.PsiNamedElement;
 
 import javax.annotation.Nonnull;
 

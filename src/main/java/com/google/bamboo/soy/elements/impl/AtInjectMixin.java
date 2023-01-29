@@ -15,8 +15,8 @@
 package com.google.bamboo.soy.elements.impl;
 
 import com.google.bamboo.soy.elements.AtInjectElement;
-import com.intellij.extapi.psi.ASTWrapperPsiElement;
-import com.intellij.lang.ASTNode;
+import consulo.language.impl.psi.ASTWrapperPsiElement;
+import consulo.language.ast.ASTNode;
 import javax.annotation.Nonnull;
 
 public abstract class AtInjectMixin extends ASTWrapperPsiElement implements AtInjectElement {

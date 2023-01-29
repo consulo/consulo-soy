@@ -14,11 +14,12 @@
 
 package com.google.bamboo.soy.elements.impl;
 
-import com.intellij.extapi.psi.StubBasedPsiElementBase;
-import com.intellij.lang.ASTNode;
-import com.intellij.psi.stubs.IStubElementType;
-import com.intellij.psi.stubs.StubElement;
-import com.intellij.psi.tree.IElementType;
+import consulo.language.ast.ASTNode;
+import consulo.language.ast.IElementType;
+import consulo.language.impl.psi.stub.StubBasedPsiElementBase;
+import consulo.language.psi.stub.StubElement;
+import consulo.language.psi.stub.IStubElementType;
+
 import javax.annotation.Nonnull;
 
 public abstract class SoyStubBasedPsiElementBase<T extends StubElement>

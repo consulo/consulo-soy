@@ -14,6 +14,6 @@
 
 package com.google.bamboo.soy.elements;
 
-import com.intellij.psi.PsiElement;
+import consulo.language.psi.PsiElement;
 
 public interface IdentifierElement extends PsiElement {}

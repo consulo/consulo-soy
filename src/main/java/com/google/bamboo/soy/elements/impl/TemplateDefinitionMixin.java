@@ -16,9 +16,9 @@ package com.google.bamboo.soy.elements.impl;
 
 import com.google.bamboo.soy.elements.TemplateDefinitionElement;
 import com.google.bamboo.soy.stubs.TemplateDefinitionStub;
-import com.intellij.lang.ASTNode;
-import com.intellij.psi.stubs.IStubElementType;
-import com.intellij.psi.tree.IElementType;
+import consulo.language.ast.ASTNode;
+import consulo.language.psi.stub.IStubElementType;
+import consulo.language.ast.IElementType;
 import javax.annotation.Nonnull;
 
 public class TemplateDefinitionMixin extends SoyStubBasedPsiElementBase<TemplateDefinitionStub>

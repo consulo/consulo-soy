@@ -4,9 +4,10 @@ import com.google.bamboo.soy.lang.Scope;
 import com.google.bamboo.soy.lang.Variable;
 import com.google.bamboo.soy.parser.SoyBeginForeach;
 import com.google.common.collect.ImmutableList;
-import java.util.List;
+
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import java.util.List;
 
 public interface ForeachStatementElement extends Scope, TagBlockElement, StatementElement {
 

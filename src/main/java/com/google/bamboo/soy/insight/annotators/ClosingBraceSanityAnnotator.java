@@ -16,36 +16,17 @@ package com.google.bamboo.soy.insight.annotators;
 
 import com.google.bamboo.soy.elements.TagElement;
 import com.google.bamboo.soy.lexer.SoyTokenTypes;
-import com.google.bamboo.soy.parser.impl.SoyAliasBlockImpl;
-import com.google.bamboo.soy.parser.impl.SoyAtParamSingleImpl;
-import com.google.bamboo.soy.parser.impl.SoyBeginChoiceClauseImpl;
-import com.google.bamboo.soy.parser.impl.SoyBeginChoiceImpl;
-import com.google.bamboo.soy.parser.impl.SoyBeginElseIfImpl;
-import com.google.bamboo.soy.parser.impl.SoyBeginForImpl;
-import com.google.bamboo.soy.parser.impl.SoyBeginForeachImpl;
-import com.google.bamboo.soy.parser.impl.SoyBeginIfImpl;
-import com.google.bamboo.soy.parser.impl.SoyBeginLetImpl;
-import com.google.bamboo.soy.parser.impl.SoyBeginMsgImpl;
-import com.google.bamboo.soy.parser.impl.SoyBeginTemplateImpl;
-import com.google.bamboo.soy.parser.impl.SoyCssStatementImpl;
-import com.google.bamboo.soy.parser.impl.SoyDelegatePackageBlockImpl;
-import com.google.bamboo.soy.parser.impl.SoyElseTagImpl;
-import com.google.bamboo.soy.parser.impl.SoyEndTagImpl;
-import com.google.bamboo.soy.parser.impl.SoyFallbackMsgTagImpl;
-import com.google.bamboo.soy.parser.impl.SoyLetSingleStatementImpl;
-import com.google.bamboo.soy.parser.impl.SoyNamespaceBlockImpl;
-import com.google.bamboo.soy.parser.impl.SoyPrintStatementImpl;
-import com.google.bamboo.soy.parser.impl.SoySpecialCharacterStatementImpl;
-import com.google.bamboo.soy.parser.impl.SoyXidStatementImpl;
+import com.google.bamboo.soy.parser.impl.*;
 import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.ImmutableSet;
-import com.intellij.lang.annotation.AnnotationHolder;
-import com.intellij.lang.annotation.Annotator;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.tree.TokenSet;
+import consulo.language.ast.TokenSet;
+import consulo.language.editor.annotation.AnnotationHolder;
+import consulo.language.editor.annotation.Annotator;
+import consulo.language.psi.PsiElement;
+
+import javax.annotation.Nonnull;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-import javax.annotation.Nonnull;
 
 public class ClosingBraceSanityAnnotator implements Annotator {
 

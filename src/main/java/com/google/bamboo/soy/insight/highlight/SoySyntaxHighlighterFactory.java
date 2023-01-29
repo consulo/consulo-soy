@@ -14,16 +14,27 @@
 
 package com.google.bamboo.soy.insight.highlight;
 
-import com.intellij.openapi.fileTypes.SyntaxHighlighter;
-import com.intellij.openapi.fileTypes.SyntaxHighlighterFactory;
-import com.intellij.openapi.project.Project;
-import com.intellij.openapi.vfs.VirtualFile;
+import com.google.bamboo.soy.SoyLanguage;
+import consulo.annotation.component.ExtensionImpl;
+import consulo.language.Language;
+import consulo.language.editor.highlight.SyntaxHighlighterFactory;
+import consulo.project.Project;
+import consulo.language.editor.highlight.SyntaxHighlighter;
+import consulo.virtualFileSystem.VirtualFile;
+
 import javax.annotation.Nonnull;
 
+@ExtensionImpl
 public class SoySyntaxHighlighterFactory extends SyntaxHighlighterFactory {
   @Nonnull
   @Override
   public SyntaxHighlighter getSyntaxHighlighter(Project project, VirtualFile virtualFile) {
     return new SoySyntaxHighlighter();
+  }
+
+  @Nonnull
+  @Override
+  public Language getLanguage() {
+    return SoyLanguage.INSTANCE;
   }
 }

@@ -1,9 +1,10 @@
 {
+  version = "3"
   parserClass="com.google.bamboo.soy.parser.SoyParser"
   parserUtilClass="com.google.bamboo.soy.parser.SoyParserUtil"
   parserImports=["static com.intellij.lang.WhitespacesBinders.*"]
 
-  extends="com.intellij.extapi.psi.ASTWrapperPsiElement"
+  extends="ASTWrapperPsiElement"
 
   psiClassPrefix="Soy"
   psiImplClassSuffix="Impl"

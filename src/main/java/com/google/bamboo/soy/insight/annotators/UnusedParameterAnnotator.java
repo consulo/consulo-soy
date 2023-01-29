@@ -19,15 +19,16 @@ import com.google.bamboo.soy.lang.ParamUtils;
 import com.google.bamboo.soy.lang.Parameter;
 import com.google.bamboo.soy.lang.Variable;
 import com.google.bamboo.soy.parser.SoyTemplateBlock;
-import com.intellij.lang.annotation.AnnotationHolder;
-import com.intellij.lang.annotation.Annotator;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiReference;
-import com.intellij.psi.util.PsiTreeUtil;
+import consulo.language.editor.annotation.AnnotationHolder;
+import consulo.language.editor.annotation.Annotator;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.PsiReference;
+import consulo.language.psi.util.PsiTreeUtil;
+
+import javax.annotation.Nonnull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.stream.Collectors;
-import javax.annotation.Nonnull;
 
 public class UnusedParameterAnnotator implements Annotator {
 
@@ -44,13 +45,13 @@ public class UnusedParameterAnnotator implements Annotator {
 
       Collection<String> usedVariableIdentifiers =
           PsiTreeUtil.findChildrenOfType(element, IdentifierElement.class)
-              .stream()
-              .map(IdentifierElement::getReferences)
-              .flatMap(references -> Arrays.stream(references))
-              .map(PsiReference::getCanonicalText)
-              .filter(id -> id.startsWith("$"))
-              .map(id -> id.substring(1))
-              .collect(Collectors.toList());
+                     .stream()
+                     .map(IdentifierElement::getReferences)
+                     .flatMap(references -> Arrays.stream(references))
+                     .map(PsiReference::getCanonicalText)
+                     .filter(id -> id.startsWith("$"))
+                     .map(id -> id.substring(1))
+                     .collect(Collectors.toList());
 
       for (Variable parameter : parameters) {
         boolean isMatched = false;

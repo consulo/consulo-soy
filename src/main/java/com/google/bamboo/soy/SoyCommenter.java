@@ -14,9 +14,14 @@
 
 package com.google.bamboo.soy;
 
-import com.intellij.lang.Commenter;
+import consulo.annotation.component.ExtensionImpl;
+import consulo.language.Commenter;
+import consulo.language.Language;
+
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
+@ExtensionImpl
 public class SoyCommenter implements Commenter {
   @Nullable
   @Override
@@ -46,5 +51,11 @@ public class SoyCommenter implements Commenter {
   @Override
   public String getCommentedBlockCommentSuffix() {
     return null;
+  }
+
+  @Nonnull
+  @Override
+  public Language getLanguage() {
+    return SoyLanguage.INSTANCE;
   }
 }

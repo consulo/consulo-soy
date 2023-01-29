@@ -17,9 +17,10 @@ package com.google.bamboo.soy.elements.impl;
 import com.google.bamboo.soy.elements.TemplateBlockElement;
 import com.google.bamboo.soy.parser.SoyTemplateDefinitionIdentifier;
 import com.google.bamboo.soy.stubs.TemplateBlockStub;
-import com.intellij.lang.ASTNode;
-import com.intellij.psi.stubs.IStubElementType;
-import com.intellij.psi.tree.IElementType;
+import consulo.language.ast.IElementType;
+import consulo.language.psi.stub.IStubElementType;
+import consulo.language.ast.ASTNode;
+
 import javax.annotation.Nonnull;
 
 public abstract class TemplateBlockMixin extends SoyStubBasedPsiElementBase<TemplateBlockStub>

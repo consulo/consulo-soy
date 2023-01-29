@@ -1,9 +1,9 @@
 package com.google.bamboo.soy.lexer;
 
-import com.intellij.lexer.LexerBase;
-import com.intellij.psi.tree.IElementType;
 import com.google.bamboo.soy.parser.SoyTypes;
-import com.intellij.psi.TokenType;
+import consulo.language.ast.IElementType;
+import consulo.language.ast.TokenType;
+import consulo.language.lexer.LexerBase;
 
 /** Lexer for closure template files. */
 %%

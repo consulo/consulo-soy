@@ -15,7 +15,7 @@
 package com.google.bamboo.soy.stubs;
 
 import com.google.common.collect.ImmutableMap;
-import com.intellij.psi.stubs.IStubElementType;
+import consulo.language.psi.stub.IStubElementType;
 
 public abstract class StubFactory {
   private static ImmutableMap<String, IStubElementType> stubTypeByElement =

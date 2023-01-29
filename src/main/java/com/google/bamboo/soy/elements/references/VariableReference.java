@@ -16,13 +16,14 @@ package com.google.bamboo.soy.elements.references;
 
 import com.google.bamboo.soy.lang.Scope;
 import com.google.bamboo.soy.lang.Variable;
-import com.intellij.codeInsight.lookup.LookupElementBuilder;
-import com.intellij.openapi.util.TextRange;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiElementResolveResult;
-import com.intellij.psi.PsiReference;
-import com.intellij.psi.PsiReferenceBase;
-import com.intellij.psi.ResolveResult;
+import consulo.document.util.TextRange;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.PsiElementResolveResult;
+import consulo.language.psi.PsiReferenceBase;
+import consulo.language.psi.ResolveResult;
+import consulo.language.editor.completion.lookup.LookupElementBuilder;
+import consulo.language.psi.PsiReference;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -34,7 +35,7 @@ public class VariableReference extends PsiReferenceBase<PsiElement> implements P
   private TextRange textRangeInElement;
 
   public VariableReference(
-      PsiElement element, String identifier, TextRange textRange, TextRange textRangeInElement) {
+    PsiElement element, String identifier, TextRange textRange, TextRange textRangeInElement) {
     super(element, textRange);
     this.identifier = identifier;
     this.textRangeInElement = textRangeInElement;

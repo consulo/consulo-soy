@@ -22,11 +22,12 @@ import com.google.bamboo.soy.parser.SoyAtParamSingle;
 import com.google.bamboo.soy.parser.SoyTemplateDefinitionIdentifier;
 import com.google.bamboo.soy.parser.SoyTypes;
 import com.google.bamboo.soy.stubs.TemplateBlockStub;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiNamedElement;
-import com.intellij.psi.StubBasedPsiElement;
-import com.intellij.psi.util.PsiTreeUtil;
-import com.intellij.util.IncorrectOperationException;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.PsiNamedElement;
+import consulo.language.psi.StubBasedPsiElement;
+import consulo.language.psi.util.PsiTreeUtil;
+import consulo.language.util.IncorrectOperationException;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;

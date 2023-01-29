@@ -14,12 +14,12 @@
 
 package com.google.bamboo.soy.templates;
 
-import static com.intellij.patterns.PlatformPatterns.psiElement;
+import static consulo.language.pattern.PlatformPatterns.psiElement;
 
 import com.google.bamboo.soy.elements.CallStatementElement;
 import com.google.bamboo.soy.parser.SoyTemplateBlock;
-import com.intellij.patterns.PsiElementPattern;
-import com.intellij.psi.PsiElement;
+import consulo.language.psi.PsiElement;
+import consulo.language.pattern.PsiElementPattern;
 
 class Matchers {
 

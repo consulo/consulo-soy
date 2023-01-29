@@ -15,7 +15,7 @@
 package com.google.bamboo.soy.parser;
 
 import com.google.bamboo.soy.SoyLanguage;
-import com.intellij.psi.tree.IElementType;
+import consulo.language.ast.IElementType;
 import org.jetbrains.annotations.NonNls;
 import javax.annotation.Nonnull;
 

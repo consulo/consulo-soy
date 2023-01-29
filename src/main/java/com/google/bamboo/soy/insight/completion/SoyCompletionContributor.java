@@ -14,15 +14,7 @@
 
 package com.google.bamboo.soy.insight.completion;
 
-import static com.intellij.patterns.PlatformPatterns.psiElement;
-
-import java.util.Collection;
-import java.util.List;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
-import javax.annotation.Nonnull;
+import com.google.bamboo.soy.SoyLanguage;
 import com.google.bamboo.soy.elements.CallStatementElement;
 import com.google.bamboo.soy.elements.WhitespaceUtils;
 import com.google.bamboo.soy.lang.ParamUtils;
@@ -30,410 +22,387 @@ import com.google.bamboo.soy.lang.Scope;
 import com.google.bamboo.soy.lang.TemplateNameUtils;
 import com.google.bamboo.soy.lang.Variable;
 import com.google.bamboo.soy.parser.*;
-import com.intellij.codeInsight.completion.CompletionContributor;
-import com.intellij.codeInsight.completion.CompletionParameters;
-import com.intellij.codeInsight.completion.CompletionResultSet;
-import com.intellij.codeInsight.completion.CompletionType;
-import com.intellij.codeInsight.lookup.LookupElement;
-import com.intellij.codeInsight.lookup.LookupElementBuilder;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiWhiteSpace;
-import com.intellij.psi.util.PsiTreeUtil;
-import com.intellij.util.ProcessingContext;
-import consulo.codeInsight.completion.CompletionProvider;
+import consulo.annotation.component.ExtensionImpl;
+import consulo.language.Language;
+import consulo.language.editor.completion.*;
+import consulo.language.editor.completion.lookup.LookupElement;
+import consulo.language.editor.completion.lookup.LookupElementBuilder;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.PsiWhiteSpace;
+import consulo.language.psi.util.PsiTreeUtil;
+import consulo.language.util.ProcessingContext;
 
-public class SoyCompletionContributor extends CompletionContributor
-{
+import javax.annotation.Nonnull;
+import java.util.Collection;
+import java.util.List;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-	private static LookupElement soyListTypeLiteral =
-			LookupElementBuilder.create("list").withInsertHandler(new PostfixInsertHandler("<", ">"));
-	private static LookupElement soyMapTypeLiteral =
-			LookupElementBuilder.create("map").withInsertHandler(new PostfixInsertHandler("<", ",>"));
-	private static List<LookupElement> soyTypeLiterals =
-			Stream.concat(
-					Stream.of(
-							"any",
-							"null",
-							"?",
-							"string",
-							"bool",
-							"int",
-							"float",
-							"number",
-							"html",
-							"uri",
-							"js",
-							"css",
-							"attributes")
-							.map(LookupElementBuilder::create),
-					Stream.of(soyListTypeLiteral, soyMapTypeLiteral))
-					.collect(Collectors.toList());
-	private static List<LookupElement> kindLiterals =
-			Stream.of("text", "html", "attributes", "uri", "css", "js")
-					.map(LookupElementBuilder::create)
-					.collect(Collectors.toList());
+import static consulo.language.pattern.PlatformPatterns.psiElement;
 
-	public SoyCompletionContributor()
-	{
-		extendWithTemplateDefinitionLevelKeywords();
-		extendWithKindKeyword();
-		extendWithVariableNamesInScope();
-		extendWithTemplateCallIdentifiers();
-		extendWithIdentifierFragmentsForAlias();
-		extendWithParameterNames();
-		extendWithParameterTypes();
-	}
+@ExtensionImpl
+public class SoyCompletionContributor extends CompletionContributor {
 
-	/**
-	 * Complete the "visibility" and "stricthtml" keywords in template definition open tags.
-	 */
-	private void extendWithTemplateDefinitionLevelKeywords()
-	{
-		extend(
-				CompletionType.BASIC,
-				psiElement().andOr(psiElement().inside(SoyBeginTemplate.class)),
-				new CompletionProvider()
-				{
-					@Override
-					public void addCompletions(
-							@Nonnull CompletionParameters completionParameters,
-							ProcessingContext processingContext,
-							@Nonnull CompletionResultSet completionResultSet)
-					{
-						if(isPrecededBy(completionParameters.getPosition(),
-								elt -> elt instanceof SoyTemplateDefinitionIdentifier))
-						{
-							completionResultSet.addElement(
-									LookupElementBuilder.create("visibility=\"private\""));
-							completionResultSet.addElement(
-									LookupElementBuilder.create("stricthtml=\"true\""));
-						}
-					}
-				});
-	}
+  private static LookupElement soyListTypeLiteral =
+    LookupElementBuilder.create("list").withInsertHandler(new PostfixInsertHandler("<", ">"));
+  private static LookupElement soyMapTypeLiteral =
+    LookupElementBuilder.create("map").withInsertHandler(new PostfixInsertHandler("<", ",>"));
+  private static List<LookupElement> soyTypeLiterals =
+    Stream.concat(
+      Stream.of(
+        "any",
+        "null",
+        "?",
+        "string",
+        "bool",
+        "int",
+        "float",
+        "number",
+        "html",
+        "uri",
+        "js",
+        "css",
+        "attributes")
+            .map(LookupElementBuilder::create),
+      Stream.of(soyListTypeLiteral, soyMapTypeLiteral))
+          .collect(Collectors.toList());
+  private static List<LookupElement> kindLiterals =
+    Stream.of("text", "html", "attributes", "uri", "css", "js")
+          .map(LookupElementBuilder::create)
+          .collect(Collectors.toList());
 
-	/**
-	 * Complete the "kind" keyword in begin parameter tags and complete the supported kind literals in
-	 * the string literal.
-	 */
-	private void extendWithKindKeyword()
-	{
-		extend(
-				CompletionType.BASIC,
-				psiElement()
-						.andOr(
-								psiElement().inside(SoyBeginParamTag.class),
-								psiElement().inside(SoyBeginLet.class)),
-				new CompletionProvider()
-				{
-					@Override
-					public void addCompletions(
-							@Nonnull CompletionParameters completionParameters,
-							ProcessingContext processingContext,
-							@Nonnull CompletionResultSet completionResultSet)
-					{
-						if(isPrecededBy(completionParameters.getPosition(),
-								elt -> elt instanceof SoyParamSpecificationIdentifier
-										|| elt instanceof SoyVariableDefinitionIdentifier))
-						{
-							completionResultSet.addElement(
-									LookupElementBuilder.create("kind")
-											.withInsertHandler(new PostfixInsertHandler("=\"", "\"")));
-						}
-					}
-				});
+  public SoyCompletionContributor() {
+    extendWithTemplateDefinitionLevelKeywords();
+    extendWithKindKeyword();
+    extendWithVariableNamesInScope();
+    extendWithTemplateCallIdentifiers();
+    extendWithIdentifierFragmentsForAlias();
+    extendWithParameterNames();
+    extendWithParameterTypes();
+  }
 
-		// Complete supported kind literals for names for let statements and parameters in template
-		// function calls.
-		extend(
-				CompletionType.BASIC,
-				psiElement()
-						.andOr(
-								psiElement().inside(SoyBeginParamTag.class).afterLeaf("="),
-								psiElement().inside(SoyBeginLet.class).afterLeaf("=")),
-				new CompletionProvider()
-				{
-					@Override
-					public void addCompletions(
-							@Nonnull CompletionParameters completionParameters,
-							ProcessingContext processingContext,
-							@Nonnull CompletionResultSet completionResultSet)
-					{
-						completionResultSet.addAllElements(kindLiterals);
-					}
-				});
-	}
+  /**
+   * Complete the "visibility" and "stricthtml" keywords in template definition open tags.
+   */
+  private void extendWithTemplateDefinitionLevelKeywords() {
+    extend(
+      CompletionType.BASIC,
+      psiElement().andOr(psiElement().inside(SoyBeginTemplate.class)),
+      new CompletionProvider() {
+        @Override
+        public void addCompletions(
+          @Nonnull CompletionParameters completionParameters,
+          ProcessingContext processingContext,
+          @Nonnull CompletionResultSet completionResultSet) {
+          if (isPrecededBy(completionParameters.getPosition(),
+                           elt -> elt instanceof SoyTemplateDefinitionIdentifier)) {
+            completionResultSet.addElement(
+              LookupElementBuilder.create("visibility=\"private\""));
+            completionResultSet.addElement(
+              LookupElementBuilder.create("stricthtml=\"true\""));
+          }
+        }
+      });
+  }
 
-	/**
-	 * Complete variable names that are in lang when in an expression.
-	 */
-	private void extendWithVariableNamesInScope()
-	{
-		extend(
-				CompletionType.BASIC,
-				psiElement().andOr(
-						psiElement().inside(SoyExpr.class),
-						psiElement().inside(SoyBeginIf.class),
-						psiElement().inside(SoyBeginElseIf.class),
-						psiElement().inside(SoyBeginFor.class),
-						psiElement().inside(SoyBeginForeach.class),
-						psiElement().inside(SoyPrintStatement.class),
-						psiElement().inside(SoyBeginParamTag.class).and(
-								psiElement().afterLeafSkipping(psiElement(PsiWhiteSpace.class),
-										psiElement(SoyTypes.COLON)))
-				),
-				new CompletionProvider()
-				{
-					@Override
-					public void addCompletions(
-							@Nonnull CompletionParameters completionParameters,
-							ProcessingContext processingContext,
-							@Nonnull CompletionResultSet completionResultSet)
-					{
-						Collection<Variable> params =
-								Scope.getScopeOrEmpty(completionParameters.getPosition()).getVariables();
-						completionResultSet.addAllElements(
-								params
-										.stream()
-										.map(param -> "$" + param.name)
-										.map(LookupElementBuilder::create)
-										.collect(Collectors.toList()));
-					}
-				});
-	}
+  /**
+   * Complete the "kind" keyword in begin parameter tags and complete the supported kind literals in
+   * the string literal.
+   */
+  private void extendWithKindKeyword() {
+    extend(
+      CompletionType.BASIC,
+      psiElement()
+        .andOr(
+          psiElement().inside(SoyBeginParamTag.class),
+          psiElement().inside(SoyBeginLet.class)),
+      new CompletionProvider() {
+        @Override
+        public void addCompletions(
+          @Nonnull CompletionParameters completionParameters,
+          ProcessingContext processingContext,
+          @Nonnull CompletionResultSet completionResultSet) {
+          if (isPrecededBy(completionParameters.getPosition(),
+                           elt -> elt instanceof SoyParamSpecificationIdentifier
+                             || elt instanceof SoyVariableDefinitionIdentifier)) {
+            completionResultSet.addElement(
+              LookupElementBuilder.create("kind")
+                                  .withInsertHandler(new PostfixInsertHandler("=\"", "\"")));
+          }
+        }
+      });
 
-	/**
-	 * Complete local template identifiers and global fully qualified template name fragments at
-	 * template call site.
-	 */
-	private void extendWithTemplateCallIdentifiers()
-	{
-		// Complete local template identifiers (only for {call})
-		extend(
-				CompletionType.BASIC,
-				psiElement().inside(SoyBeginCall.class),
-				new CompletionProvider()
-				{
-					@Override
-					public void addCompletions(
-							@Nonnull CompletionParameters completionParameters,
-							ProcessingContext processingContext,
-							@Nonnull CompletionResultSet completionResultSet)
-					{
-						if(
-								PsiTreeUtil.getParentOfType(
-										completionParameters.getPosition(), CallStatementElement.class).isDelegate())
-						{
-							return;
-						}
+    // Complete supported kind literals for names for let statements and parameters in template
+    // function calls.
+    extend(
+      CompletionType.BASIC,
+      psiElement()
+        .andOr(
+          psiElement().inside(SoyBeginParamTag.class).afterLeaf("="),
+          psiElement().inside(SoyBeginLet.class).afterLeaf("=")),
+      new CompletionProvider() {
+        @Override
+        public void addCompletions(
+          @Nonnull CompletionParameters completionParameters,
+          ProcessingContext processingContext,
+          @Nonnull CompletionResultSet completionResultSet) {
+          completionResultSet.addAllElements(kindLiterals);
+        }
+      });
+  }
 
-						completionResultSet.addAllElements(
-								TemplateNameUtils.findLocalTemplateNames(completionParameters.getPosition())
-										.stream()
-										.map(LookupElementBuilder::create)
-										.collect(Collectors.toList()));
-					}
-				});
+  /**
+   * Complete variable names that are in lang when in an expression.
+   */
+  private void extendWithVariableNamesInScope() {
+    extend(
+      CompletionType.BASIC,
+      psiElement().andOr(
+        psiElement().inside(SoyExpr.class),
+        psiElement().inside(SoyBeginIf.class),
+        psiElement().inside(SoyBeginElseIf.class),
+        psiElement().inside(SoyBeginFor.class),
+        psiElement().inside(SoyBeginForeach.class),
+        psiElement().inside(SoyPrintStatement.class),
+        psiElement().inside(SoyBeginParamTag.class).and(
+          psiElement().afterLeafSkipping(psiElement(PsiWhiteSpace.class),
+                                         psiElement(SoyTypes.COLON)))
+      ),
+      new CompletionProvider() {
+        @Override
+        public void addCompletions(
+          @Nonnull CompletionParameters completionParameters,
+          ProcessingContext processingContext,
+          @Nonnull CompletionResultSet completionResultSet) {
+          Collection<Variable> params =
+            Scope.getScopeOrEmpty(completionParameters.getPosition()).getVariables();
+          completionResultSet.addAllElements(
+            params
+              .stream()
+              .map(param -> "$" + param.name)
+              .map(LookupElementBuilder::create)
+              .collect(Collectors.toList()));
+        }
+      });
+  }
 
-		// Complete fully qualified template identifiers fragments for {call} and {delcall}.
-		extend(
-				CompletionType.BASIC,
-				psiElement().inside(SoyBeginCall.class),
-				new CompletionProvider()
-				{
-					@Override
-					public void addCompletions(
-							@Nonnull CompletionParameters completionParameters,
-							ProcessingContext processingContext,
-							@Nonnull CompletionResultSet completionResultSet)
-					{
-						PsiElement identifierElement =
-								PsiTreeUtil.getParentOfType(
-										completionParameters.getPosition(), SoyTemplateReferenceIdentifier.class);
+  /**
+   * Complete local template identifiers and global fully qualified template name fragments at
+   * template call site.
+   */
+  private void extendWithTemplateCallIdentifiers() {
+    // Complete local template identifiers (only for {call})
+    extend(
+      CompletionType.BASIC,
+      psiElement().inside(SoyBeginCall.class),
+      new CompletionProvider() {
+        @Override
+        public void addCompletions(
+          @Nonnull CompletionParameters completionParameters,
+          ProcessingContext processingContext,
+          @Nonnull CompletionResultSet completionResultSet) {
+          if (
+            PsiTreeUtil.getParentOfType(
+              completionParameters.getPosition(), CallStatementElement.class).isDelegate()) {
+            return;
+          }
 
-						if(identifierElement == null)
-						{
-							return;
-						}
+          completionResultSet.addAllElements(
+            TemplateNameUtils.findLocalTemplateNames(completionParameters.getPosition())
+                             .stream()
+                             .map(LookupElementBuilder::create)
+                             .collect(Collectors.toList()));
+        }
+      });
 
-						String identifier = identifierElement.getText();
+    // Complete fully qualified template identifiers fragments for {call} and {delcall}.
+    extend(
+      CompletionType.BASIC,
+      psiElement().inside(SoyBeginCall.class),
+      new CompletionProvider() {
+        @Override
+        public void addCompletions(
+          @Nonnull CompletionParameters completionParameters,
+          ProcessingContext processingContext,
+          @Nonnull CompletionResultSet completionResultSet) {
+          PsiElement identifierElement =
+            PsiTreeUtil.getParentOfType(
+              completionParameters.getPosition(), SoyTemplateReferenceIdentifier.class);
 
-						boolean isDelegate =
-								PsiTreeUtil.getParentOfType(
-										identifierElement, CallStatementElement.class).isDelegate();
+          if (identifierElement == null) {
+            return;
+          }
 
-						String prefix = identifier.replaceFirst("IntellijIdeaRulezzz", "");
-						Collection<TemplateNameUtils.Fragment> completions =
-								TemplateNameUtils.getPossibleNextIdentifierFragments(
-										completionParameters.getPosition().getProject(),
-										identifierElement,
-										prefix,
-										isDelegate);
+          String identifier = identifierElement.getText();
 
-						completionResultSet.addAllElements(
-								completions
-										.stream()
-										.map(
-												(fragment) ->
-														LookupElementBuilder.create(fragment.text)
-																.withTypeText(
-																		fragment.isFinalFragment
-																				? (isDelegate ? "Delegate template" : "Template")
-																				: "Partial namespace"))
-										.collect(Collectors.toList()));
-					}
-				});
-	}
+          boolean isDelegate =
+            PsiTreeUtil.getParentOfType(
+              identifierElement, CallStatementElement.class).isDelegate();
 
-	/**
-	 * Complete fully qualified namespace fragments for alias declaration.
-	 */
-	private void extendWithIdentifierFragmentsForAlias()
-	{
-		extend(
-				CompletionType.BASIC,
-				psiElement().inside(SoyAliasBlock.class),
-				new CompletionProvider()
-				{
-					@Override
-					public void addCompletions(
-							@Nonnull CompletionParameters completionParameters,
-							ProcessingContext processingContext,
-							@Nonnull CompletionResultSet completionResultSet)
-					{
-						PsiElement identifierElement =
-								PsiTreeUtil.getParentOfType(
-										completionParameters.getPosition(), SoyNamespaceIdentifier.class);
-						String identifier = identifierElement == null ? "" : identifierElement.getText();
+          String prefix = identifier.replaceFirst("IntellijIdeaRulezzz", "");
+          Collection<TemplateNameUtils.Fragment> completions =
+            TemplateNameUtils.getPossibleNextIdentifierFragments(
+              completionParameters.getPosition().getProject(),
+              identifierElement,
+              prefix,
+              isDelegate);
 
-						String prefix = identifier.replaceFirst("IntellijIdeaRulezzz", "");
-						Collection<TemplateNameUtils.Fragment> completions =
-								TemplateNameUtils.getTemplateNamespaceFragments(
-										completionParameters.getPosition().getProject(), prefix);
+          completionResultSet.addAllElements(
+            completions
+              .stream()
+              .map(
+                (fragment) ->
+                  LookupElementBuilder.create(fragment.text)
+                                      .withTypeText(
+                                        fragment.isFinalFragment
+                                          ? (isDelegate ? "Delegate template" : "Template")
+                                          : "Partial namespace"))
+              .collect(Collectors.toList()));
+        }
+      });
+  }
 
-						completionResultSet.addAllElements(
-								completions
-										.stream()
-										.map(
-												(fragment) ->
-														LookupElementBuilder.create(fragment.text)
-																.withTypeText(
-																		fragment.isFinalFragment ? "Namespace" : "Partial namespace"))
-										.collect(Collectors.toList()));
-					}
-				});
-	}
+  /**
+   * Complete fully qualified namespace fragments for alias declaration.
+   */
+  private void extendWithIdentifierFragmentsForAlias() {
+    extend(
+      CompletionType.BASIC,
+      psiElement().inside(SoyAliasBlock.class),
+      new CompletionProvider() {
+        @Override
+        public void addCompletions(
+          @Nonnull CompletionParameters completionParameters,
+          ProcessingContext processingContext,
+          @Nonnull CompletionResultSet completionResultSet) {
+          PsiElement identifierElement =
+            PsiTreeUtil.getParentOfType(
+              completionParameters.getPosition(), SoyNamespaceIdentifier.class);
+          String identifier = identifierElement == null ? "" : identifierElement.getText();
 
-	/**
-	 * Complete parameter names for {param .. /} in template function calls.
-	 */
-	private void extendWithParameterNames()
-	{
-		extend(
-				CompletionType.BASIC,
-				psiElement()
-						.inside(SoyBeginParamTag.class)
-						.and(
-								psiElement()
-										.afterLeafSkipping(
-												psiElement(PsiWhiteSpace.class), psiElement().withText("param"))),
-				new CompletionProvider()
-				{
-					@Override
-					public void addCompletions(
-							@Nonnull CompletionParameters completionParameters,
-							ProcessingContext processingContext,
-							@Nonnull CompletionResultSet completionResultSet)
-					{
-						PsiElement position = completionParameters.getPosition();
-						CallStatementElement callStatement =
-								(CallStatementElement)
-										PsiTreeUtil
-												.findFirstParent(position, elt -> elt instanceof CallStatementElement);
+          String prefix = identifier.replaceFirst("IntellijIdeaRulezzz", "");
+          Collection<TemplateNameUtils.Fragment> completions =
+            TemplateNameUtils.getTemplateNamespaceFragments(
+              completionParameters.getPosition().getProject(), prefix);
 
-						if(callStatement == null)
-						{
-							return;
-						}
+          completionResultSet.addAllElements(
+            completions
+              .stream()
+              .map(
+                (fragment) ->
+                  LookupElementBuilder.create(fragment.text)
+                                      .withTypeText(
+                                        fragment.isFinalFragment ? "Namespace" : "Partial namespace"))
+              .collect(Collectors.toList()));
+        }
+      });
+  }
 
-						PsiElement identifier = PsiTreeUtil
-								.findChildOfType(callStatement, SoyTemplateReferenceIdentifier.class);
+  /**
+   * Complete parameter names for {param .. /} in template function calls.
+   */
+  private void extendWithParameterNames() {
+    extend(
+      CompletionType.BASIC,
+      psiElement()
+        .inside(SoyBeginParamTag.class)
+        .and(
+          psiElement()
+            .afterLeafSkipping(
+              psiElement(PsiWhiteSpace.class), psiElement().withText("param"))),
+      new CompletionProvider() {
+        @Override
+        public void addCompletions(
+          @Nonnull CompletionParameters completionParameters,
+          ProcessingContext processingContext,
+          @Nonnull CompletionResultSet completionResultSet) {
+          PsiElement position = completionParameters.getPosition();
+          CallStatementElement callStatement =
+            (CallStatementElement)
+              PsiTreeUtil
+                .findFirstParent(position, elt -> elt instanceof CallStatementElement);
 
-						if(identifier == null)
-						{
-							return;
-						}
+          if (callStatement == null) {
+            return;
+          }
 
-						Collection<String> givenParameters = ParamUtils.getGivenParameters(callStatement);
-						List<Variable> parameters =
-								ParamUtils.getParametersForInvocation(position, identifier.getText())
-										.stream()
-										.filter(v -> !givenParameters.contains(v.name))
-										.collect(Collectors.toList());
+          PsiElement identifier = PsiTreeUtil
+            .findChildOfType(callStatement, SoyTemplateReferenceIdentifier.class);
 
-						completionResultSet.addAllElements(
-								parameters
-										.stream()
-										.map(
-												(variable) ->
-														LookupElementBuilder.create(variable.name).withTypeText(variable.type))
-										.collect(Collectors.toList()));
-					}
-				});
-	}
+          if (identifier == null) {
+            return;
+          }
 
-	/**
-	 * Complete types in {@param ...} .
-	 */
-	private void extendWithParameterTypes()
-	{
-		// Complete types in @param.
-		extend(
-				CompletionType.BASIC,
-				psiElement()
-						.andOr(
-								psiElement().inside(SoyAtParamSingle.class).afterLeaf(":"),
-								psiElement().inside(SoyAtInjectSingle.class).afterLeaf(":"),
+          Collection<String> givenParameters = ParamUtils.getGivenParameters(callStatement);
+          List<Variable> parameters =
+            ParamUtils.getParametersForInvocation(position, identifier.getText())
+                      .stream()
+                      .filter(v -> !givenParameters.contains(v.name))
+                      .collect(Collectors.toList());
 
-								// List type literal.
-								psiElement().inside(SoyListType.class).afterLeaf("<"),
+          completionResultSet.addAllElements(
+            parameters
+              .stream()
+              .map(
+                (variable) ->
+                  LookupElementBuilder.create(variable.name).withTypeText(variable.type))
+              .collect(Collectors.toList()));
+        }
+      });
+  }
 
-								// Map type literal.
-								psiElement().inside(SoyMapType.class).afterLeaf("<"),
-								psiElement().inside(SoyMapType.class).afterLeaf(",")),
-				new CompletionProvider()
-				{
-					@Override
-					public void addCompletions(
-							@Nonnull CompletionParameters completionParameters,
-							ProcessingContext processingContext,
-							@Nonnull CompletionResultSet completionResultSet)
-					{
-						completionResultSet.addAllElements(soyTypeLiterals);
-					}
-				});
-	}
+  /**
+   * Complete types in {@param ...} .
+   */
+  private void extendWithParameterTypes() {
+    // Complete types in @param.
+    extend(
+      CompletionType.BASIC,
+      psiElement()
+        .andOr(
+          psiElement().inside(SoyAtParamSingle.class).afterLeaf(":"),
+          psiElement().inside(SoyAtInjectSingle.class).afterLeaf(":"),
 
-	@Override
-	public boolean invokeAutoPopup(@Nonnull PsiElement position, char typeChar)
-	{
-		return (typeChar == '.' || typeChar == '$');
-	}
+          // List type literal.
+          psiElement().inside(SoyListType.class).afterLeaf("<"),
 
-	/**
-	 * Whether the given element is directly preceded by an element matching the predicate (ignoring
-	 * whitespaces).
-	 */
-	private boolean isPrecededBy(PsiElement startElement, Predicate<PsiElement> predicate)
-	{
-		for(PsiElement element = WhitespaceUtils.getPrevMeaningSibling(startElement); element != null;
-				element = WhitespaceUtils.getPrevMeaningSibling(element))
-		{
-			if(predicate.test(element))
-			{
-				return true;
-			}
-		}
-		return false;
-	}
+          // Map type literal.
+          psiElement().inside(SoyMapType.class).afterLeaf("<"),
+          psiElement().inside(SoyMapType.class).afterLeaf(",")),
+      new CompletionProvider() {
+        @Override
+        public void addCompletions(
+          @Nonnull CompletionParameters completionParameters,
+          ProcessingContext processingContext,
+          @Nonnull CompletionResultSet completionResultSet) {
+          completionResultSet.addAllElements(soyTypeLiterals);
+        }
+      });
+  }
+
+  @Override
+  public boolean invokeAutoPopup(@Nonnull PsiElement position, char typeChar) {
+    return (typeChar == '.' || typeChar == '$');
+  }
+
+  /**
+   * Whether the given element is directly preceded by an element matching the predicate (ignoring
+   * whitespaces).
+   */
+  private boolean isPrecededBy(PsiElement startElement, Predicate<PsiElement> predicate) {
+    for (PsiElement element = WhitespaceUtils.getPrevMeaningSibling(startElement); element != null;
+         element = WhitespaceUtils.getPrevMeaningSibling(element)) {
+      if (predicate.test(element)) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  @Nonnull
+  @Override
+  public Language getLanguage() {
+    return SoyLanguage.INSTANCE;
+  }
 }

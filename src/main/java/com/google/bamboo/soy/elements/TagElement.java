@@ -15,8 +15,8 @@
 package com.google.bamboo.soy.elements;
 
 import com.google.bamboo.soy.lexer.SoyTokenTypes;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.tree.IElementType;
+import consulo.language.psi.PsiElement;
+import consulo.language.ast.IElementType;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;

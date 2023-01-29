@@ -20,11 +20,12 @@ import com.google.bamboo.soy.parser.SoyTemplateBlock;
 import com.google.bamboo.soy.stubs.index.NamespaceDeclarationIndex;
 import com.google.bamboo.soy.stubs.index.TemplateBlockIndex;
 import com.google.common.collect.HashBiMap;
-import com.intellij.openapi.project.Project;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiFile;
-import com.intellij.psi.search.GlobalSearchScope;
-import com.intellij.psi.util.PsiTreeUtil;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.util.PsiTreeUtil;
+import consulo.project.Project;
+import consulo.language.psi.PsiFile;
+import consulo.language.psi.scope.GlobalSearchScope;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -43,14 +44,14 @@ import java.util.stream.Stream;
 public class TemplateNameUtils {
   /** Finds the only SoyTemplateBlock by its exact name. */
   public static SoyTemplateBlock findTemplateDeclaration(
-      PsiElement element, String templateIdentifier) {
+    PsiElement element, String templateIdentifier) {
     List<SoyTemplateBlock> declarations = findTemplateDeclarations(element, templateIdentifier);
     return declarations.size() >= 1 ? declarations.get(0) : null;
   }
 
   /** Finds the matching SoyTemplateBlock by their exact name. */
   public static List<SoyTemplateBlock> findTemplateDeclarations(
-      PsiElement element, String identifier) {
+    PsiElement element, String identifier) {
     if (identifier.startsWith(".")) {
       identifier = ((SoyFile) element.getContainingFile()).getNamespace() + identifier;
     } else {
@@ -76,7 +77,7 @@ public class TemplateNameUtils {
             (key) ->
                 TemplateBlockIndex.INSTANCE
                     .get(
-                        key, file.getProject(), GlobalSearchScope.fileScope(file.getOriginalFile()))
+                      key, file.getProject(), GlobalSearchScope.fileScope(file.getOriginalFile()))
                     .stream()
                     .filter((block) -> !block.isDelegate())
                     .map(SoyTemplateBlock::getName))
@@ -98,7 +99,7 @@ public class TemplateNameUtils {
    * and template visibility.
    */
   public static Collection<Fragment> getPossibleNextIdentifierFragments(
-      Project project, PsiElement identifierElement, String identifier, boolean isDelegate) {
+    Project project, PsiElement identifierElement, String identifier, boolean isDelegate) {
     AliasMapper mapper = new AliasMapper(identifierElement.getContainingFile());
     GlobalSearchScope scope =
         isDelegate
@@ -106,7 +107,7 @@ public class TemplateNameUtils {
             : GlobalSearchScope.allScope(project)
                 .intersectWith(
                     GlobalSearchScope.notScope(
-                        GlobalSearchScope.fileScope(
+                      GlobalSearchScope.fileScope(
                             identifierElement.getContainingFile().getOriginalFile())));
 
     return TemplateBlockIndex.INSTANCE

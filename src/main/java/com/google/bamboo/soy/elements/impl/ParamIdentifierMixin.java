@@ -16,9 +16,9 @@ package com.google.bamboo.soy.elements.impl;
 
 import com.google.bamboo.soy.elements.ParamIdentifierElement;
 import com.google.bamboo.soy.elements.references.ParameterDefinitionReference;
-import com.intellij.extapi.psi.ASTWrapperPsiElement;
-import com.intellij.lang.ASTNode;
-import com.intellij.psi.PsiReference;
+import consulo.language.ast.ASTNode;
+import consulo.language.impl.psi.ASTWrapperPsiElement;
+import consulo.language.psi.PsiReference;
 import javax.annotation.Nonnull;
 
 public class ParamIdentifierMixin extends ASTWrapperPsiElement implements ParamIdentifierElement {

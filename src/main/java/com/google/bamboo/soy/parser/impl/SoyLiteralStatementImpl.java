@@ -1,16 +1,16 @@
 // This is a generated file. Not intended for manual editing.
 package com.google.bamboo.soy.parser.impl;
 
-import java.util.List;
 import javax.annotation.Nullable;
 import javax.annotation.Nonnull;
-import com.intellij.lang.ASTNode;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiElementVisitor;
-import com.intellij.psi.util.PsiTreeUtil;
+import consulo.language.ast.ASTNode;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.PsiElementVisitor;
+
 import static com.google.bamboo.soy.parser.SoyTypes.*;
-import com.intellij.extapi.psi.ASTWrapperPsiElement;
+
 import com.google.bamboo.soy.parser.*;
+import consulo.language.impl.psi.ASTWrapperPsiElement;
 
 public class SoyLiteralStatementImpl extends ASTWrapperPsiElement implements SoyLiteralStatement {
 

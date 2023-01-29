@@ -14,7 +14,7 @@
 
 package com.google.bamboo.soy;
 
-import com.intellij.openapi.util.io.FileUtil;
+import consulo.util.io.FileUtil;
 import java.io.File;
 
 public final class SoyTestUtils {

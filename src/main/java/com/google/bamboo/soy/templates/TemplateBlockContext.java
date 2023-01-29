@@ -14,15 +14,20 @@
 
 package com.google.bamboo.soy.templates;
 
-import static com.intellij.patterns.PlatformPatterns.psiElement;
-
 import com.google.bamboo.soy.file.SoyFileType;
-import com.intellij.codeInsight.template.TemplateContextType;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiFile;
+import consulo.annotation.component.ExtensionImpl;
+import consulo.language.editor.template.context.TemplateContextType;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.PsiFile;
+import jakarta.inject.Inject;
+
 import javax.annotation.Nonnull;
 
+import static consulo.language.pattern.PlatformPatterns.psiElement;
+
+@ExtensionImpl
 public class TemplateBlockContext extends TemplateContextType {
+  @Inject
   protected TemplateBlockContext() {
     super("CLOSURE_TEMPLATE_TEMPLATE_BLOCK", "Closure template: template block");
   }
@@ -33,8 +38,8 @@ public class TemplateBlockContext extends TemplateContextType {
 
     PsiElement element = file.findElementAt(offset);
     return psiElement()
-        .inside(Matchers.templateBlockMatcher)
-        .andNot(psiElement().withAncestor(2, Matchers.templateCallStatementMatcher))
-        .accepts(element);
+      .inside(Matchers.templateBlockMatcher)
+      .andNot(psiElement().withAncestor(2, Matchers.templateCallStatementMatcher))
+      .accepts(element);
   }
 }

@@ -4,10 +4,10 @@ package com.google.bamboo.soy.parser;
 import java.util.List;
 import javax.annotation.Nullable;
 import javax.annotation.Nonnull;
-import com.intellij.psi.PsiElement;
+
 import com.google.bamboo.soy.elements.TemplateBlockElement;
-import com.intellij.psi.StubBasedPsiElement;
 import com.google.bamboo.soy.stubs.TemplateBlockStub;
+import consulo.language.psi.StubBasedPsiElement;
 
 public interface SoyTemplateBlock extends TemplateBlockElement, StubBasedPsiElement<TemplateBlockStub> {
 

@@ -26,10 +26,10 @@ import com.google.bamboo.soy.parser.SoyTemplateDefinitionIdentifier;
 import com.google.bamboo.soy.parser.SoyVariableDefinitionIdentifier;
 import com.google.bamboo.soy.parser.SoyVariableReferenceIdentifier;
 import com.google.common.collect.Iterables;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiReference;
-import com.intellij.psi.util.PsiTreeUtil;
-import com.intellij.usageView.UsageInfo;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.PsiReference;
+import consulo.language.psi.util.PsiTreeUtil;
+import consulo.usage.UsageInfo;
 
 public abstract class SoyReferenceTest extends SoyCodeInsightFixtureTestCase {
 

@@ -17,18 +17,14 @@ package com.google.bamboo.soy.stubs;
 import com.google.bamboo.soy.SoyLanguage;
 import com.google.bamboo.soy.parser.SoyAtParamSingle;
 import com.google.bamboo.soy.parser.impl.SoyAtParamSingleImpl;
-import com.intellij.psi.stubs.IStubElementType;
-import com.intellij.psi.stubs.IndexSink;
-import com.intellij.psi.stubs.NamedStubBase;
-import com.intellij.psi.stubs.StubElement;
-import com.intellij.psi.stubs.StubInputStream;
-import com.intellij.psi.stubs.StubOutputStream;
-import com.intellij.util.io.StringRef;
-import java.io.IOException;
+import consulo.index.io.StringRef;
+import consulo.language.psi.stub.*;
+
 import javax.annotation.Nonnull;
+import java.io.IOException;
 
 public class AtParamStub extends NamedStubBase<SoyAtParamSingle> {
-  static final Type TYPE = new Type();
+  public static final Type TYPE = new Type();
   public final String type;
   public final boolean isOptional;
 

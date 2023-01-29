@@ -15,10 +15,11 @@
 package com.google.bamboo.soy.elements;
 
 import com.google.bamboo.soy.stubs.NamespaceDeclarationStub;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiNamedElement;
-import com.intellij.psi.StubBasedPsiElement;
-import com.intellij.util.IncorrectOperationException;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.PsiNamedElement;
+import consulo.language.psi.StubBasedPsiElement;
+import consulo.language.util.IncorrectOperationException;
+
 import javax.annotation.Nonnull;
 
 /** The PSI element that represents the namespace name in a namespace definition. */

@@ -15,36 +15,25 @@
 package com.google.bamboo.soy.format.blocks;
 
 import com.google.bamboo.soy.SoyLanguage;
-import com.google.bamboo.soy.elements.ParamElement;
-import com.google.bamboo.soy.elements.StatementElement;
-import com.google.bamboo.soy.elements.TagBlockElement;
-import com.google.bamboo.soy.elements.TagElement;
-import com.google.bamboo.soy.elements.WhitespaceUtils;
+import com.google.bamboo.soy.elements.*;
 import com.google.bamboo.soy.format.SoySpacing;
-import com.google.bamboo.soy.parser.SoyAtInjectSingle;
-import com.google.bamboo.soy.parser.SoyAtParamSingle;
-import com.google.bamboo.soy.parser.SoyChoiceClause;
-import com.google.bamboo.soy.parser.SoyStatementList;
-import com.google.bamboo.soy.parser.SoyTypes;
-import com.intellij.formatting.Alignment;
-import com.intellij.formatting.Block;
-import com.intellij.formatting.Indent;
-import com.intellij.formatting.Spacing;
-import com.intellij.formatting.templateLanguages.BlockWithParent;
-import com.intellij.formatting.templateLanguages.DataLanguageBlockWrapper;
-import com.intellij.formatting.templateLanguages.TemplateLanguageBlock;
-import com.intellij.formatting.templateLanguages.TemplateLanguageBlockFactory;
-import com.intellij.lang.ASTNode;
-import com.intellij.openapi.util.TextRange;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.codeStyle.CodeStyleSettings;
-import com.intellij.psi.formatter.xml.HtmlPolicy;
-import com.intellij.psi.formatter.xml.SyntheticBlock;
-import com.intellij.psi.tree.IElementType;
-import com.intellij.psi.xml.XmlTag;
-import java.util.List;
+import com.google.bamboo.soy.parser.*;
+import consulo.document.util.TextRange;
+import consulo.language.ast.ASTNode;
+import consulo.language.ast.IElementType;
+import consulo.language.codeStyle.*;
+import consulo.language.codeStyle.template.BlockWithParent;
+import consulo.language.codeStyle.template.DataLanguageBlockWrapper;
+import consulo.language.codeStyle.template.TemplateLanguageBlock;
+import consulo.language.codeStyle.template.TemplateLanguageBlockFactory;
+import consulo.language.psi.PsiElement;
+import consulo.xml.psi.formatter.xml.HtmlPolicy;
+import consulo.xml.psi.formatter.xml.SyntheticBlock;
+import consulo.xml.psi.xml.XmlTag;
+
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import java.util.List;
 
 public class SoyBlock extends TemplateLanguageBlock {
 
@@ -256,7 +245,7 @@ public class SoyBlock extends TemplateLanguageBlock {
     BlockWithParent grandParent = getParent().getParent();
     return isSynthetic(parent) && isXMLTagBlock(grandParent)
         && ((Block) grandParent).getTextRange().getStartOffset() == ((Block) parent).getTextRange()
-        .getStartOffset();
+                                                                                                                                          .getStartOffset();
   }
 
   private boolean hasIndentingForeignBlockParent() {

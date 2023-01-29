@@ -15,17 +15,20 @@
 package com.google.bamboo.soy.format;
 
 import com.google.bamboo.soy.SoyLanguage;
-import com.intellij.application.options.IndentOptionsEditor;
-import com.intellij.application.options.SmartIndentOptionsEditor;
-import com.intellij.application.options.XmlLanguageCodeStyleSettingsProvider;
-import com.intellij.lang.Language;
-import com.intellij.lang.html.HTMLLanguage;
-import com.intellij.openapi.util.io.StreamUtil;
-import com.intellij.psi.codeStyle.CommonCodeStyleSettings;
-import com.intellij.psi.codeStyle.LanguageCodeStyleSettingsProvider;
-import java.io.IOException;
-import javax.annotation.Nonnull;
+import consulo.annotation.component.ExtensionImpl;
+import consulo.language.Language;
+import consulo.language.codeStyle.CommonCodeStyleSettings;
+import consulo.language.codeStyle.setting.IndentOptionsEditor;
+import consulo.language.codeStyle.setting.LanguageCodeStyleSettingsProvider;
+import consulo.language.codeStyle.ui.setting.SmartIndentOptionsEditor;
+import consulo.util.io.StreamUtil;
+import consulo.xml.application.options.XmlLanguageCodeStyleSettingsProvider;
+import consulo.xml.lang.html.HTMLLanguage;
 
+import javax.annotation.Nonnull;
+import java.io.IOException;
+
+@ExtensionImpl
 public class SoyLanguageCodeStyleSettingsProvider extends LanguageCodeStyleSettingsProvider {
 
   @Nonnull

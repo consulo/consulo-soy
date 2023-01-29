@@ -15,8 +15,9 @@
 package com.google.bamboo.soy.elements;
 
 import com.google.bamboo.soy.parser.SoyEndTag;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.tree.IElementType;
+import consulo.language.ast.IElementType;
+import consulo.language.psi.PsiElement;
+
 import javax.annotation.Nonnull;
 
 public interface TagBlockElement extends PsiElement {

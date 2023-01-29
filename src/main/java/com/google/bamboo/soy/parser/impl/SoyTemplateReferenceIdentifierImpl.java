@@ -1,16 +1,14 @@
 // This is a generated file. Not intended for manual editing.
 package com.google.bamboo.soy.parser.impl;
 
-import java.util.List;
-import javax.annotation.Nullable;
 import javax.annotation.Nonnull;
-import com.intellij.lang.ASTNode;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiElementVisitor;
-import com.intellij.psi.util.PsiTreeUtil;
+import consulo.language.ast.ASTNode;
+import consulo.language.psi.PsiElementVisitor;
+
 import static com.google.bamboo.soy.parser.SoyTypes.*;
 import com.google.bamboo.soy.elements.impl.IdentifierMixin;
 import com.google.bamboo.soy.parser.*;
+import consulo.language.psi.PsiElement;
 
 public class SoyTemplateReferenceIdentifierImpl extends IdentifierMixin implements SoyTemplateReferenceIdentifier {
 

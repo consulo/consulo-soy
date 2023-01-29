@@ -14,10 +14,12 @@
 
 package com.google.bamboo.soy.file;
 
-import com.intellij.openapi.fileTypes.FileTypeConsumer;
-import com.intellij.openapi.fileTypes.FileTypeFactory;
+import consulo.annotation.component.ExtensionImpl;
+import consulo.virtualFileSystem.fileType.FileTypeConsumer;
+import consulo.virtualFileSystem.fileType.FileTypeFactory;
 import javax.annotation.Nonnull;
 
+@ExtensionImpl
 public class SoyFileTypeFactory extends FileTypeFactory {
   @Override
   public void createFileTypes(@Nonnull FileTypeConsumer fileTypeConsumer) {

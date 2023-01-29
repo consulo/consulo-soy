@@ -16,9 +16,9 @@ package com.google.bamboo.soy.insight.annotators;
 
 import com.google.bamboo.soy.parser.SoyCssStatement;
 import com.google.bamboo.soy.parser.SoyXidStatement;
-import com.intellij.lang.annotation.AnnotationHolder;
-import com.intellij.lang.annotation.Annotator;
-import com.intellij.psi.PsiElement;
+import consulo.language.editor.annotation.Annotator;
+import consulo.language.editor.annotation.AnnotationHolder;
+import consulo.language.psi.PsiElement;
 
 public class IdentifierSanityAnnotator implements Annotator {
 

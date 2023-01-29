@@ -30,12 +30,11 @@ import static com.google.bamboo.soy.parser.SoyTypes.TEMPLATE;
 import static com.google.bamboo.soy.parser.SoyTypes.TEMPLATE_BLOCK;
 
 import com.google.common.collect.ImmutableMap;
-import com.intellij.lang.PsiBuilder;
-import com.intellij.lang.PsiBuilder.Marker;
-import com.intellij.lang.WhitespacesAndCommentsBinder;
-import com.intellij.lang.WhitespacesAndCommentsBinder.RecursiveBinder;
-import com.intellij.lang.parser.GeneratedParserUtilBase;
-import com.intellij.psi.tree.IElementType;
+import consulo.language.impl.parser.GeneratedParserUtilBase;
+import consulo.language.parser.PsiBuilder;
+import consulo.language.parser.PsiBuilder.Marker;
+import consulo.language.parser.WhitespacesAndCommentsBinder;
+import consulo.language.ast.IElementType;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -51,7 +50,7 @@ public class SoyParserUtil extends GeneratedParserUtilBase {
       new WhitespacesAndCommentsBinder.RecursiveBinder() {
         @Override
         public int getEdgePosition(List<IElementType> tokens, boolean atStreamEdge,
-            TokenTextGetter getter) {
+                                   TokenTextGetter getter) {
           int newLinesFound = 0;
           for (int i = tokens.size() - 1; i > 0; i--) {
             if (tokens.get(i) == DOC_COMMENT_BLOCK) {

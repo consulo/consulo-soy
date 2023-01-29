@@ -20,17 +20,17 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import com.google.bamboo.soy.SoyLanguage;
-import com.intellij.lang.Language;
-import com.intellij.openapi.editor.colors.EditorColorsScheme;
-import com.intellij.openapi.editor.ex.util.LayerDescriptor;
-import com.intellij.openapi.editor.ex.util.LayeredLexerEditorHighlighter;
-import com.intellij.openapi.fileTypes.FileType;
-import com.intellij.openapi.fileTypes.PlainTextFileType;
-import com.intellij.openapi.fileTypes.SyntaxHighlighter;
-import com.intellij.openapi.fileTypes.SyntaxHighlighterFactory;
-import com.intellij.openapi.project.Project;
-import com.intellij.openapi.vfs.VirtualFile;
-import com.intellij.psi.templateLanguages.TemplateDataLanguageMappings;
+import consulo.language.Language;
+import consulo.colorScheme.EditorColorsScheme;
+import consulo.language.editor.highlight.LayerDescriptor;
+import consulo.language.editor.highlight.LayeredLexerEditorHighlighter;
+import consulo.virtualFileSystem.fileType.FileType;
+import consulo.language.plain.PlainTextFileType;
+import consulo.language.editor.highlight.SyntaxHighlighter;
+import consulo.language.editor.highlight.SyntaxHighlighterFactory;
+import consulo.project.Project;
+import consulo.virtualFileSystem.VirtualFile;
+import consulo.language.template.TemplateDataLanguageMappings;
 
 public class SoyLayeredHighlighter extends LayeredLexerEditorHighlighter {
   public SoyLayeredHighlighter(

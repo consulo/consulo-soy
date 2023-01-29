@@ -15,9 +15,10 @@
 package com.google.bamboo.soy.insight.annotators;
 
 import com.google.bamboo.soy.parser.SoyTemplateBlock;
-import com.intellij.lang.annotation.AnnotationHolder;
-import com.intellij.lang.annotation.Annotator;
-import com.intellij.psi.PsiElement;
+import consulo.language.editor.annotation.Annotator;
+import consulo.language.psi.PsiElement;
+import consulo.language.editor.annotation.AnnotationHolder;
+
 import javax.annotation.Nonnull;
 
 public class DeltemplateIdentifierAnnotator implements Annotator {

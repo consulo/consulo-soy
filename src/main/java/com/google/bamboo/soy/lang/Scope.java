@@ -2,8 +2,9 @@ package com.google.bamboo.soy.lang;
 
 import com.google.bamboo.soy.parser.SoyStatementList;
 import com.google.bamboo.soy.parser.SoyTemplateBlock;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.util.PsiTreeUtil;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.util.PsiTreeUtil;
+
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.Nonnull;

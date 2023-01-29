@@ -3,7 +3,7 @@ package com.google.bamboo.soy.insight.structure;
 import javax.annotation.Nullable;
 
 import com.google.bamboo.soy.elements.ParamElement;
-import com.intellij.openapi.util.text.StringUtil;
+import consulo.util.lang.StringUtil;
 
 /**
  * @author VISTALL

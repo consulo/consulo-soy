@@ -5,7 +5,7 @@ import com.google.bamboo.soy.parser.SoyLetCompoundStatement;
 import com.google.bamboo.soy.parser.SoyLetSingleStatement;
 import com.google.bamboo.soy.lang.Scope;
 import com.google.bamboo.soy.parser.SoyVariableDefinitionIdentifier;
-import com.intellij.psi.PsiElement;
+import consulo.language.psi.PsiElement;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;

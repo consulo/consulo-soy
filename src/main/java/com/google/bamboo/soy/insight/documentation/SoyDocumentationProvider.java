@@ -14,21 +14,26 @@
 
 package com.google.bamboo.soy.insight.documentation;
 
+import com.google.bamboo.soy.SoyLanguage;
 import com.google.bamboo.soy.elements.TagElement;
 import com.google.bamboo.soy.parser.SoyTypes;
-import com.intellij.lang.documentation.AbstractDocumentationProvider;
-import com.intellij.openapi.editor.Document;
-import com.intellij.openapi.fileEditor.FileDocumentManager;
-import com.intellij.psi.PsiComment;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.util.PsiTreeUtil;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import consulo.annotation.component.ExtensionImpl;
+import consulo.document.Document;
+import consulo.document.FileDocumentManager;
+import consulo.language.Language;
+import consulo.language.editor.documentation.LanguageDocumentationProvider;
+import consulo.language.psi.PsiComment;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.util.PsiTreeUtil;
 import org.jetbrains.annotations.Contract;
+
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-public class SoyDocumentationProvider extends AbstractDocumentationProvider {
+@ExtensionImpl
+public class SoyDocumentationProvider implements LanguageDocumentationProvider {
 
   private static int MAX_COMMENT_PREVIEW_LENGTH = 96;
 
@@ -86,11 +91,11 @@ public class SoyDocumentationProvider extends AbstractDocumentationProvider {
   private static String getDocCommentForEnclosingTag(PsiElement element) {
     PsiElement parentTag = PsiTreeUtil.findFirstParent(element, TagElement.class::isInstance);
     return PsiTreeUtil.getChildrenOfTypeAsList(parentTag, PsiComment.class)
-        .stream()
-        .filter(SoyDocumentationProvider::isDocComment)
-        .findFirst()
-        .map(PsiElement::getText)
-        .orElse(null);
+                                                .stream()
+                                                .filter(SoyDocumentationProvider::isDocComment)
+                                                .findFirst()
+                                                .map(PsiElement::getText)
+                                                .orElse(null);
   }
 
   @Nullable
@@ -112,5 +117,11 @@ public class SoyDocumentationProvider extends AbstractDocumentationProvider {
       navigateInfo.append(produceCommentPreview(optDoc));
     }
     return navigateInfo.toString();
+  }
+
+  @Nonnull
+  @Override
+  public Language getLanguage() {
+    return SoyLanguage.INSTANCE;
   }
 }

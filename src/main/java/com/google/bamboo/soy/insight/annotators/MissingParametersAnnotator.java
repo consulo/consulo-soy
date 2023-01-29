@@ -14,17 +14,18 @@
 
 package com.google.bamboo.soy.insight.annotators;
 
-import com.google.bamboo.soy.lang.ParamUtils;
 import com.google.bamboo.soy.elements.CallStatementElement;
+import com.google.bamboo.soy.lang.ParamUtils;
 import com.google.bamboo.soy.parser.SoyTemplateReferenceIdentifier;
-import com.intellij.lang.annotation.AnnotationHolder;
-import com.intellij.lang.annotation.Annotator;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.util.PsiTreeUtil;
+import consulo.language.editor.annotation.AnnotationHolder;
+import consulo.language.editor.annotation.Annotator;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.util.PsiTreeUtil;
+
+import javax.annotation.Nonnull;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
-import javax.annotation.Nonnull;
 
 public class MissingParametersAnnotator implements Annotator {
   @Override

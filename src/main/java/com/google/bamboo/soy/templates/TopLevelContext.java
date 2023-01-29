@@ -14,15 +14,20 @@
 
 package com.google.bamboo.soy.templates;
 
-import static com.intellij.patterns.PlatformPatterns.psiElement;
-
 import com.google.bamboo.soy.file.SoyFileType;
-import com.intellij.codeInsight.template.TemplateContextType;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiFile;
+import consulo.annotation.component.ExtensionImpl;
+import consulo.language.editor.template.context.TemplateContextType;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.PsiFile;
+import jakarta.inject.Inject;
+
 import javax.annotation.Nonnull;
 
+import static consulo.language.pattern.PlatformPatterns.psiElement;
+
+@ExtensionImpl
 public class TopLevelContext extends TemplateContextType {
+  @Inject
   protected TopLevelContext() {
     super("CLOSURE_TEMPLATE_TOP_LEVEL", "Closure template: top level");
   }

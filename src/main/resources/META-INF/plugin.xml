@@ -1,101 +1,52 @@
 <consulo-plugin url="https://github.com/consulo/consulo-soy">
-	<id>consulo.soy</id>
-	<name>Bamboo Soy</name>
-	<version>SNAPSHOT</version>
-	<vendor>Google</vendor>
-	<depends>com.intellij.xml</depends>
+  <id>consulo.soy</id>
+  <name>Bamboo Soy</name>
+  <version>SNAPSHOT</version>
+  <vendor>Google</vendor>
+  <depends>com.intellij.xml</depends>
 
-	<description><![CDATA[
+  <description><![CDATA[
       Syntax highlighting, autocompletion and static analysis for your closure template files.
     ]]>
-	</description>
+  </description>
 
-	<tags>
-		<tag>template.language</tag>
-	</tags>
+  <tags>
+    <tag>template.language</tag>
+  </tags>
 
-	<extensions defaultExtensionNs="com.intellij.xml">
-		<html.scriptContentProvider language="ClosureTemplate" implementationClass="consulo.soy.SoyHtmlScriptContentProvider"/>
-	</extensions>
+  <extensions defaultExtensionNs="com.intellij">
 
-	<extensions defaultExtensionNs="com.intellij">
-		<fileTypeFactory
-				implementation="com.google.bamboo.soy.file.SoyFileTypeFactory"/>
-		<lang.psiStructureViewFactory language="ClosureTemplate"
-									  implementationClass="com.google.bamboo.soy.insight.structure.SoyStructureViewFactory"/>
-		<lang.fileViewProviderFactory language="ClosureTemplate"
-									  implementationClass="com.google.bamboo.soy.file.SoyFileViewProviderFactory"/>
-		<lang.formatter language="ClosureTemplate"
-						implementationClass="com.google.bamboo.soy.format.SoyFormattingModelBuilder"/>
-		<lang.syntaxHighlighterFactory
-				language="ClosureTemplate"
-				implementationClass="com.google.bamboo.soy.insight.highlight.SoySyntaxHighlighterFactory"/>
-		<colorSettingsPage
-				implementation="com.google.bamboo.soy.SoyColorSettingsPage"/>
-		<lang.parserDefinition
-				language="ClosureTemplate"
-				implementationClass="com.google.bamboo.soy.parser.SoyParserDefinition"/>
-		<stubElementTypeHolder class="com.google.bamboo.soy.parser.SoyTypes"/>
-		<lang.commenter
-				language="ClosureTemplate"
-				implementationClass="com.google.bamboo.soy.SoyCommenter"/>
-		<lang.findUsagesProvider
-				language="ClosureTemplate"
-				implementationClass="com.google.bamboo.soy.SoyFindUsagesProvider"/>
-		<completion.contributor
-				language="ClosureTemplate"
-				implementationClass="com.google.bamboo.soy.insight.completion.SoyCompletionContributor"/>
-		<enterHandlerDelegate
-				implementation="com.google.bamboo.soy.insight.typedhandlers.EnterHandler"/>
-		<editorTypedHandler
-				implementationClass="com.google.bamboo.soy.insight.typedhandlers.ClosingTagHandler"/>
-		<typedHandler
-				implementation="com.google.bamboo.soy.insight.typedhandlers.QuoteHandler"/>
-		<liveTemplateContext implementation="com.google.bamboo.soy.templates.TopLevelContext"/>
-		<liveTemplateContext implementation="com.google.bamboo.soy.templates.CallBlockContext"/>
-		<liveTemplateContext implementation="com.google.bamboo.soy.templates.TemplateBlockContext"/>
-		<defaultLiveTemplatesProvider implementation="com.google.bamboo.soy.templates.SoyTemplateProvider"/>
 
-		<lang.documentationProvider language="ClosureTemplate"
-									implementationClass="com.google.bamboo.soy.insight.documentation.SoyDocumentationProvider"/>
-
-		<codeStyleSettingsProvider implementation="com.google.bamboo.soy.format.SoyCodeStyleSettingsProvider"/>
-		<langCodeStyleSettingsProvider implementation="com.google.bamboo.soy.format.SoyLanguageCodeStyleSettingsProvider"/>
-		<editorHighlighterProvider filetype="CLOSURE_TEMPLATE_TYPE" implementationClass="com.google.bamboo.soy.file.SoyEditorHighlighterProvider" />
-
-		<stubIndex implementation="com.google.bamboo.soy.stubs.index.NamespaceDeclarationIndex"/>
-		<stubIndex implementation="com.google.bamboo.soy.stubs.index.TemplateBlockIndex"/>
-
-		<!-- Annotators -->
-		<annotator
-				language="ClosureTemplate"
-				implementationClass="com.google.bamboo.soy.insight.annotators.MissingParametersAnnotator"/>
-		<annotator
-				language="ClosureTemplate"
-				implementationClass="com.google.bamboo.soy.insight.annotators.UnusedParameterAnnotator"/>
-		<annotator
-				language="ClosureTemplate"
-				implementationClass="com.google.bamboo.soy.insight.annotators.CaseAndDefaultAnnotator"/>
-		<annotator
-				language="ClosureTemplate"
-				implementationClass="com.google.bamboo.soy.insight.annotators.ClosingBraceSanityAnnotator"/>
-		<annotator
-				language="ClosureTemplate"
-				implementationClass="com.google.bamboo.soy.insight.annotators.DeltemplateIdentifierAnnotator"/>
-		<annotator
-				language="ClosureTemplate"
-				implementationClass="com.google.bamboo.soy.insight.annotators.IncompleteBlockAnnotator"/>
-		<annotator
-				language="ClosureTemplate"
-				implementationClass="com.google.bamboo.soy.insight.annotators.UnexpectedStatementsAnnotator"/>
-		<annotator
-				language="ClosureTemplate"
-				implementationClass="com.google.bamboo.soy.insight.annotators.UnfinishedIdentifiersAnnotator"/>
-		<annotator
-				language="ClosureTemplate"
-				implementationClass="com.google.bamboo.soy.insight.annotators.IdentifierSanityAnnotator"/>
-		<annotator
-				language="ClosureTemplate"
-				implementationClass="com.google.bamboo.soy.insight.annotators.DoubleQuotedStringAnnotator"/>
-	</extensions>
+    <!-- Annotators -->
+    <annotator
+        language="ClosureTemplate"
+        implementationClass="com.google.bamboo.soy.insight.annotators.MissingParametersAnnotator"/>
+    <annotator
+        language="ClosureTemplate"
+        implementationClass="com.google.bamboo.soy.insight.annotators.UnusedParameterAnnotator"/>
+    <annotator
+        language="ClosureTemplate"
+        implementationClass="com.google.bamboo.soy.insight.annotators.CaseAndDefaultAnnotator"/>
+    <annotator
+        language="ClosureTemplate"
+        implementationClass="com.google.bamboo.soy.insight.annotators.ClosingBraceSanityAnnotator"/>
+    <annotator
+        language="ClosureTemplate"
+        implementationClass="com.google.bamboo.soy.insight.annotators.DeltemplateIdentifierAnnotator"/>
+    <annotator
+        language="ClosureTemplate"
+        implementationClass="com.google.bamboo.soy.insight.annotators.IncompleteBlockAnnotator"/>
+    <annotator
+        language="ClosureTemplate"
+        implementationClass="com.google.bamboo.soy.insight.annotators.UnexpectedStatementsAnnotator"/>
+    <annotator
+        language="ClosureTemplate"
+        implementationClass="com.google.bamboo.soy.insight.annotators.UnfinishedIdentifiersAnnotator"/>
+    <annotator
+        language="ClosureTemplate"
+        implementationClass="com.google.bamboo.soy.insight.annotators.IdentifierSanityAnnotator"/>
+    <annotator
+        language="ClosureTemplate"
+        implementationClass="com.google.bamboo.soy.insight.annotators.DoubleQuotedStringAnnotator"/>
+  </extensions>
 </consulo-plugin>

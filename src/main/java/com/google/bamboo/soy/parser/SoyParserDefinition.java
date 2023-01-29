@@ -14,23 +14,33 @@
 
 package com.google.bamboo.soy.parser;
 
-import javax.annotation.Nonnull;
+import com.google.bamboo.soy.SoyLanguage;
 import com.google.bamboo.soy.file.SoyFile;
 import com.google.bamboo.soy.lexer.SoyLexer;
 import com.google.bamboo.soy.lexer.SoyTokenTypes;
 import com.google.bamboo.soy.stubs.FileStub;
-import com.intellij.lang.ASTNode;
-import com.intellij.lang.ParserDefinition;
-import com.intellij.lang.PsiParser;
-import com.intellij.lexer.Lexer;
-import com.intellij.psi.FileViewProvider;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiFile;
-import com.intellij.psi.tree.IStubFileElementType;
-import com.intellij.psi.tree.TokenSet;
-import consulo.lang.LanguageVersion;
+import consulo.annotation.component.ExtensionImpl;
+import consulo.language.Language;
+import consulo.language.ast.ASTNode;
+import consulo.language.ast.TokenSet;
+import consulo.language.file.FileViewProvider;
+import consulo.language.lexer.Lexer;
+import consulo.language.parser.ParserDefinition;
+import consulo.language.parser.PsiParser;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.PsiFile;
+import consulo.language.psi.stub.IStubFileElementType;
+import consulo.language.version.LanguageVersion;
 
+import javax.annotation.Nonnull;
+
+@ExtensionImpl
 public class SoyParserDefinition implements ParserDefinition {
+  @Nonnull
+  @Override
+  public Language getLanguage() {
+    return SoyLanguage.INSTANCE;
+  }
 
   @Nonnull
   @Override

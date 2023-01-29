@@ -14,37 +14,20 @@
 
 package com.google.bamboo.soy;
 
-import com.google.bamboo.soy.lexer.SoyLexer;
-import com.google.bamboo.soy.parser.SoyTypes;
-import com.intellij.lang.cacheBuilder.DefaultWordsScanner;
-import com.intellij.lang.cacheBuilder.WordsScanner;
-import com.intellij.lang.findUsages.FindUsagesProvider;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiNamedElement;
-import com.intellij.psi.tree.TokenSet;
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import consulo.annotation.component.ExtensionImpl;
+import consulo.language.Language;
+import consulo.language.findUsage.FindUsagesProvider;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.PsiNamedElement;
 
+import javax.annotation.Nonnull;
+
+@ExtensionImpl
 public class SoyFindUsagesProvider implements FindUsagesProvider {
-  @Nullable
-  @Override
-  public WordsScanner getWordsScanner() {
-    return new DefaultWordsScanner(
-        new SoyLexer(),
-        TokenSet.create(SoyTypes.IDENTIFIER_WORD),
-        TokenSet.create(SoyTypes.COMMENT_BLOCK),
-        TokenSet.EMPTY);
-  }
 
   @Override
   public boolean canFindUsagesFor(@Nonnull PsiElement psiElement) {
     return psiElement instanceof PsiNamedElement;
-  }
-
-  @Nullable
-  @Override
-  public String getHelpId(@Nonnull PsiElement psiElement) {
-    return null;
   }
 
   @Nonnull
@@ -63,5 +46,11 @@ public class SoyFindUsagesProvider implements FindUsagesProvider {
   @Override
   public String getNodeText(@Nonnull PsiElement psiElement, boolean useFullName) {
     return "";
+  }
+
+  @Nonnull
+  @Override
+  public Language getLanguage() {
+    return SoyLanguage.INSTANCE;
   }
 }

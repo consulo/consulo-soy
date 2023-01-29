@@ -14,18 +14,16 @@
 
 package com.google.bamboo.soy.templates;
 
-import com.intellij.codeInsight.template.impl.DefaultLiveTemplatesProvider;
-import javax.annotation.Nullable;
+import consulo.annotation.component.ExtensionImpl;
+import consulo.language.editor.template.DefaultLiveTemplatesProvider;
 
+import javax.annotation.Nonnull;
+
+@ExtensionImpl
 public class SoyTemplateProvider implements DefaultLiveTemplatesProvider {
+  @Nonnull
   @Override
   public String[] getDefaultLiveTemplateFiles() {
-    return new String[] {"liveTemplates/ClosureTemplates"};
-  }
-
-  @Nullable
-  @Override
-  public String[] getHiddenLiveTemplateFiles() {
-    return new String[0];
+    return new String[]{"/liveTemplates/ClosureTemplates.xml"};
   }
 }

@@ -14,25 +14,21 @@
 
 package com.google.bamboo.soy.stubs;
 
-import com.google.bamboo.soy.lang.Parameter;
 import com.google.bamboo.soy.SoyLanguage;
+import com.google.bamboo.soy.lang.Parameter;
 import com.google.bamboo.soy.parser.SoyTemplateBlock;
 import com.google.bamboo.soy.parser.impl.SoyTemplateBlockImpl;
 import com.google.bamboo.soy.stubs.index.TemplateBlockIndex;
-import com.intellij.psi.stubs.IStubElementType;
-import com.intellij.psi.stubs.IndexSink;
-import com.intellij.psi.stubs.StubBase;
-import com.intellij.psi.stubs.StubElement;
-import com.intellij.psi.stubs.StubInputStream;
-import com.intellij.psi.stubs.StubOutputStream;
+import consulo.language.psi.stub.*;
+
+import javax.annotation.Nonnull;
 import java.io.IOException;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
-import javax.annotation.Nonnull;
 
 public class TemplateBlockStub extends StubBase<SoyTemplateBlock> {
-  static final Type TYPE = new Type();
+  public static final Type TYPE = new Type();
   public final boolean isDelegate;
 
   TemplateBlockStub(StubElement parent, boolean isDelegate) {
@@ -43,25 +39,25 @@ public class TemplateBlockStub extends StubBase<SoyTemplateBlock> {
   // May only be called when the stub tree is fully constructed.
   public String getFullyQualifiedName() {
     TemplateDefinitionStub templateDefinition =
-        (TemplateDefinitionStub) findChildStubByType(TemplateDefinitionStub.TYPE);
+      (TemplateDefinitionStub)findChildStubByType(TemplateDefinitionStub.TYPE);
     return templateDefinition == null ? "" : templateDefinition.getFullyQualifiedName();
   }
 
   // May only be called when the stub tree is fully constructed.
   public String getName() {
     TemplateDefinitionStub templateDefinition =
-        (TemplateDefinitionStub) findChildStubByType(TemplateDefinitionStub.TYPE);
+      (TemplateDefinitionStub)findChildStubByType(TemplateDefinitionStub.TYPE);
     return templateDefinition == null ? "" : templateDefinition.getName();
   }
 
   // May only be called when the stub tree is fully constructed.
   public List<Parameter> getParameters() {
     return getChildrenStubs()
-        .stream()
-        .filter((stub) -> stub instanceof AtParamStub)
-        .map((stub) -> ((AtParamStub) stub).getPsi().toParameter())
-        .filter(Objects::nonNull)
-        .collect(Collectors.toList());
+      .stream()
+      .filter((stub) -> stub instanceof AtParamStub)
+      .map((stub) -> ((AtParamStub)stub).getPsi().toParameter())
+      .filter(Objects::nonNull)
+      .collect(Collectors.toList());
   }
 
   static class Type extends IStubElementType<TemplateBlockStub, SoyTemplateBlock> {
@@ -88,7 +84,7 @@ public class TemplateBlockStub extends StubBase<SoyTemplateBlock> {
 
     @Override
     public void serialize(@Nonnull TemplateBlockStub stub, @Nonnull StubOutputStream dataStream)
-        throws IOException {
+      throws IOException {
       dataStream.writeBoolean(stub.isDelegate);
     }
 

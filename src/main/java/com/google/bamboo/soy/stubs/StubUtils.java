@@ -14,7 +14,7 @@
 
 package com.google.bamboo.soy.stubs;
 
-import com.intellij.psi.stubs.StubElement;
+import consulo.language.psi.stub.StubElement;
 
 public abstract class StubUtils {
   public static FileStub getContainingStubFile(StubElement e) {

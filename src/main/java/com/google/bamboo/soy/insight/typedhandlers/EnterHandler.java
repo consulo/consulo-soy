@@ -17,25 +17,23 @@ package com.google.bamboo.soy.insight.typedhandlers;
 import com.google.bamboo.soy.elements.TagElement;
 import com.google.bamboo.soy.file.SoyFile;
 import com.google.bamboo.soy.file.SoyFileType;
-import com.google.bamboo.soy.parser.SoyBeginChoiceClause;
-import com.google.bamboo.soy.parser.SoyBeginParamTag;
-import com.google.bamboo.soy.parser.SoyChoiceClause;
-import com.google.bamboo.soy.parser.SoyParamListElement;
-import com.google.bamboo.soy.parser.SoyStatementList;
-import com.intellij.codeInsight.editorActions.enter.EnterHandlerDelegateAdapter;
-import com.intellij.openapi.actionSystem.DataContext;
-import com.intellij.openapi.diagnostic.Logger;
-import com.intellij.openapi.editor.Document;
-import com.intellij.openapi.editor.Editor;
-import com.intellij.openapi.editor.EditorModificationUtil;
-import com.intellij.openapi.editor.actionSystem.EditorActionHandler;
-import com.intellij.openapi.util.Ref;
-import com.intellij.openapi.util.TextRange;
-import com.intellij.psi.PsiComment;
-import com.intellij.psi.PsiDocumentManager;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiFile;
-import com.intellij.psi.util.PsiTreeUtil;
+import com.google.bamboo.soy.parser.*;
+import consulo.annotation.component.ExtensionImpl;
+import consulo.codeEditor.Editor;
+import consulo.codeEditor.action.EditorActionHandler;
+import consulo.codeEditor.util.EditorModificationUtil;
+import consulo.dataContext.DataContext;
+import consulo.document.Document;
+import consulo.document.util.TextRange;
+import consulo.language.editor.action.EnterHandlerDelegateAdapter;
+import consulo.language.psi.PsiComment;
+import consulo.language.psi.PsiDocumentManager;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.PsiFile;
+import consulo.language.psi.util.PsiTreeUtil;
+import consulo.logging.Logger;
+import consulo.util.lang.ref.Ref;
+
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
@@ -47,6 +45,7 @@ import javax.annotation.Nullable;
  *
  * <p>If pressed right after an opening tag this handler will indent the cursor on the next line.
  */
+@ExtensionImpl
 public class EnterHandler extends EnterHandlerDelegateAdapter {
 
   private static final Logger LOG = Logger.getInstance(EnterHandler.class);
@@ -116,7 +115,7 @@ public class EnterHandler extends EnterHandlerDelegateAdapter {
   public Result preprocessEnter(
       @Nonnull PsiFile psiFile,
       @Nonnull Editor editor,
-      @Nonnull Ref<Integer> caretOffset,
+      @Nonnull consulo.util.lang.ref.Ref<Integer> caretOffset,
       @Nonnull Ref<Integer> caretOffsetChange,
       @Nonnull DataContext dataContext,
       @Nullable EditorActionHandler originalHandler) {

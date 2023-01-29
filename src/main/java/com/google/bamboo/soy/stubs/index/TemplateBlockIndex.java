@@ -15,14 +15,17 @@
 package com.google.bamboo.soy.stubs.index;
 
 import com.google.bamboo.soy.parser.SoyTemplateBlock;
-import com.intellij.openapi.progress.ProcessCanceledException;
-import com.intellij.openapi.project.Project;
-import com.intellij.psi.stubs.StringStubIndexExtension;
-import com.intellij.psi.stubs.StubIndexKey;
+import consulo.annotation.component.ExtensionImpl;
+import consulo.component.ProcessCanceledException;
+import consulo.language.psi.stub.StringStubIndexExtension;
+import consulo.language.psi.stub.StubIndexKey;
+import consulo.project.Project;
+
+import javax.annotation.Nonnull;
 import java.util.ArrayList;
 import java.util.Collection;
-import javax.annotation.Nonnull;
 
+@ExtensionImpl
 public class TemplateBlockIndex extends StringStubIndexExtension<SoyTemplateBlock> {
   public static final StubIndexKey<String, SoyTemplateBlock> KEY =
       StubIndexKey.createIndexKey("SoyTemplateBlock");

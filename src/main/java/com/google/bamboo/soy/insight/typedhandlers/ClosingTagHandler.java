@@ -14,54 +14,45 @@
 
 package com.google.bamboo.soy.insight.typedhandlers;
 
-import javax.annotation.Nonnull;
-import jakarta.inject.Inject;
-
 import com.google.bamboo.soy.elements.TagBlockElement;
 import com.google.bamboo.soy.parser.SoyChoiceClause;
-import com.intellij.openapi.actionSystem.DataContext;
-import com.intellij.openapi.actionSystem.LangDataKeys;
-import com.intellij.openapi.editor.Document;
-import com.intellij.openapi.editor.Editor;
-import com.intellij.openapi.editor.actionSystem.TypedActionHandler;
-import com.intellij.psi.PsiDocumentManager;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiFile;
-import com.intellij.psi.codeStyle.CodeStyleManager;
-import com.intellij.psi.util.PsiTreeUtil;
+import consulo.annotation.component.ExtensionImpl;
+import consulo.codeEditor.Editor;
+import consulo.document.Document;
+import consulo.language.codeStyle.CodeStyleManager;
+import consulo.language.editor.action.TypedHandlerDelegate;
+import consulo.language.psi.PsiDocumentManager;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.PsiFile;
+import consulo.language.psi.util.PsiTreeUtil;
+import consulo.project.Project;
+
+import javax.annotation.Nonnull;
 
 /**
  * Automatically inserts a matching closing tag when "{/" is typed.
  */
-public class ClosingTagHandler implements TypedActionHandler {
-
-  private final TypedActionHandler myOriginalHandler;
-
-  @Inject
-  public ClosingTagHandler(TypedActionHandler originalHandler) {
-    myOriginalHandler = originalHandler;
-  }
+@ExtensionImpl
+public class ClosingTagHandler extends TypedHandlerDelegate {
 
   private static boolean isMatchForClosingTag(@Nonnull Editor editor, char charTyped) {
     return charTyped == '/'
-        && editor.getCaretModel().getOffset() >= 2
-        && editor.getDocument().getCharsSequence().charAt(editor.getCaretModel().getOffset() - 2)
-        == '{';
+      && editor.getCaretModel().getOffset() >= 2
+      && editor.getDocument().getCharsSequence().charAt(editor.getCaretModel().getOffset() - 2)
+      == '{';
   }
 
   private static void insertClosingTag(@Nonnull Editor editor, int offset, String tag) {
     Document document = editor.getDocument();
     CharSequence charSequence = document.getImmutableCharSequence();
-    int startPosition = offset - 2;
+    int startPosition = offset - 1;
     // Consume second left brace if present.
     if (offset > 0 && charSequence.charAt(startPosition - 1) == '{') {
       startPosition--;
     }
     int endPosition = offset;
     // Consume at most 2 right braces if present.
-    while (endPosition < charSequence.length()
-        && charSequence.charAt(endPosition) == '}'
-        && endPosition < offset + 2) {
+    while (endPosition < charSequence.length() && charSequence.charAt(endPosition) == '}' && endPosition < offset + 2) {
       endPosition++;
     }
     editor.getDocument().replaceString(startPosition, endPosition, tag);
@@ -69,20 +60,18 @@ public class ClosingTagHandler implements TypedActionHandler {
 
   }
 
-  public void execute(@Nonnull Editor editor, char charTyped, @Nonnull DataContext dataContext) {
-    myOriginalHandler.execute(editor, charTyped, dataContext);
-    if (isMatchForClosingTag(editor, charTyped)) {
+  @Nonnull
+  @Override
+  public Result charTyped(char c, @Nonnull Project project, @Nonnull Editor editor, @Nonnull PsiFile file) {
+    if (isMatchForClosingTag(editor, c)) {
       int offset = editor.getCaretModel().getOffset();
-      PsiFile file = dataContext.getData(LangDataKeys.PSI_FILE);
-      if (file == null) {
-        return;
-      }
+
       PsiElement el = file.findElementAt(offset - 1);
-      TagBlockElement block = (TagBlockElement) PsiTreeUtil
-          .findFirstParent(el,
-              parent -> parent instanceof TagBlockElement && !(parent instanceof SoyChoiceClause));
+      TagBlockElement block = (TagBlockElement)PsiTreeUtil
+        .findFirstParent(el,
+                         parent -> parent instanceof TagBlockElement && !(parent instanceof SoyChoiceClause));
       if (block == null) {
-        return;
+        return Result.CONTINUE;
       }
       String closingTag = block.getOpeningTag().generateClosingTag();
       insertClosingTag(editor, offset, closingTag);
@@ -91,5 +80,7 @@ public class ClosingTagHandler implements TypedActionHandler {
         CodeStyleManager.getInstance(editor.getProject()).reformat(block);
       }
     }
+
+    return Result.CONTINUE;
   }
 }

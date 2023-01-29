@@ -14,54 +14,55 @@
 
 package com.google.bamboo.soy.insight.highlight;
 
-import static com.intellij.openapi.editor.colors.TextAttributesKey.createTextAttributesKey;
-
 import com.google.bamboo.soy.lexer.SoyLexer;
 import com.google.bamboo.soy.lexer.SoyTokenTypes;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.ImmutableSet;
-import com.intellij.lexer.Lexer;
-import com.intellij.openapi.editor.DefaultLanguageHighlighterColors;
-import com.intellij.openapi.editor.colors.TextAttributesKey;
-import com.intellij.openapi.fileTypes.SyntaxHighlighterBase;
-import com.intellij.psi.tree.IElementType;
-import java.util.Collection;
+import consulo.codeEditor.DefaultLanguageHighlighterColors;
+import consulo.colorScheme.TextAttributesKey;
+import consulo.language.ast.IElementType;
+import consulo.language.editor.highlight.SyntaxHighlighterBase;
+import consulo.language.lexer.Lexer;
+
 import javax.annotation.Nonnull;
+import java.util.Collection;
+
+import static consulo.colorScheme.TextAttributesKey.createTextAttributesKey;
 
 public class SoySyntaxHighlighter extends SyntaxHighlighterBase {
 
   public static final TextAttributesKey COMMENT =
-      createTextAttributesKey("COMMENT_BLOCK", DefaultLanguageHighlighterColors.BLOCK_COMMENT);
+    createTextAttributesKey("SOY_COMMENT_BLOCK", DefaultLanguageHighlighterColors.BLOCK_COMMENT);
   public static final TextAttributesKey KEYWORD =
-      createTextAttributesKey("KEYWORD", DefaultLanguageHighlighterColors.KEYWORD);
+    createTextAttributesKey("SOY_KEYWORD", DefaultLanguageHighlighterColors.KEYWORD);
   public static final TextAttributesKey BUILTIN_TYPE =
-      createTextAttributesKey("BUILTIN_TYPE", DefaultLanguageHighlighterColors.INTERFACE_NAME);
+    createTextAttributesKey("SOY_BUILTIN_TYPE", DefaultLanguageHighlighterColors.INTERFACE_NAME);
   public static final TextAttributesKey OPERATOR_LITERAL =
-      createTextAttributesKey("OPERATOR_LITERAL", DefaultLanguageHighlighterColors.KEYWORD);
+    createTextAttributesKey("SOY_OPERATOR_LITERAL", DefaultLanguageHighlighterColors.KEYWORD);
   public static final TextAttributesKey NUMBER =
-      createTextAttributesKey("NUMBER", DefaultLanguageHighlighterColors.NUMBER);
+    createTextAttributesKey("SOY_NUMBER", DefaultLanguageHighlighterColors.NUMBER);
   public static final TextAttributesKey STRING =
-      createTextAttributesKey("STRING", DefaultLanguageHighlighterColors.STRING);
+    createTextAttributesKey("SOY_STRING", DefaultLanguageHighlighterColors.STRING);
   public static final TextAttributesKey VARIABLE_REFERENCE =
-      createTextAttributesKey("VARIABLE_REFERENCE", DefaultLanguageHighlighterColors.IDENTIFIER);
+    createTextAttributesKey("SOY_VARIABLE_REFERENCE", DefaultLanguageHighlighterColors.IDENTIFIER);
 
   private static final ImmutableSet<TextAttributesKey> EMPTY_KEYS = ImmutableSet.of();
 
   private static final
   ImmutableMultimap<TextAttributesKey, IElementType> attributesToTokenMap =
-      ImmutableMultimap.<TextAttributesKey, IElementType>builder()
-          .putAll(KEYWORD, SoyTokenTypes.KEYWORDS.getTypes())
-          .putAll(OPERATOR_LITERAL, SoyTokenTypes.OPERATOR_LITERALS.getTypes())
-          .putAll(BUILTIN_TYPE, SoyTokenTypes.BUILTIN_TYPES.getTypes())
-          .putAll(NUMBER, SoyTokenTypes.NUMBER_LITERALS.getTypes())
-          .putAll(STRING, SoyTokenTypes.STRING_LITERALS.getTypes())
-          .putAll(COMMENT, SoyTokenTypes.COMMENTS.getTypes())
-          .build();
+    ImmutableMultimap.<TextAttributesKey, IElementType>builder()
+      .putAll(KEYWORD, SoyTokenTypes.KEYWORDS.getTypes())
+      .putAll(OPERATOR_LITERAL, SoyTokenTypes.OPERATOR_LITERALS.getTypes())
+      .putAll(BUILTIN_TYPE, SoyTokenTypes.BUILTIN_TYPES.getTypes())
+      .putAll(NUMBER, SoyTokenTypes.NUMBER_LITERALS.getTypes())
+      .putAll(STRING, SoyTokenTypes.STRING_LITERALS.getTypes())
+      .putAll(COMMENT, SoyTokenTypes.COMMENTS.getTypes())
+      .build();
 
 
   private static final ImmutableMap<IElementType, Collection<TextAttributesKey>>
-      tokenToAttributesMap = attributesToTokenMap.inverse().asMap();
+    tokenToAttributesMap = attributesToTokenMap.inverse().asMap();
 
   @Nonnull
   @Override
@@ -73,6 +74,6 @@ public class SoySyntaxHighlighter extends SyntaxHighlighterBase {
   @Override
   public TextAttributesKey[] getTokenHighlights(IElementType tokenType) {
     return tokenToAttributesMap.getOrDefault(tokenType, EMPTY_KEYS)
-        .toArray(new TextAttributesKey[0]);
+                               .toArray(new TextAttributesKey[0]);
   }
 }

@@ -14,17 +14,19 @@
 
 package com.google.bamboo.soy;
 
-import java.util.Map;
+import com.google.bamboo.soy.insight.highlight.SoySyntaxHighlighter;
+import consulo.annotation.component.ExtensionImpl;
+import consulo.colorScheme.TextAttributesKey;
+import consulo.colorScheme.setting.AttributesDescriptor;
+import consulo.colorScheme.setting.ColorDescriptor;
+import consulo.language.editor.colorScheme.setting.ColorSettingsPage;
+import consulo.language.editor.highlight.SyntaxHighlighter;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import com.google.bamboo.soy.insight.highlight.SoySyntaxHighlighter;
-import com.intellij.openapi.editor.colors.TextAttributesKey;
-import com.intellij.openapi.fileTypes.SyntaxHighlighter;
-import com.intellij.openapi.options.colors.AttributesDescriptor;
-import com.intellij.openapi.options.colors.ColorDescriptor;
-import com.intellij.openapi.options.colors.ColorSettingsPage;
+import java.util.Map;
 
+@ExtensionImpl
 public class SoyColorSettingsPage implements ColorSettingsPage {
   private static final AttributesDescriptor[] DESCRIPTORS =
       new AttributesDescriptor[] {

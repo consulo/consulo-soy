@@ -14,13 +14,13 @@
 
 package com.google.bamboo.soy.insight.completion;
 
-import com.intellij.codeInsight.completion.InsertHandler;
-import com.intellij.codeInsight.completion.InsertionContext;
-import com.intellij.codeInsight.lookup.LookupElement;
-import com.intellij.openapi.editor.Editor;
-import com.intellij.openapi.editor.EditorModificationUtil;
-import com.intellij.openapi.project.Project;
-import com.intellij.psi.PsiDocumentManager;
+import consulo.codeEditor.Editor;
+import consulo.codeEditor.util.EditorModificationUtil;
+import consulo.language.editor.completion.lookup.InsertHandler;
+import consulo.language.editor.completion.lookup.InsertionContext;
+import consulo.language.editor.completion.lookup.LookupElement;
+import consulo.language.psi.PsiDocumentManager;
+import consulo.project.Project;
 
 public class PostfixInsertHandler implements InsertHandler<LookupElement> {
   private final String closingTagBeforeCaret;

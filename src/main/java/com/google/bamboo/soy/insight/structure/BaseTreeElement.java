@@ -8,10 +8,10 @@ import javax.annotation.Nullable;
 
 import com.google.bamboo.soy.elements.TagBlockElement;
 import com.google.bamboo.soy.parser.SoyNamespaceBlock;
-import com.intellij.ide.structureView.StructureViewTreeElement;
-import com.intellij.ide.structureView.impl.common.PsiTreeElementBase;
-import com.intellij.psi.PsiElement;
-import com.intellij.util.containers.ContainerUtil;
+import consulo.language.psi.PsiElement;
+import consulo.util.collection.ContainerUtil;
+import consulo.fileEditor.structureView.StructureViewTreeElement;
+import consulo.language.editor.structureView.PsiTreeElementBase;
 
 /**
  * @author VISTALL

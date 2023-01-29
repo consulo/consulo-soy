@@ -14,25 +14,24 @@
 
 package com.google.bamboo.soy.file;
 
-import static com.google.bamboo.soy.parser.SoyTypes.OTHER;
-
 import com.google.bamboo.soy.SoyLanguage;
-import com.intellij.lang.Language;
-import com.intellij.lang.LanguageParserDefinitions;
-import com.intellij.lang.ParserDefinition;
-import com.intellij.lang.html.HTMLLanguage;
-import com.intellij.openapi.vfs.VirtualFile;
-import com.intellij.psi.MultiplePsiFilesPerDocumentFileViewProvider;
-import com.intellij.psi.PsiFile;
-import com.intellij.psi.PsiManager;
-import com.intellij.psi.impl.source.PsiFileImpl;
-import com.intellij.psi.templateLanguages.ConfigurableTemplateLanguageFileViewProvider;
-import com.intellij.psi.templateLanguages.TemplateDataElementType;
+import consulo.language.Language;
+import consulo.language.impl.file.MultiplePsiFilesPerDocumentFileViewProvider;
+import consulo.language.impl.psi.PsiFileImpl;
+import consulo.language.impl.psi.template.TemplateDataElementType;
+import consulo.language.parser.ParserDefinition;
+import consulo.language.psi.PsiFile;
+import consulo.language.psi.PsiManager;
+import consulo.language.template.ConfigurableTemplateLanguageFileViewProvider;
+import consulo.virtualFileSystem.VirtualFile;
+import consulo.xml.lang.html.HTMLLanguage;
 
+import javax.annotation.Nonnull;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
-import javax.annotation.Nonnull;
+
+import static com.google.bamboo.soy.parser.SoyTypes.OTHER;
 
 public class SoyFileViewProvider extends MultiplePsiFilesPerDocumentFileViewProvider
     implements ConfigurableTemplateLanguageFileViewProvider {
@@ -97,6 +96,6 @@ public class SoyFileViewProvider extends MultiplePsiFilesPerDocumentFileViewProv
   }
 
   private ParserDefinition getDefinition(Language lang) {
-    return LanguageParserDefinitions.INSTANCE.forLanguage(lang);
+    return ParserDefinition.forLanguage(lang);
   }
 }

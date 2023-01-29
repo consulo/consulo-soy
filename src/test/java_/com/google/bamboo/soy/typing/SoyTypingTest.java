@@ -21,7 +21,7 @@ import javax.annotation.Nonnull;
 
 import com.google.bamboo.soy.SoyCodeInsightFixtureTestCase;
 import com.google.bamboo.soy.file.SoyFileType;
-import com.intellij.openapi.fileTypes.LanguageFileType;
+import consulo.language.file.LanguageFileType;
 
 public abstract class SoyTypingTest extends SoyCodeInsightFixtureTestCase {
 

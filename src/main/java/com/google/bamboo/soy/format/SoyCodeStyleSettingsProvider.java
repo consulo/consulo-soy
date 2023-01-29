@@ -15,15 +15,18 @@
 package com.google.bamboo.soy.format;
 
 import com.google.bamboo.soy.SoyLanguage;
-import com.intellij.application.options.CodeStyleAbstractConfigurable;
-import com.intellij.application.options.CodeStyleAbstractPanel;
-import com.intellij.application.options.TabbedLanguageCodeStylePanel;
-import com.intellij.lang.Language;
-import com.intellij.openapi.options.Configurable;
-import com.intellij.psi.codeStyle.CodeStyleSettings;
-import com.intellij.psi.codeStyle.CodeStyleSettingsProvider;
+import consulo.annotation.component.ExtensionImpl;
+import consulo.configurable.Configurable;
+import consulo.language.Language;
+import consulo.language.codeStyle.ui.setting.CodeStyleAbstractConfigurable;
+import consulo.language.codeStyle.CodeStyleSettings;
+import consulo.language.codeStyle.setting.CodeStyleSettingsProvider;
+import consulo.language.codeStyle.ui.setting.CodeStyleAbstractPanel;
+import consulo.language.codeStyle.ui.setting.TabbedLanguageCodeStylePanel;
+
 import javax.annotation.Nonnull;
 
+@ExtensionImpl
 public class SoyCodeStyleSettingsProvider extends CodeStyleSettingsProvider {
 
   @Override
@@ -34,7 +37,7 @@ public class SoyCodeStyleSettingsProvider extends CodeStyleSettingsProvider {
   @Nonnull
   @Override
   public Configurable createSettingsPage(CodeStyleSettings settings,
-      CodeStyleSettings originalSettings) {
+                                         CodeStyleSettings originalSettings) {
     return new CodeStyleAbstractConfigurable(settings, originalSettings,
         getConfigurableDisplayName()) {
       @Override
