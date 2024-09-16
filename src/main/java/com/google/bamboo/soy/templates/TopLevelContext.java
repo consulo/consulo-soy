@@ -16,9 +16,10 @@ package com.google.bamboo.soy.templates;
 
 import com.google.bamboo.soy.file.SoyFileType;
 import consulo.annotation.component.ExtensionImpl;
-import consulo.language.editor.template.context.TemplateContextType;
+import consulo.language.editor.template.context.BaseTemplateContextType;
 import consulo.language.psi.PsiElement;
 import consulo.language.psi.PsiFile;
+import consulo.localize.LocalizeValue;
 import jakarta.inject.Inject;
 
 import javax.annotation.Nonnull;
@@ -26,10 +27,10 @@ import javax.annotation.Nonnull;
 import static consulo.language.pattern.PlatformPatterns.psiElement;
 
 @ExtensionImpl
-public class TopLevelContext extends TemplateContextType {
+public class TopLevelContext extends BaseTemplateContextType {
   @Inject
   protected TopLevelContext() {
-    super("CLOSURE_TEMPLATE_TOP_LEVEL", "Closure template: top level");
+    super("CLOSURE_TEMPLATE_TOP_LEVEL", LocalizeValue.localizeTODO("Closure template: top level"));
   }
 
   @Override
