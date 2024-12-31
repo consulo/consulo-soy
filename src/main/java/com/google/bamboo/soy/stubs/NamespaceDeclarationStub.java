@@ -21,7 +21,7 @@ import com.google.bamboo.soy.stubs.index.NamespaceDeclarationIndex;
 import consulo.index.io.StringRef;
 import consulo.language.psi.stub.*;
 
-import javax.annotation.Nonnull;
+import jakarta.annotation.Nonnull;
 import java.io.IOException;
 
 public class NamespaceDeclarationStub extends NamedStubBase<SoyNamespaceDeclarationIdentifier> {

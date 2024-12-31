@@ -16,8 +16,8 @@ package com.google.bamboo.soy.insight.highlight;
 
 import static com.google.bamboo.soy.parser.SoyTypes.OTHER;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 
 import com.google.bamboo.soy.SoyLanguage;
 import consulo.language.Language;

@@ -26,7 +26,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import javax.annotation.Nonnull;
+import jakarta.annotation.Nonnull;
 
 public class IdentifierMixin extends ASTWrapperPsiElement implements IdentifierElement {
   private static final Pattern identifierPattern = Pattern.compile("\\$[a-zA-Z_][a-zA-Z_0-9]*");

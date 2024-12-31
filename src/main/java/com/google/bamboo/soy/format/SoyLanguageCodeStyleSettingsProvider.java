@@ -25,7 +25,7 @@ import consulo.util.io.StreamUtil;
 import consulo.xml.application.options.XmlLanguageCodeStyleSettingsProvider;
 import consulo.xml.lang.html.HTMLLanguage;
 
-import javax.annotation.Nonnull;
+import jakarta.annotation.Nonnull;
 import java.io.IOException;
 
 @ExtensionImpl

@@ -21,8 +21,8 @@ import consulo.localize.LocalizeValue;
 import consulo.soy.icon.SoyIconGroup;
 import consulo.ui.image.Image;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 
 public class SoyFileType extends LanguageFileType implements TemplateLanguageFileType {
   public static final SoyFileType INSTANCE = new SoyFileType();

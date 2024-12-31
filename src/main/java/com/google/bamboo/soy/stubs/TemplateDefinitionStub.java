@@ -20,7 +20,7 @@ import com.google.bamboo.soy.parser.impl.SoyTemplateDefinitionIdentifierImpl;
 import consulo.index.io.StringRef;
 import consulo.language.psi.stub.*;
 
-import javax.annotation.Nonnull;
+import jakarta.annotation.Nonnull;
 import java.io.IOException;
 
 public class TemplateDefinitionStub extends NamedStubBase<SoyTemplateDefinitionIdentifier> {

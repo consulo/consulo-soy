@@ -22,7 +22,7 @@ import consulo.project.Project;
 import consulo.language.editor.highlight.SyntaxHighlighter;
 import consulo.virtualFileSystem.VirtualFile;
 
-import javax.annotation.Nonnull;
+import jakarta.annotation.Nonnull;
 
 @ExtensionImpl
 public class SoySyntaxHighlighterFactory extends SyntaxHighlighterFactory {

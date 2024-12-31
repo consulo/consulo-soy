@@ -3,7 +3,7 @@ package com.google.bamboo.soy.parser;
 
 import consulo.language.psi.PsiElement;
 
-import javax.annotation.Nullable;
+import jakarta.annotation.Nullable;
 
 public interface SoyFunctionIdentifier extends PsiElement {
 

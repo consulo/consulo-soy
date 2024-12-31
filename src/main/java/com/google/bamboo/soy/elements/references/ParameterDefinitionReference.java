@@ -22,7 +22,7 @@ import consulo.document.util.TextRange;
 import consulo.language.psi.PsiReference;
 import consulo.language.psi.PsiReferenceBase;
 
-import javax.annotation.Nonnull;
+import jakarta.annotation.Nonnull;
 
 public class ParameterDefinitionReference extends PsiReferenceBase<PsiElement>
     implements PsiReference {

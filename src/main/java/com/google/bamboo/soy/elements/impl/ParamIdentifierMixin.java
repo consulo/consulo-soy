@@ -19,7 +19,7 @@ import com.google.bamboo.soy.elements.references.ParameterDefinitionReference;
 import consulo.language.ast.ASTNode;
 import consulo.language.impl.psi.ASTWrapperPsiElement;
 import consulo.language.psi.PsiReference;
-import javax.annotation.Nonnull;
+import jakarta.annotation.Nonnull;
 
 public class ParamIdentifierMixin extends ASTWrapperPsiElement implements ParamIdentifierElement {
   public ParamIdentifierMixin(@Nonnull ASTNode node) {

@@ -17,7 +17,7 @@ package com.google.bamboo.soy.lexer;
 import com.google.bamboo.soy.SoyLanguage;
 import consulo.language.ast.IElementType;
 import org.jetbrains.annotations.NonNls;
-import javax.annotation.Nonnull;
+import jakarta.annotation.Nonnull;
 
 public class SoyTokenType extends IElementType {
 

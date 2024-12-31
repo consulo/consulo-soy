@@ -7,8 +7,8 @@ import consulo.language.psi.util.PsiTreeUtil;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 
 /**
  * A simple scope abstraction that presumes hierarchy and up-down variable propagation.

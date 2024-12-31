@@ -20,7 +20,7 @@ import consulo.language.psi.*;
 import consulo.document.util.TextRange;
 
 import java.util.stream.Collectors;
-import javax.annotation.Nonnull;
+import jakarta.annotation.Nonnull;
 
 public class TemplateDefinitionReference extends PsiReferenceBase<PsiElement>
     implements PsiPolyVariantReference {

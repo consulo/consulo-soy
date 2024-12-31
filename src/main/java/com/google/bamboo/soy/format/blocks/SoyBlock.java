@@ -31,8 +31,8 @@ import consulo.xml.psi.formatter.xml.HtmlPolicy;
 import consulo.xml.psi.formatter.xml.SyntheticBlock;
 import consulo.xml.psi.xml.XmlTag;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 import java.util.List;
 
 public class SoyBlock extends TemplateLanguageBlock {

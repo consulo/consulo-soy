@@ -2,7 +2,7 @@
 package com.google.bamboo.soy.parser;
 
 import java.util.List;
-import javax.annotation.Nonnull;
+import jakarta.annotation.Nonnull;
 import consulo.language.psi.PsiElement;
 
 public interface SoyBlockList extends PsiElement {

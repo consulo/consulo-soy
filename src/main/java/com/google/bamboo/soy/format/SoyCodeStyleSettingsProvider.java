@@ -24,7 +24,7 @@ import consulo.language.codeStyle.setting.CodeStyleSettingsProvider;
 import consulo.language.codeStyle.ui.setting.CodeStyleAbstractPanel;
 import consulo.language.codeStyle.ui.setting.TabbedLanguageCodeStylePanel;
 
-import javax.annotation.Nonnull;
+import jakarta.annotation.Nonnull;
 
 @ExtensionImpl
 public class SoyCodeStyleSettingsProvider extends CodeStyleSettingsProvider {

@@ -19,7 +19,7 @@ import com.google.bamboo.soy.stubs.TemplateDefinitionStub;
 import consulo.language.ast.ASTNode;
 import consulo.language.psi.stub.IStubElementType;
 import consulo.language.ast.IElementType;
-import javax.annotation.Nonnull;
+import jakarta.annotation.Nonnull;
 
 public class TemplateDefinitionMixin extends SoyStubBasedPsiElementBase<TemplateDefinitionStub>
     implements TemplateDefinitionElement {

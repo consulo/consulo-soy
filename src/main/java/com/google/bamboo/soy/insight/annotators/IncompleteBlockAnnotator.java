@@ -19,7 +19,7 @@ import com.google.bamboo.soy.elements.TagBlockElement;
 import consulo.language.editor.annotation.AnnotationHolder;
 import consulo.language.editor.annotation.Annotator;
 import consulo.language.psi.PsiElement;
-import javax.annotation.Nonnull;
+import jakarta.annotation.Nonnull;
 
 public class IncompleteBlockAnnotator implements Annotator {
 

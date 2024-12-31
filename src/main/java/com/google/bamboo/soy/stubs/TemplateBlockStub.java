@@ -21,7 +21,7 @@ import com.google.bamboo.soy.parser.impl.SoyTemplateBlockImpl;
 import com.google.bamboo.soy.stubs.index.TemplateBlockIndex;
 import consulo.language.psi.stub.*;
 
-import javax.annotation.Nonnull;
+import jakarta.annotation.Nonnull;
 import java.io.IOException;
 import java.util.List;
 import java.util.Objects;

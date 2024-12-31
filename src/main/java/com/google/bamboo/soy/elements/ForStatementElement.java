@@ -5,8 +5,8 @@ import com.google.bamboo.soy.lang.Variable;
 import com.google.bamboo.soy.parser.SoyBeginFor;
 import com.google.common.collect.ImmutableList;
 import java.util.List;
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 
 public interface ForStatementElement extends Scope, TagBlockElement, StatementElement {
 

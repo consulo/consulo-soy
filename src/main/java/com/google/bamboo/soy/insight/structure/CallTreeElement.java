@@ -1,6 +1,6 @@
 package com.google.bamboo.soy.insight.structure;
 
-import javax.annotation.Nullable;
+import jakarta.annotation.Nullable;
 
 import com.google.bamboo.soy.elements.CallStatementElement;
 

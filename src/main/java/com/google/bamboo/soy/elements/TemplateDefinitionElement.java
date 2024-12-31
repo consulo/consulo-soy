@@ -20,7 +20,7 @@ import consulo.language.psi.PsiNamedElement;
 import consulo.language.psi.StubBasedPsiElement;
 import consulo.language.util.IncorrectOperationException;
 
-import javax.annotation.Nonnull;
+import jakarta.annotation.Nonnull;
 
 /**
  * The PSI element that represents the template name in a template block definition.

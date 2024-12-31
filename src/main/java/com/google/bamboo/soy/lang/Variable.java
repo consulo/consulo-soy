@@ -3,7 +3,7 @@ package com.google.bamboo.soy.lang;
 import com.google.bamboo.soy.elements.VariableDefinitionElement;
 import consulo.language.psi.PsiNamedElement;
 
-import javax.annotation.Nonnull;
+import jakarta.annotation.Nonnull;
 
 public class Variable {
   public final String name;

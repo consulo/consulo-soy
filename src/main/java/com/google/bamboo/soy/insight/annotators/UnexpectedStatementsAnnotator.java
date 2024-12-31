@@ -20,7 +20,7 @@ import com.google.bamboo.soy.parser.SoyUnexpectedStatements;
 import consulo.language.editor.annotation.AnnotationHolder;
 import consulo.language.editor.annotation.Annotator;
 import consulo.language.psi.PsiElement;
-import javax.annotation.Nonnull;
+import jakarta.annotation.Nonnull;
 
 public class UnexpectedStatementsAnnotator implements Annotator {
 

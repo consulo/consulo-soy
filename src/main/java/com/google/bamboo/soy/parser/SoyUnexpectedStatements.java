@@ -4,7 +4,7 @@ package com.google.bamboo.soy.parser;
 import consulo.language.psi.PsiElement;
 
 import java.util.List;
-import javax.annotation.Nonnull;
+import jakarta.annotation.Nonnull;
 
 public interface SoyUnexpectedStatements extends PsiElement {
 

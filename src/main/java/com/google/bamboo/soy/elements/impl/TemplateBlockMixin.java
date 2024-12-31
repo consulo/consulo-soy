@@ -21,7 +21,7 @@ import consulo.language.ast.IElementType;
 import consulo.language.psi.stub.IStubElementType;
 import consulo.language.ast.ASTNode;
 
-import javax.annotation.Nonnull;
+import jakarta.annotation.Nonnull;
 
 public abstract class TemplateBlockMixin extends SoyStubBasedPsiElementBase<TemplateBlockStub>
     implements TemplateBlockElement {

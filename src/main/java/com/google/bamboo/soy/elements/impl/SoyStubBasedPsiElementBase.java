@@ -20,7 +20,7 @@ import consulo.language.impl.psi.stub.StubBasedPsiElementBase;
 import consulo.language.psi.stub.StubElement;
 import consulo.language.psi.stub.IStubElementType;
 
-import javax.annotation.Nonnull;
+import jakarta.annotation.Nonnull;
 
 public abstract class SoyStubBasedPsiElementBase<T extends StubElement>
     extends StubBasedPsiElementBase<T> {

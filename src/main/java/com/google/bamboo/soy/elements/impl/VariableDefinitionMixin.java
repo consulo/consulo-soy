@@ -18,7 +18,7 @@ import com.google.bamboo.soy.elements.VariableDefinitionElement;
 import consulo.language.ast.ASTNode;
 import consulo.language.impl.psi.ASTWrapperPsiElement;
 
-import javax.annotation.Nonnull;
+import jakarta.annotation.Nonnull;
 
 public abstract class VariableDefinitionMixin extends ASTWrapperPsiElement
     implements VariableDefinitionElement {

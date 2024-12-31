@@ -2,7 +2,7 @@ package com.google.bamboo.soy.lang;
 
 import com.google.bamboo.soy.parser.SoyParamDefinitionIdentifier;
 
-import javax.annotation.Nonnull;
+import jakarta.annotation.Nonnull;
 
 public class Parameter extends Variable {
   public final boolean isOptional;

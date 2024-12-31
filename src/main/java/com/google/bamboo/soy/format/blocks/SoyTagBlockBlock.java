@@ -20,8 +20,8 @@ import consulo.language.codeStyle.template.DataLanguageBlockWrapper;
 import consulo.language.codeStyle.template.TemplateLanguageBlockFactory;
 import consulo.xml.psi.formatter.xml.HtmlPolicy;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 import java.util.List;
 
 public class SoyTagBlockBlock extends SoyBlock {

@@ -14,7 +14,7 @@
 
 package com.google.bamboo.soy.file;
 
-import javax.annotation.Nonnull;
+import jakarta.annotation.Nonnull;
 import com.google.bamboo.soy.SoyLanguage;
 import com.google.bamboo.soy.parser.SoyNamespaceDeclarationIdentifier;
 import com.google.bamboo.soy.stubs.FileStub;

@@ -20,7 +20,7 @@ import com.google.bamboo.soy.parser.impl.SoyAtParamSingleImpl;
 import consulo.index.io.StringRef;
 import consulo.language.psi.stub.*;
 
-import javax.annotation.Nonnull;
+import jakarta.annotation.Nonnull;
 import java.io.IOException;
 
 public class AtParamStub extends NamedStubBase<SoyAtParamSingle> {

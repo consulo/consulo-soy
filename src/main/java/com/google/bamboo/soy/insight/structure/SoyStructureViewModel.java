@@ -14,7 +14,7 @@ import consulo.language.editor.structureView.PsiTreeElementBase;
 import consulo.language.editor.structureView.TextEditorBasedStructureViewModel;
 import consulo.language.psi.PsiElement;
 
-import javax.annotation.Nonnull;
+import jakarta.annotation.Nonnull;
 
 /**
  * from kotlin

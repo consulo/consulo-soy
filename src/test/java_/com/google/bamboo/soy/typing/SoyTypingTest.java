@@ -17,7 +17,7 @@ package com.google.bamboo.soy.typing;
 import java.util.Arrays;
 import java.util.List;
 
-import javax.annotation.Nonnull;
+import jakarta.annotation.Nonnull;
 
 import com.google.bamboo.soy.SoyCodeInsightFixtureTestCase;
 import com.google.bamboo.soy.file.SoyFileType;

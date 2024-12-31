@@ -22,7 +22,7 @@ import consulo.language.psi.PsiFile;
 import consulo.localize.LocalizeValue;
 import jakarta.inject.Inject;
 
-import javax.annotation.Nonnull;
+import jakarta.annotation.Nonnull;
 
 import static consulo.language.pattern.PlatformPatterns.psiElement;
 
