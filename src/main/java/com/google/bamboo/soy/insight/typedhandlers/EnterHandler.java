@@ -32,8 +32,7 @@ import consulo.language.psi.PsiElement;
 import consulo.language.psi.PsiFile;
 import consulo.language.psi.util.PsiTreeUtil;
 import consulo.logging.Logger;
-import consulo.util.lang.ref.Ref;
-
+import consulo.util.lang.ref.SimpleReference;
 import jakarta.annotation.Nonnull;
 import jakarta.annotation.Nullable;
 
@@ -115,8 +114,8 @@ public class EnterHandler extends EnterHandlerDelegateAdapter {
   public Result preprocessEnter(
       @Nonnull PsiFile psiFile,
       @Nonnull Editor editor,
-      @Nonnull consulo.util.lang.ref.Ref<Integer> caretOffset,
-      @Nonnull Ref<Integer> caretOffsetChange,
+      @Nonnull SimpleReference<Integer> caretOffset,
+      @Nonnull SimpleReference<Integer> caretOffsetChange,
       @Nonnull DataContext dataContext,
       @Nullable EditorActionHandler originalHandler) {
     if (psiFile instanceof SoyFile && isBetweenSiblingTags(psiFile, caretOffset.get())) {
