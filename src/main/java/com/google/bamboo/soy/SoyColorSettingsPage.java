@@ -16,15 +16,11 @@ package com.google.bamboo.soy;
 
 import com.google.bamboo.soy.insight.highlight.SoySyntaxHighlighter;
 import consulo.annotation.component.ExtensionImpl;
-import consulo.colorScheme.TextAttributesKey;
 import consulo.colorScheme.setting.AttributesDescriptor;
-import consulo.colorScheme.setting.ColorDescriptor;
 import consulo.language.editor.colorScheme.setting.ColorSettingsPage;
 import consulo.language.editor.highlight.SyntaxHighlighter;
-
+import consulo.localize.LocalizeValue;
 import jakarta.annotation.Nonnull;
-import jakarta.annotation.Nullable;
-import java.util.Map;
 
 @ExtensionImpl
 public class SoyColorSettingsPage implements ColorSettingsPage {
@@ -68,12 +64,6 @@ public class SoyColorSettingsPage implements ColorSettingsPage {
         + "{/template}\n";
   }
 
-  @Nullable
-  @Override
-  public Map<String, TextAttributesKey> getAdditionalHighlightingTagToDescriptorMap() {
-    return null;
-  }
-
   @Nonnull
   @Override
   public AttributesDescriptor[] getAttributeDescriptors() {
@@ -82,13 +72,7 @@ public class SoyColorSettingsPage implements ColorSettingsPage {
 
   @Nonnull
   @Override
-  public ColorDescriptor[] getColorDescriptors() {
-    return ColorDescriptor.EMPTY_ARRAY;
-  }
-
-  @Nonnull
-  @Override
-  public String getDisplayName() {
-    return "Closure Template";
+  public LocalizeValue getDisplayName() {
+    return SoyLanguage.INSTANCE.getDisplayName();
   }
 }

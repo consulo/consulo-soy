@@ -38,7 +38,7 @@ public class SoyCodeStyleSettingsProvider extends CodeStyleSettingsProvider {
   @Override
   public Configurable createSettingsPage(CodeStyleSettings settings,
                                          CodeStyleSettings originalSettings) {
-    return new CodeStyleAbstractConfigurable(settings, originalSettings, getConfigurableDisplayName().get()) {
+    return new CodeStyleAbstractConfigurable(settings, originalSettings, getConfigurableDisplayName()) {
       @Override
       protected CodeStyleAbstractPanel createPanel(CodeStyleSettings settings) {
         return new TabbedLanguageCodeStylePanel(getLanguage(), settings, originalSettings) {

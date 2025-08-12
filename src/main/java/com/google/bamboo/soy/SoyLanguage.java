@@ -16,16 +16,24 @@ package com.google.bamboo.soy;
 
 import consulo.language.Language;
 import consulo.language.file.LanguageFileType;
+import consulo.localize.LocalizeValue;
 import consulo.xml.ide.highlighter.HtmlFileType;
+import jakarta.annotation.Nonnull;
 
 public class SoyLanguage extends Language {
-  public static final SoyLanguage INSTANCE = new SoyLanguage();
+    public static final SoyLanguage INSTANCE = new SoyLanguage();
 
-  public static LanguageFileType getDefaultTemplateLang() {
-    return HtmlFileType.INSTANCE;
-  }
+    public static LanguageFileType getDefaultTemplateLang() {
+        return HtmlFileType.INSTANCE;
+    }
 
-  private SoyLanguage() {
-    super("ClosureTemplate");
-  }
+    private SoyLanguage() {
+        super("ClosureTemplate");
+    }
+
+    @Nonnull
+    @Override
+    public LocalizeValue getDisplayName() {
+        return LocalizeValue.localizeTODO("Closure Template");
+    }
 }
