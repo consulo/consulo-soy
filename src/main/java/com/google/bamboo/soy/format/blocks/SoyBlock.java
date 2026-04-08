@@ -27,9 +27,9 @@ import consulo.language.codeStyle.template.DataLanguageBlockWrapper;
 import consulo.language.codeStyle.template.TemplateLanguageBlock;
 import consulo.language.codeStyle.template.TemplateLanguageBlockFactory;
 import consulo.language.psi.PsiElement;
+import consulo.xml.language.psi.XmlTag;
 import consulo.xml.psi.formatter.xml.HtmlPolicy;
 import consulo.xml.psi.formatter.xml.SyntheticBlock;
-import consulo.xml.psi.xml.XmlTag;
 
 import jakarta.annotation.Nonnull;
 import jakarta.annotation.Nullable;
