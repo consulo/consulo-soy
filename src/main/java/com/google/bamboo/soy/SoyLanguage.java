@@ -14,10 +14,10 @@
 
 package com.google.bamboo.soy;
 
+import consulo.html.language.HtmlFileType;
 import consulo.language.Language;
 import consulo.language.file.LanguageFileType;
 import consulo.localize.LocalizeValue;
-import consulo.xml.ide.highlighter.HtmlFileType;
 import jakarta.annotation.Nonnull;
 
 public class SoyLanguage extends Language {

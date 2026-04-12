@@ -19,13 +19,13 @@ import com.google.common.collect.ImmutableSet;
 import consulo.codeEditor.Editor;
 import consulo.document.Document;
 import consulo.document.util.TextRange;
+import consulo.html.language.HtmlFileType;
 import consulo.language.editor.action.TypedHandlerDelegate;
 import consulo.language.psi.PsiDocumentManager;
 import consulo.language.psi.PsiFile;
 import consulo.project.Project;
 import consulo.util.lang.Pair;
 import consulo.virtualFileSystem.fileType.FileType;
-import consulo.xml.ide.highlighter.HtmlFileType;
 
 import java.util.Set;
 import java.util.function.Function;

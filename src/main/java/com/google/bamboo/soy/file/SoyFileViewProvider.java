@@ -15,6 +15,7 @@
 package com.google.bamboo.soy.file;
 
 import com.google.bamboo.soy.SoyLanguage;
+import consulo.html.language.HTMLLanguage;
 import consulo.language.Language;
 import consulo.language.impl.file.MultiplePsiFilesPerDocumentFileViewProvider;
 import consulo.language.impl.psi.PsiFileImpl;
@@ -24,7 +25,6 @@ import consulo.language.psi.PsiFile;
 import consulo.language.psi.PsiManager;
 import consulo.language.template.ConfigurableTemplateLanguageFileViewProvider;
 import consulo.virtualFileSystem.VirtualFile;
-import consulo.xml.lang.html.HTMLLanguage;
 
 import jakarta.annotation.Nonnull;
 import java.util.Arrays;

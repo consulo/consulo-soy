@@ -33,8 +33,8 @@ import consulo.language.codeStyle.template.TemplateLanguageBlock;
 import consulo.language.codeStyle.template.TemplateLanguageFormattingModelBuilder;
 import consulo.language.psi.PsiElement;
 import consulo.language.psi.PsiFile;
-import consulo.xml.psi.formatter.xml.HtmlPolicy;
 
+import consulo.xml.psi.formatter.xml.HtmlPolicy;
 import jakarta.annotation.Nonnull;
 import jakarta.annotation.Nullable;
 import java.util.List;

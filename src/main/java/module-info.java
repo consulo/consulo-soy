@@ -4,6 +4,8 @@
  */
 module consulo.soy {
   requires consulo.ide.api;
+  requires com.intellij.xml.api;
+  requires com.intellij.xml.html.api;
   requires com.intellij.xml;
   requires com.google.common;
 

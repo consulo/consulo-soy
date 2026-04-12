@@ -16,6 +16,7 @@ package com.google.bamboo.soy.format;
 
 import com.google.bamboo.soy.SoyLanguage;
 import consulo.annotation.component.ExtensionImpl;
+import consulo.html.language.HTMLLanguage;
 import consulo.language.Language;
 import consulo.language.codeStyle.CommonCodeStyleSettings;
 import consulo.language.codeStyle.setting.IndentOptionsEditor;
@@ -23,7 +24,6 @@ import consulo.language.codeStyle.setting.LanguageCodeStyleSettingsProvider;
 import consulo.language.codeStyle.ui.setting.SmartIndentOptionsEditor;
 import consulo.util.io.StreamUtil;
 import consulo.xml.application.options.XmlLanguageCodeStyleSettingsProvider;
-import consulo.xml.lang.html.HTMLLanguage;
 
 import jakarta.annotation.Nonnull;
 import java.io.IOException;
