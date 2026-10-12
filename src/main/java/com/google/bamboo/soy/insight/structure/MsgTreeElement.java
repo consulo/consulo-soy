@@ -1,22 +1,21 @@
 package com.google.bamboo.soy.insight.structure;
 
 import com.google.bamboo.soy.parser.SoyMsgStatement;
+import consulo.annotation.access.RequiredReadAction;
 import consulo.util.lang.StringUtil;
 
 /**
  * @author VISTALL
  * @since 2018-09-12
  */
-public class MsgTreeElement extends BaseTreeElement<SoyMsgStatement>
-{
-	public MsgTreeElement(SoyMsgStatement psiElement)
-	{
-		super(psiElement);
-	}
+public class MsgTreeElement extends BaseTreeElement<SoyMsgStatement> {
+    public MsgTreeElement(SoyMsgStatement psiElement) {
+        super(psiElement);
+    }
 
-	@Override
-	public String getLocationString()
-	{
-		return shortenTextIfLong(StringUtil.notNullize(getElement().getDescription()));
-	}
+    @Override
+    @RequiredReadAction
+    public String getLocationString() {
+        return shortenTextIfLong(StringUtil.notNullize(getElement().getDescription()));
+    }
 }

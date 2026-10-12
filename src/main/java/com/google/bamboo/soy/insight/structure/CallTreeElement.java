@@ -1,6 +1,7 @@
 package com.google.bamboo.soy.insight.structure;
 
-import jakarta.annotation.Nullable;
+import consulo.annotation.access.RequiredReadAction;
+import consulo.localize.LocalizeValue;
 
 import com.google.bamboo.soy.elements.CallStatementElement;
 
@@ -8,17 +9,18 @@ import com.google.bamboo.soy.elements.CallStatementElement;
  * @author VISTALL
  * @since 2018-09-12
  */
-public class CallTreeElement extends BaseTreeElement<CallStatementElement>
-{
-	protected CallTreeElement(CallStatementElement psiElement)
-	{
-		super(psiElement);
-	}
+public class CallTreeElement extends BaseTreeElement<CallStatementElement> {
+    protected CallTreeElement(CallStatementElement psiElement) {
+        super(psiElement);
+    }
 
-	@Nullable
-	@Override
-	public String getPresentableText()
-	{
-		return getPresentableName(getElement()) + " " + getElement().getTemplateName();
-	}
+    @Override
+    @RequiredReadAction
+    public LocalizeValue getPresentableText() {
+        return LocalizeValue.join(
+            getPresentableName(getElement()),
+            LocalizeValue.space(),
+            LocalizeValue.ofNullable(getElement().getTemplateName())
+        );
+    }
 }

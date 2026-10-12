@@ -1,6 +1,7 @@
 package com.google.bamboo.soy.insight.structure;
 
-import jakarta.annotation.Nullable;
+import consulo.annotation.access.RequiredReadAction;
+import consulo.localize.LocalizeValue;
 
 import com.google.bamboo.soy.file.SoyFile;
 
@@ -8,17 +9,14 @@ import com.google.bamboo.soy.file.SoyFile;
  * @author VISTALL
  * @since 2018-09-12
  */
-public class FileTreeElement extends BaseTreeElement<SoyFile>
-{
-	public FileTreeElement(SoyFile psiElement)
-	{
-		super(psiElement);
-	}
+public class FileTreeElement extends BaseTreeElement<SoyFile> {
+    public FileTreeElement(SoyFile psiElement) {
+        super(psiElement);
+    }
 
-	@Nullable
-	@Override
-	public String getPresentableText()
-	{
-		return getElement().getName();
-	}
+    @Override
+    @RequiredReadAction
+    public LocalizeValue getPresentableText() {
+        return LocalizeValue.of(getElement().getName());
+    }
 }
